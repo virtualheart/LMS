@@ -1,0 +1,22 @@
+Notes
+1) No Securuty for admin only assessable page
+2) add/update informaction bug(not working properly)
+3) some more know bugs 
+4) barcode not found database(barcode row not found)
+5) page's arrenge for future update
+
+Requement
+1) SMTP server
+2) day calculate  
+
+Resovle
+1) -
+
+Implement
+
+1) -
+
+----------------------------------------
+/add_dep.php - fill empty value 
+
+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
