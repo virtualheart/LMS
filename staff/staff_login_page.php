@@ -1,11 +1,11 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 ?>
 <html>
 	<head>
-		<?php include"head.php"?>
-		<?php include"admin_login_nav.php"?>
+		<?php include"../include/head.php"?>
+		<?php include"../include/nav.php"?>
 	</head>
 	<body>
 		<div class="col-md-offset-4 col-md-4" style="margin-top:80px">
@@ -48,7 +48,7 @@
 		</div>
 	</div>
 	<?php
-		include"footer.php";
+		include"../include/footer.php";
 	?>
 	</body>	
 </html>

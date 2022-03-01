@@ -1,11 +1,11 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 		<style>
 			.box11
@@ -55,7 +55,7 @@
 		</div>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>

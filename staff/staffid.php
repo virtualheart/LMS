@@ -1,5 +1,5 @@
 <?php 
-	include"./include/config.php";
+	include"../include/config.php";
 	$sql="SELECT regno FROM staff ORDER By regno DESC LIMIT 1";
 			$res=$con->query($sql);
 			$cp="";
@@ -13,7 +13,10 @@
 				$num=(int)$cp2;
 				$num++;
 				$cp=$cp1.$num;
-				echo $cp;
+				echo $cp.' ';
+	echo $cp1.' ';
+echo $cp2.' ';
+echo $num.' ';
 			}
 			else
 			{

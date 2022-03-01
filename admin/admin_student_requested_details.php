@@ -1,5 +1,5 @@
 <?php	
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
 ?>
@@ -107,7 +107,7 @@ From student_barrow_books Inner Join
 				}
 				else
 				 {
-					 echo"<div class='alert alert-danger'>Request Not Found...!!!</div>";
+					 echo"<div class='alert alert-danger'>No Resule Found...!!!</div>";
 				 }
 			?>
 		</div>

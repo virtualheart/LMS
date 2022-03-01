@@ -1,11 +1,11 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 	</head>
 	<body>
@@ -72,7 +72,7 @@ From staff_barrow_books Inner Join
 		</div>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>

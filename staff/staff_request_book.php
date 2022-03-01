@@ -1,11 +1,11 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 	</head>
 	<body>
@@ -23,27 +23,34 @@
 				{
 					$row=$res->fetch_assoc();
 					
-				}
+				} else {
+						header("location:./staff_home.php");
+				}		
 			?>
 			<form method="post" action="<?php $_SERVER["REQUEST_URI"]?>">
 				<h3 class="page-header text-primary" style="margin-top:70px"><i class='fa fa-book'> View Request Book</i></h3>
 				<?php
 					if(isset($_POST["submit"]))
-					{
+					{ //error, try to fixing hear
 						
 						$qry1="insert into staff_barrow_books(bid,sid,request_date)values
-						('{$row["bid"]}','{$_SESSION["sid"]}',now())";
+						('{$row["bid"]}','{$_SESSION["sid"]}',NOW())";
+						echo $qry1;
+
 						if($con->query($qry1))
 						{
 							$qry3="update staff_barrow_books set status='1' where bid='{$row["bid"]}'";
 							if($con->query($qry3))
 							{
 								header("location:staff_view_books.php?msg=Request Send Successfully..!!!");
-							}								
+							} 							
+						} else {
+							echo"<div style='margin-top:80px' class='alert alert-danger'>Request Falied..!!!</div>";
+
 						}
 						$qry2="update books set status='1' where bid='{$row["bid"]}'";
 						$con->query($qry2);
-					}					
+					}  		
 				?>
 				<div class="form-group col-md-5">
 					<label>Serial No</label>
@@ -71,7 +78,7 @@
 		</div>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>
