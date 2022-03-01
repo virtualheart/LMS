@@ -1,6 +1,8 @@
 <?php
 	include"../include/config.php";
 	session_start();
+	include"./admin_security.php";
+
 ?>
 <html>
 	<head>
@@ -30,10 +32,11 @@
 		<div class="col-md-8">
 			<?php
 			
-				$qry="Select staff.sid, staff.regno, staff.sname, staff.did, staff.id, staff.contact,
-  staff.image, designation.designation, department.dname
+				$qry="Select staff.sid, staff.regno, staff.sname, staff.did, staff.id, staff.contact,staff.gender,
+  staff.image, designation.designation, staff_department.s_d_name
 From staff Inner Join
-  department On staff.did = department.did Inner Join
+  staff_department On staff.did = staff_department.id
+  Inner Join
   designation On staff.id = designation.id";
   
 				$res=$con->query($qry);
@@ -67,11 +70,17 @@ From staff Inner Join
 					{
 						echo"
 							<tr class='center'>
-								<td>{$i}</td>
-								<td><center><img class='img-circle'src='{$row["image"]}' height='100' width='100'></img></center></td>
+								<td>{$i}</td>";
+
+							if ($row["gender"] == "male") {
+								echo "<td><center><img class='img-circle'src='../{$row["image"]}' height='100' width='100'></img></center></td>";
+								}elseif ($row["gender"] == "female") {
+								echo "<td><center><img class='img-circle'src='{$row["image"]}' height='100' width='100'></img></center></td>";
+								}
+						echo "	
 								<td>{$row["regno"]}</td>
 								<td>{$row["sname"]}</td>
-								<td>{$row["dname"]}</td>
+								<td>{$row["s_d_name"]}</td>
 								<td>{$row["designation"]}</td>
 								<td>{$row["contact"]}</td>
 								<td><a id='cen' href='update_staff.php?id={$row["sid"]}' class='btn btn-success'><i class='fa fa-edit'> Update</i></a></td>

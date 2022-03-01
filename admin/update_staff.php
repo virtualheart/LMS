@@ -33,9 +33,9 @@
 				}
 				
 						 $qry="Select staff.id, staff.did, staff.regno, staff.sid, staff.sname, staff.contact,
-								designation.designation, department.dname, staff.image
-								From department Inner Join
-								staff On staff.did = department.did Inner Join
+								designation.designation, staff_department.s_d_name, staff.image
+								From staff_department Inner Join
+								staff On staff.did = staff_department.id Inner Join
 								designation On staff.id = designation.id where sid={$_GET['id']}";
 								
 								$res=$con->query($qry);
@@ -50,7 +50,7 @@
 			<form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER["REQUEST_URI"]?>">
 				<h3 class="page-header text-info"><span class="fa fa-users"> Add Staff Details</span></h3>				
 				<div class="col-md-3">
-					<img src="<?php echo $row["image"];?>" class="img-thumbnail" id="img">
+					<img src="<?php echo '../'.$row["image"];?>" class="img-thumbnail" id="img">
 				</div>
 				
 				<?php
@@ -70,12 +70,17 @@
 							$path=$path.basename($_FILES["image"]["name"]);
 							if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
 							{								
-								$qry="update staff set regno='$regno',sname='$name',did='$dep',id='$design',contact='$contact',image='$path' where sid={$_GET['id']}";
+
+							}
+
+							$qry="update staff set regno='$regno',sname='$name',did='$dep',id='$design',contact='$contact' where sid={$_GET['id']}";
 								if($con->query($qry))
 								{
 									header("location:view_staff.php?msg=Update Successfully");
-								}
-							}									
+								} else {
+									echo"<div class='alert alert-success'>Update Falied</div>";
+
+								}								
 						}						
 					}					
 				
@@ -92,15 +97,15 @@
 				<div class="form-group ">
 					<label>Department</label>
 					<select class="form-control" name="dep">
-						<option value="<?php echo $row["did"];?>"><?php echo $row["dname"];?></option>
+						<option value="<?php echo $row["id"];?>"><?php echo $row["s_d_name"];?></option>
 						<?php
-							$qry1="select * from department";
+							$qry1="select * from staff_department";
 							$res1=$con->query($qry1);
 							if($res1->num_rows>0)
 							{
 								while($row1=$res1->fetch_assoc())
 								{	
-									echo"<option value='{$row1["did"]}'>{$row1["dname"]}</option>";
+									echo"<option value='{$row1["did"]}'>{$row1["s_d_name"]}</option>";
 								}
 							}
 						?>
@@ -128,7 +133,7 @@
 				</div>
 				<div class="form-group ">
 					<label>Contact</label>
-					<input type="text" value="<?php echo $row["contact"];?>" name="contact" class="form-control" >
+					<input type="number" value="<?php echo $row["contact"];?>" name="contact" min="1" class="form-control" >
 				</div>
 				<div class="form-group ">
 					<label>Image</label>					

@@ -32,12 +32,12 @@
 
 						if(isset($_FILES["image"])==null){
 
-							$path="img/staff";
-							$path=$path.basename($_FILES["image"]["name"]);
-							if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
-							{								
-								
-							}
+						$path="img/staff";
+						$path=$path.basename($_FILES["image"]["name"]);
+						if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
+						{								
+							
+						}
 						} elseif ($gender == "male") {
 
 							$path = "img/staff/male.png";
