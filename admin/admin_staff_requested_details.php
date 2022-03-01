@@ -39,16 +39,16 @@
 						?>						
 																	
 							<?php
-				$qry="Select books.title, books.bid, books.aname, books.sno, books.bno, staff_barrow_books.bid,staff_barrow_books.sbid,
-  staff_barrow_books.request_date, staff_barrow_books.return_date,
-  staff_barrow_books.today, staff_barrow_books.sid, staff.regno, staff.sname,
-  staff.image, department.dname, staff.did, staff.id, designation.id,
-  designation.designation, books.status
-From department Inner Join
-  staff On staff.did = department.did Inner Join
-  staff_barrow_books On staff.sid = staff_barrow_books.sid Inner Join
-  books On books.bid = staff_barrow_books.bid Inner Join
-  designation On staff.id = designation.id 	where books.status>0 and books.status<3				
+				$qry="Select books.title, books.bid, books.aname, books.sno, books.bno,staff_barrow_books.bid,staff_barrow_books.sbid,
+ 					staff_barrow_books.request_date, staff_barrow_books.return_date,
+  					staff_barrow_books.today, staff_barrow_books.sid, staff.regno, staff.sname,
+  					staff.image, staff_department.s_d_name, staff.did, staff.id, designation.id,
+  					designation.designation, books.status
+					From staff_department Inner Join
+  					staff On staff.did = staff_department.id Inner Join
+  					staff_barrow_books On staff.sid = staff_barrow_books.sid Inner Join
+					books On books.bid = staff_barrow_books.bid Inner Join
+  					designation On staff.id = designation.id where books.status>0 and books.status<3	
 				";
 				$res=$con->query($qry);
 				if($res->num_rows>0)
@@ -79,7 +79,7 @@ From department Inner Join
 								<td style='text-align:center; line-height:6' >{$i}</td>
 								<td style='text-align:center; line-height:6' ><img src='{$row['image']}' class='img img-circle image'></td>
 								<td style='text-align:center; line-height:6' >{$row['sname']}</td>
-								<td style='text-align:center; line-height:6' >{$row['dname']}</td>
+								<td style='text-align:center; line-height:6' >{$row['s_d_name']}</td>
 								<td style='text-align:center; line-height:6' >{$row['designation']}</td>
 								<td style='text-align:center; line-height:6' >{$row['bno']}</td>
 								<td style='text-align:center; line-height:6' >{$row['title']}</td>

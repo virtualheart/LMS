@@ -26,7 +26,7 @@
 
 		 $qry="Select books.bid, staff_barrow_books.request_date, staff_barrow_books.sid,
 			   books.bno, books.sno, books.title, books.aname, books.publication,
-			   staff_barrow_books.bid
+			   staff_barrow_books.bid,staff_barrow_books.return_date
 				From staff_barrow_books Inner Join
   				books On books.bid = staff_barrow_books.bid where books.bid={$_GET['id']}";
 		$res=$con->query($qry);
@@ -40,7 +40,8 @@
 		<?php
 					if(isset($_POST["submit"]))
 					{
-						echo $sql="update staff_barrow_books set return_date='{$_POST['rdate']}' where bid={$_GET["id"]}";
+						//$sql="update staff_barrow_books set return_date='{$_POST['rdate']}' where bid={$_GET["id"]}";
+
 						if($con->query($sql))						
 						{
 							header("location:admin_staff_requested_details.php?msg=Return Date Update Successfully");							
@@ -77,11 +78,13 @@
 				</div>
 				<div class="form-group col-md-5">
 					<label>Return Date</label>
-					<input type="date" name="rdate" class="form-control">					
+					<input type="text" name="rdate" value="<?php echo $row['return_date']?>" class="form-control">					
 				</div>
 				<div class="form-group col-md-5" style="margin-top:35px">
-					<input type="submit" name="submit" class="btn btn-primary" value="Set Return Date">					
+					<input type="submit" name="submit" class="btn btn-primary" value="Accept">			
+					<input type="submit" name="submit" class="btn btn-primary" value="reject">					
 				</div>
+				
 			</form>
 		</div>
 		<footer>

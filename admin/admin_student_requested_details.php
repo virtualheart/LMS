@@ -107,7 +107,11 @@ From student_barrow_books Inner Join
 				}
 				else
 				 {
-					 echo"<div class='alert alert-danger'>No Resule Found...!!!</div>";
+					//echo"<div class='alert alert-danger'>No Resule Found...!!!</div>";
+					echo "<script>alert('No Resule Found...!!!')</script>";
+					
+					header("location:./admin_home.php");
+					
 				 }
 			?>
 		</div>

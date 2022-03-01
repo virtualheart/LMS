@@ -29,6 +29,8 @@ From student_barrow_books Inner Join
 		if($res->num_rows>0)
 		{
 			$row=$res->fetch_assoc();
+		} else {
+			header("location:./admin_home.php");
 		}
 		?>
 		<?php
