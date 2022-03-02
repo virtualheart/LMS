@@ -78,7 +78,7 @@
 								{
 									header("location:view_staff.php?msg=Update Successfully");
 								} else {
-									echo"<div class='alert alert-success'>Update Falied</div>";
+									echo"<div class='alert alert-danger'>Update Falied</div>";
 
 								}								
 						}						

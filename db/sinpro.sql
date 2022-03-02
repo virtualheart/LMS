@@ -1194,7 +1194,26 @@ INSERT INTO `books` (`bid`, `sno`, `bno`, `barcode`, `title`, `aname`, `publicat
 (3271,	'435',	' 40252',	'',	'DISCRETE MATHEMATICAL STRUCTURES WITH APPLICATIONS OF COMPUTER SCIENCE',	'J P TREMBLAY,R MANOHAR',	'TMGH',	'245',	'A1',	'R6',	0,	0),
 (3272,	'436',	' 40253',	'',	'OPERATIONS RESEARCH - AN INTRODUCTION VI EDITION',	'HAMDY A TAHA',	'PHI',	'295',	'A1',	'R6',	0,	0),
 (3273,	'437',	' 40254',	'',	'DIGITAL LOGIC AND COMPUTER DESIGN',	'M MORRIS MANO',	'PHI',	'150',	'A1',	'R6',	0,	0),
-(3274,	'438',	' 40255',	'',	'PROGRAMMING WITH C- II  EDITION',	'BYRONS S GOTTFRIED',	'TMGH',	'245',	'A1',	'R6',	0,	0);
+(3274,	'438',	' 40255',	'',	'PROGRAMMING WITH C- II  EDITION',	'BYRONS S GOTTFRIED',	'TMGH',	'245',	'A1',	'R6',	0,	0),
+(3275,	'2',	'1002',	'C++',	'Ram',	'2002',	'1000',	'A2',	'B2',	'',	0,	0),
+(3276,	'3',	'1003',	'Python',	'Sam',	'2003',	'1500',	'A3',	'B3',	'',	0,	0),
+(3277,	'4',	'1004',	'Java',	'Kumar',	'2004',	'2000',	'A4',	'B4',	'',	0,	0),
+(3278,	'5',	'1005',	'.Net',	'Elango',	'2005',	'2500',	'A5',	'B5',	'',	0,	0),
+(3279,	'2',	'1002',	'C++',	'Ram',	'2002',	'1000',	'A2',	'B2',	'',	0,	0),
+(3280,	'3',	'1003',	'Python',	'Sam',	'2003',	'1500',	'A3',	'B3',	'',	0,	0),
+(3281,	'4',	'1004',	'Java',	'Kumar',	'2004',	'2000',	'A4',	'B4',	'',	0,	0),
+(3282,	'2',	'1002',	'C++',	'Ram',	'2002',	'1000',	'A2',	'B2',	'',	0,	0),
+(3283,	'3',	'1003',	'Python',	'Sam',	'2003',	'1500',	'A3',	'B3',	'',	0,	0),
+(3284,	'4',	'1004',	'Java',	'Kumar',	'2004',	'2000',	'A4',	'B4',	'',	0,	0),
+(3285,	'5',	'1005',	'.Net',	'Elango',	'2005',	'2500',	'A5',	'B5',	'',	0,	0),
+(3286,	'2',	'1002',	'C++',	'Ram',	'2002',	'1000',	'A2',	'B2',	'',	0,	0),
+(3287,	'3',	'1003',	'Python',	'Sam',	'2003',	'1500',	'A3',	'B3',	'',	0,	0),
+(3288,	'4',	'1004',	'Java',	'Kumar',	'2004',	'2000',	'A4',	'B4',	'',	0,	0),
+(3289,	'5',	'1005',	'.Net',	'Elango',	'2005',	'2500',	'A5',	'B5',	'',	0,	0),
+(3290,	'2',	'1002',	'C++',	'Ram',	'2002',	'1000',	'A2',	'B2',	'',	0,	0),
+(3291,	'3',	'1003',	'Python',	'Sam',	'2003',	'1500',	'A3',	'B3',	'',	0,	0),
+(3292,	'4',	'1004',	'Java',	'Kumar',	'2004',	'2000',	'A4',	'B4',	'',	0,	0),
+(3293,	'5',	'1005',	'.Net',	'Elango',	'2005',	'2500',	'A5',	'B5',	'',	0,	0);
 
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
@@ -1217,6 +1236,23 @@ CREATE TABLE `designation` (
 INSERT INTO `designation` (`id`, `designation`) VALUES
 (1,	'Associative Professor'),
 (7,	'Assistant Professor');
+
+DROP TABLE IF EXISTS `settings`;
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `app_name` varchar(30) NOT NULL,
+  `app_decp` varchar(300) DEFAULT NULL,
+  `app_logo` varchar(80) NOT NULL,
+  `smtp_host` varchar(33) NOT NULL,
+  `smtp_port` varchar(10) NOT NULL,
+  `smtp_user` varchar(30) NOT NULL,
+  `smtp_pass` varchar(30) NOT NULL,
+  `smtp_sec_type` enum('ssl','tls') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `settings` (`id`, `app_name`, `app_decp`, `app_logo`, `smtp_host`, `smtp_port`, `smtp_user`, `smtp_pass`, `smtp_sec_type`) VALUES
+(1,	'GAS-7 LMS',	NULL,	'logo.png',	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl');
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
@@ -1254,6 +1290,18 @@ CREATE TABLE `staff_barrow_books` (
 INSERT INTO `staff_barrow_books` (`sbid`, `sid`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES
 (2,	2,	2,	'2019-09-19',	'2019-09-28',	'0000-00-00',	1),
 (3,	8,	1,	'2019-12-12',	'2022-03-03',	'0000-00-00',	1);
+
+DROP TABLE IF EXISTS `staff_barrow_books_history`;
+CREATE TABLE `staff_barrow_books_history` (
+  `sbid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) NOT NULL,
+  `bid` int(11) NOT NULL,
+  `request_date` date NOT NULL,
+  `returned_date` date NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`sbid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 DROP TABLE IF EXISTS `staff_department`;
 CREATE TABLE `staff_department` (
@@ -1302,4 +1350,4 @@ INSERT INTO `student_barrow_books` (`stbid`, `st_id`, `bid`, `request_date`, `Re
 (4,	3,	5,	'2019-12-12',	'0000-00-00',	'0000-00-00',	1),
 (5,	1,	10,	'2020-01-21',	'0000-00-00',	'0000-00-00',	1);
 
--- 2022-02-28 03:43:56
+-- 2022-03-02 06:57:34
