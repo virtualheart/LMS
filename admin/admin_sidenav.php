@@ -33,4 +33,10 @@ include"./admin_security.php";
 		 <a href="admin_student_requested_details.php" class="list-group-item"><span class="fa fa-users"> Student Request </span></a>																							
 </ul>	
 	
+<a href="#Settings" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Settings</span></a>
+<ul class="nav collapse" id="Settings">			
+		<a href="admin_settings.php" class="list-group-item"><span class="fa fa-gear">  General Settings</span></a>	
+		 <a href="admin_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings </span></a>																							
+</ul>	
+	
 	

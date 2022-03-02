@@ -40,7 +40,7 @@
 		<?php
 					if(isset($_POST["submit"]))
 					{
-						//$sql="update staff_barrow_books set return_date='{$_POST['rdate']}' where bid={$_GET["id"]}";
+						$sql="update staff_barrow_books where bid={$_GET["id"]}";
 
 						if($con->query($sql))						
 						{

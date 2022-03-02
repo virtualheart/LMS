@@ -29,7 +29,7 @@
 							if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
 							{
 								$objPHPExcel=PHPExcel_IOFactory::load($target_file);
-								 $sql="INSERT INTO books(sno,bno,barcode,title,aname,publication,price,alamara,rack) VALUES ";
+								 $sql="INSERT INTO books(sno,bno,barcode,title,aname,publication,price,alamara,rack,status,sstatus) VALUES ";
 								$i=0;
 								$html="";
 								foreach($objPHPExcel->getWorksheetIterator() as $worksheet)
@@ -47,14 +47,16 @@
 										$price=mysqli_escape_string($con,$worksheet->getCellByColumnAndRow(6,$row)->getValue());
 										$alamara=mysqli_escape_string($con,$worksheet->getCellByColumnAndRow(7,$row)->getValue());
 										$rack=mysqli_escape_string($con,$worksheet->getCellByColumnAndRow(8,$row)->getValue());
-										$sql.="('{$sno}','{$bno}','{$barcode}','{$title}','{$aname}','{$publication}','{$price}','{$alamara}','{$rack}'),";
+										$sql.="('{$sno}','{$bno}','{$barcode}','{$title}','{$aname}','{$publication}','{$price}','{$alamara}','{$rack}',0,0),";
 									}
 								}										
 								$sql=substr($sql,0,strlen($sql)-1);
 								if($con->query($sql))
 								{								
 									echo "<div class='alert alert-success'>Books Details Uploaded</div>";									
-								}															
+								} else {
+								echo "<div class='alert alert-danger'>Books Details Upload Falied.</div>";
+							}														
 							} 
 							else 
 							{

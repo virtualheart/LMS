@@ -1,6 +1,6 @@
 <?php
 
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
 
@@ -82,7 +82,7 @@ From student_barrow_books Inner Join
 		</div>
 		<footer>
 			<?php
-				include"./include/footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>

@@ -2,6 +2,7 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	include"../include/msg.php";
 ?>
 <html>
 	<head>
@@ -59,7 +60,7 @@
 			<?php
 				if(isset($_GET['msg']))
 				{
-					echo"<div class='alert alert-success'>{$_GET["msg"]}</div>";
+					echo"<div class='alert alert-success'>{$mgsarr[2]}</div>";
 				}
 			?>
 			<table class="table table-bordered">

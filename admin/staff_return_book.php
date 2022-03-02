@@ -22,15 +22,15 @@
 			<?php
 
 				$qry="
-				Select staff.did, department.dname, designation.designation, staff.sname,
-  staff.regno, staff.sid, staff_barrow_books.request_date,
-  staff_barrow_books.return_date, staff_barrow_books.bid, books.bno,
-  books.title, books.bid
-From designation Inner Join
-  staff On staff.id = designation.id Inner Join
-  department On staff.did = department.did Inner Join
-  staff_barrow_books On staff.sid = staff_barrow_books.sid Inner Join
-  books On staff_barrow_books.bid = books.bid where books.bid='{$_GET["id"]}'
+					Select staff.did, staff_department.s_d_name, designation.designation, staff.sname,
+				    staff.regno, staff.sid, staff_barrow_books.request_date,
+				    staff_barrow_books.return_date, staff_barrow_books.bid, books.bno,
+				    books.title, books.bid
+				  From designation Inner Join
+				    staff On staff.id = designation.id Inner Join
+				    staff_department On staff.did = staff_department.id Inner Join
+				    staff_barrow_books On staff.sid = staff_barrow_books.sid Inner Join
+				    books On staff_barrow_books.bid = books.bid where books.bid='{$_GET["id"]}'
   				
 				";
 				$res=$con->query($qry);
@@ -54,7 +54,7 @@ From designation Inner Join
 							$qry2="delete from staff_barrow_books where sbid={$_GET['id1']}";
 							if($con->query($qry2))
 							{
-								header("location:admin_staff_requested_details.php?msg=Return Details Updated Successfuly");
+								header("location:admin_staff_requested_details.php?msg=0");
 							}
 						}						
 					}
@@ -75,7 +75,7 @@ From designation Inner Join
 				</div>
 				<div class="form-group col-md-5">
 					<label>Department</label>
-					<input type="text" value="<?php echo $row['dname']?>" name="dep" class="form-control">
+					<input type="text" value="<?php echo $row['s_d_name']?>" name="dep" class="form-control">
 				</div>
 				<div class="form-group col-md-5">
 					<label>Book No</label>
@@ -95,7 +95,7 @@ From designation Inner Join
 				</div>
 				<div class="form-group col-md-5">
 					<label>Returned Date</label>
-					<input type="date" name="returned_date" class="form-control">
+					<input type="text" name="returned_date" class="form-control" value="<?php echo date('Y-m-d'); ?>">
 				</div>
 				<div class="form-group col-md-5" style="margin-top:35px">
 					<input type="submit" name="submit" class="btn btn-primary" value="Update">					

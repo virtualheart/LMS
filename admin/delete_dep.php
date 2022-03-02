@@ -6,7 +6,7 @@
 		
 		if($con->query($sql))
 		{
-			header("location:add_dep.php?msg=Deleted Successfully");
+			header("location:add_dep.php?msg=2");
 		}	
 	}
 ?>
