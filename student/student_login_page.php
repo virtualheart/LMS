@@ -1,16 +1,27 @@
 <?php 
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 ?>
 
 <html>
 	<head>
-		<?php include"head.php"?>
-		<?php include"student_login_nav.php"?>
+		<?php include"../include/head.php"?>
+		<?php include"../include/nav.php"?>
 	</head>
 	<body>
-		<div class="col-md-offset-4 col-md-4" style="margin-top:80px">
+<?php
+
+	$sql="select app_logo from settings";
+	$res=$con->query($sql);				
+	if($res->num_rows>0)	
+	{									
+		$row=$res->fetch_assoc();
+	}
+
+?>
+		<div class="col-md-offset-4 col-md-4" style="margin-top:30px">
 			<div class="box1">
+				<center><img src="../img/<?php if($row['app_logo']!=null){ echo $row['app_logo']; }else { echo "logo.png"; } ?>" align="logo" width="70px" ></center>
 			<h3 class="page-header text-info text-center">Student Login</h3>
 						<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
 							<?php
@@ -18,7 +29,7 @@
 									{									
 										$sname=$_POST["sname"];
 										$spass=$_POST["spass"];
-										echo $qry="select * from students where sname='{$sname}' and regno='{$spass}'";
+										$qry="select * from students where sname='{$sname}' and regno='{$spass}'";
 										$res=$con->query($qry);										
 										if($res->num_rows>0)											
 										{
@@ -57,7 +68,7 @@
 		<footer>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>	
 	</body>	

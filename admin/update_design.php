@@ -1,12 +1,12 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 	</head>
 	<body>
@@ -45,7 +45,8 @@
 					<input type="text" class="form-control"  name="design" value="<?php echo $row["designation"];?>">
 				</div>				
 				<div class="form-group pull-right">						
-					<input type="submit" name="update" value="Update" class="btn btn-success">					
+					<input type="submit" name="update" value="Update" class="btn btn-success">
+					<a href='add_staff_dep.php' class='btn btn-danger'> Back</a>		
 				</div>	
 			</form>
 			
@@ -56,7 +57,7 @@
 		</div>	
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>

@@ -42,7 +42,20 @@
 			<?php
 				include"admin_sidenav.php";
 			?>
-		</div>						
+		</div>		
+				<div class="col-md-9">			
+			<div class="col-md-3 box11" style="margin-top:50px">			
+				<a href="add_dep.php" class="text"><span class="fa fa-book"> Book Entry</span></a>		
+			</div>
+			<div class="col-md-3 box11" style="margin-top:50px">			
+				<a href="add_designation.php" class="text"><span class="fa fa-repeat"> Book Return</span></a>	
+			</div>			
+			<div class="col-md-3 box11" style="margin-top:50px">			
+				<a href="add_staff.php"  class="text1"><span class="fa fa-users"> Add Staff</span></a><br><br>								
+				<a href="view_staff.php" class="text1" ><span class="fa fa-edit"> View Staff</span></a>	
+			</div>
+		</div>		
+
 		<div class="col-md-9">			
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="add_dep.php" class="text"><span class="fa fa-university"> Add Department</span></a>		
@@ -51,11 +64,11 @@
 				<a href="add_designation.php" class="text"><span class="fa fa-user-plus"> Add Designation</span></a>	
 			</div>			
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="add_staff.php"  class="text1"><span class="fa fa-users"> Add Staff</span></a><br><br>								
-				<a href="view_staff.php" class="text1" ><span class="fa fa-edit"> View Staff</span></a>	
+					<a href="add_students.php" class="text1"><span class="fa fa-users"> Add Student</span></a>	<br><br>							
+					<a href="view_students_details.php" class="text1"><span class="fa fa-edit"> View Student</span></a>		
 			</div>
 		</div>			
-		<div class="col-md-9">			
+		<!-- <div class="col-md-9">			
 			<div class="col-md-3 box11" style="margin-top:50px">			
 					<a href="add_students.php" class="text1"><span class="fa fa-users"> Add Student</span></a>	<br><br>							
 					<a href="view_students_details.php" class="text1"><span class="fa fa-edit"> View Student</span></a>		
@@ -69,7 +82,7 @@
 					<a href="admin_staff_requested_details.php" class="text1" ><span class="fa fa-user">  Staff Request</span></a><br><br>	
 					<a href="admin_student_requested_details.php" class="text1"><span class="fa fa-users"> Student Request </span></a>																							
 			</div>
-		</div>	
+		</div>	 -->
 		<footer>
 			<?php
 				include"../include/footer.php";

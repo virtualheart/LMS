@@ -18,10 +18,7 @@
 		</div>						
 		<div class="col-md-offset-1 col-md-4" style="margin-top:30px;">		
 			<?php
-				if (!isset($_GET['id'])) {
-					header("location:./add_dep.php");
-				}
-				$sql="select * from department where did={$_GET['id']}";
+				$sql="select * from staff_department where id={$_GET['id']}";
 				$res=$con->query($sql);
 				if($res->num_rows>0)
 				{
@@ -34,28 +31,33 @@
 					if(isset($_POST["update"]))
 					{
 						$dname=$_POST["dname"];						
-						$qry="update department set dname='$dname' where did={$_GET['id']}";
+						$qry="update staff_department set s_d_name='$dname' where id={$_GET['id']}";
 						if($con->query($qry))
 						{
 							//echo"<script>window.open('add_department.php','_self')</script>";
-							header("location:add_dep.php?msg=Update Successfully");
-						}						
+							header("location:add_staff_dep.php?msg=Update Successfully");
+						} else{
+							echo"<div class='alert alert-danger'>Update Falied</div>";			
+						}					
 					}
 				?>
 				<h3 class="page-header text-success">Update Department</h3>			
 				<div class="form-group">
 					<label>Department Name</label>
-					<input type="text" class="form-control"  name="dname" value="<?php echo $row["dname"];?>">
+					<input type="text" class="form-control"  name="dname" value="<?php echo $row["s_d_name"];?>">
 				</div>				
 				<div class="form-group pull-right">						
-					<input type="submit" name="update" value="Update" class="btn btn-success">	
-					<a href='./add_dep.php' class='btn btn-danger'> Back</a>				
+					<input type="submit" name="update" value="Update" class="btn btn-success">					
+					<a href='add_staff_dep.php' class='btn btn-danger'> Back</a>
+
 				</div>	
 			</form>
 			
 			<?php
 					}
-				} 
+				} else{
+					header("location:add_staff_dep.php");
+				}
 			?>
 		</div>	
 		<footer>

@@ -4,7 +4,8 @@ include"./admin_security.php";
 ?>
 <a href="#design" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Department</span></a>
 <ul class="nav collapse" id="design">			
-		<a href="add_dep.php" class="list-group-item"><span class="fa fa-university"> Add Department</span></a>											
+		<a href="add_dep.php" class="list-group-item"><span class="fa fa-university"> Add Dep STD</span></a>											
+		<a href="add_staff_dep.php" class="list-group-item"><span class="fa fa-university"> Add Dep Staff</span></a>											
 </ul>
 <a href="#dep" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Designation</span></a>
 <ul class="nav collapse" id="dep">			

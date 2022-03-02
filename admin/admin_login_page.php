@@ -15,9 +15,22 @@
 		// </style> --->
 	</head>
 	<body>
-		<div class="col-md-offset-4 col-md-4" style="margin-top:80px">
+
+<?php
+
+$sql="select app_logo from settings";
+$res=$con->query($sql);			
+if($res->num_rows>0)	
+{									
+	$row=$res->fetch_assoc();
+}
+
+?>
+
+		<div class="col-md-offset-4 col-md-4" style="margin-top:30px">
 				<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
 					<div class="box1">
+						<center><img src="../img/<?php if($row['app_logo']!=null){ echo $row['app_logo']; }else { echo "logo.png"; } ?>" align="logo" width="70px" ></center>
 						<h3 class="page-header text-info text-center">Admin Login</h3>
 						<?php
 							if(isset($_POST["login"]))
