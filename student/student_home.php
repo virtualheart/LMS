@@ -53,7 +53,7 @@
 				<a href="student_status.php" class="text"><span class="fa fa-bell"> View Status</span></a>	
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="student_status.php" class="text"><span class="fa fa-bell"> View History</span></a>	
+				<a href="student_book_history.php" class="text"><span class="fa fa-bell"> View History</span></a>	
 			</div>
 		</div>
 		<footer>
