@@ -1,12 +1,11 @@
-
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 		<style>
 			.box11
@@ -53,10 +52,13 @@
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="student_status.php" class="text"><span class="fa fa-bell"> View Status</span></a>	
 			</div>
+			<div class="col-md-3 box11" style="margin-top:50px">			
+				<a href="student_status.php" class="text"><span class="fa fa-bell"> View History</span></a>	
+			</div>
 		</div>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>
