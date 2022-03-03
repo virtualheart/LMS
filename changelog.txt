@@ -17,7 +17,7 @@ Resovle
 
 Implement
 
-1) - no idea
+1) - smtp
 
 ----------------------------------------
 /add_dep.php - fill empty value 
