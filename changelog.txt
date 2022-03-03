@@ -17,7 +17,7 @@ Resovle
 
 Implement
 
-1) - demoo
+1) - no idea
 
 ----------------------------------------
 /add_dep.php - fill empty value 
