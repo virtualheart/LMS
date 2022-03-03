@@ -88,7 +88,7 @@
 				<div class="col-md-4">
 				<div class="form-group ">
 					<label>Register No</label>
-					<input type="text" value="<?php echo $row["regno"];?>" name="regno" class="form-control">
+					<input type="text" value="<?php echo $row["regno"];?>" name="regno" class="form-control" disabled>
 				</div>
 				<div class="form-group ">
 					<label>Name</label>
@@ -119,7 +119,7 @@
 						<option value="<?php echo $row["id"];?>"><?php echo $row["designation"];?></option>
 						<?php
 
-							$qry2="select * from Designation";
+							$qry2="select * from designation";
 							$res2=$con->query($qry2);
 							if($res2->num_rows>0)
 							{

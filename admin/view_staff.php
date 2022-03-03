@@ -75,7 +75,7 @@ From staff Inner Join
 							if ($row["gender"] == "male") {
 								echo "<td><center><img class='img-circle'src='../{$row["image"]}' height='100' width='100'></img></center></td>";
 								}elseif ($row["gender"] == "female") {
-								echo "<td><center><img class='img-circle'src='{$row["image"]}' height='100' width='100'></img></center></td>";
+								echo "<td><center><img class='img-circle'src='../{$row["image"]}' height='100' width='100'></img></center></td>";
 								}
 						echo "	
 								<td>{$row["regno"]}</td>
