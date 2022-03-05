@@ -94,7 +94,7 @@
 							<tr>
 								<td>{$row['sno']}</td>
 								<td>{$row['bno']}</td>
-								<td>{$row['barcode']}</td>
+								<td>{$row['bcode']}</td>
 								<td>{$row['title']}</td>
 								<td>{$row['aname']}</td>
 								<td>{$row['publication']}</td>

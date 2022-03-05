@@ -13,15 +13,12 @@ Requement
 2) day calculate  
 
 Resovle
-1) -
+1) - day calculate
 
 Implement
 
-<<<<<<< HEAD
-1) - demo
-=======
 1) - smtp
->>>>>>> 9d880e7d67b984e5b5b0a79ceef3aecf68edbfbc
+
 
 ----------------------------------------
 /add_dep.php - fill empty value 
