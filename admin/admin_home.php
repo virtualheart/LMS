@@ -58,8 +58,8 @@
 
 		<div class="col-md-9">			
 			<div class="col-md-3 box11" style="margin-top:50px">			
-					<a href="add_students.php" class="text1"><span class="fa fa-graduation-cap"> Add Dept STD</span></a>	<br><br>							
-					<a href="view_students_details.php" class="text1"><span class="fa fa-graduation-cap"> Add Dept Staff</span></a>			
+					<a href="add_students.php" class="text1"><span class="fa fa-university"> Add Dept STD</span></a>	<br><br>							
+					<a href="view_students_details.php" class="text1"><span class="fa fa-university"> Add Dept Staff</span></a>			
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="add_designation.php" class="text"><span class="fa fa-user-plus"> Add Designation</span></a>	
