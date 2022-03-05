@@ -1,6 +1,9 @@
 <?php
 	include"../include/config.php";
 	session_start();
+	include"./admin_security.php";
+	include"../include/msg.php";
+
 ?>
 <html>
 	<head>
@@ -15,7 +18,15 @@
 				include"admin_sidenav.php";
 			?>
 		</div>						
-		<div class="col-md-8">			
+		<div class="col-md-8">
+		<?php	
+			if(isset($_GET["msg"])){
+				if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+						echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
+						}							
+				}		
+
+							?>
 			<h3 class="page-header text-primary"><span class="fa fa-users"> Select Details</span></h3>
 		<form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
 			<div class="form-group col-md-5">					
@@ -34,6 +45,7 @@
 									";
 								}
 							}
+						
 						?>
 					</select>					
 				</div>
@@ -59,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-			<div class="col-md-offset-3 col-md-8">			
+			<div class="col-md-offset-3 col-md-9">			
 			<?php
 			if(isset($_POST["view"]))
 			{
@@ -81,9 +93,7 @@ From students Inner Join
 										Name : <?php echo $row1["sname"];?><br>
 									</div>
 									<div class="panel-body">
-										
-																	
-										
+														
 										Register No : <?php echo $row1["regno"];?><br>
 										Department : <?php echo $row1["dname"];?><br>
 										Year : <?php echo $row1["year"];?><br>

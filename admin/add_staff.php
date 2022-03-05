@@ -30,26 +30,27 @@
 						$gender=$_POST['gender'];
 						$mail=$_POST["email"];
 
-						if(isset($_FILES["image"])==null){
+					if(isset($_FILES["image"])!=null){
 
-						$path="img/staff";
-						$path=$path.basename($_FILES["image"]["name"]);
-						if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
-						{								
-							
-						}
-						} elseif ($gender == "male") {
+						$path="../img/staff/";
+						$path=$path.time().rand(5,9).basename($_FILES["image"]["name"]);
 
-							$path = "img/staff/male.png";
+							if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
+							{								
+								
+							}elseif ($gender == "male") {
 
-						} elseif ($gender == "female") {
+								$path = "../img/staff/male.png";
 
-							$path = "img/staff/female.png";
+							} elseif ($gender == "female") {
+
+							$path = "../img/staff/female.png";
 						
-						} 
+						}
+					}  
 
 						$qry="insert into staff(regno,sname,semail,did,id,contact,gender,image,role)values
-						                      ('$regno','$name','$mail','$dep','$design','$contact','$gender','$path','staff')";
+						    ('$regno','$name','$mail','$dep','$design','$contact','$gender','$path','staff')";
 
 						//echo $qry;
 
@@ -65,7 +66,7 @@
 				?>				
 				<div class="form-group col-md-5">
 					<label>Staff ID(*)</label>
-					<input type="text" name="regno" id="staffid" class="form-control" placeholder="Staff ID" required>
+					<input type="text" name="regno" id="staffid" style="text-transform:uppercase" class="form-control" placeholder="Staff ID" required>
 				</div>
 				<div class="form-group col-md-5">
 					<label>Name(*)</label>
@@ -137,11 +138,6 @@
 							<input type="reset" value="Clear" class="btn btn-danger">
 						</div>
 				</div>
-
-
-
-
-
 			</form>			
 		</div>
 		<footer>

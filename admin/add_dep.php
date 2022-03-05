@@ -20,7 +20,7 @@
 		<div class="col-md-4">
 			<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">	
 				
-				<h3 class="page-header text-primary">Add Department</h3>
+				<h3 class="page-header text-primary">Add Student Department</h3>
 				
 				<?php
 				if(isset($_POST["save"]) )
@@ -57,12 +57,16 @@
 		</div>
 		<div class="col-md-5">
 			<h3 class="page-header text-primary">View Department</h3>
+
 			<?php
 				if(isset($_GET['msg']))
-				{
-					echo"<div class='alert alert-success'>{$mgsarr[2]}</div>";
+				{	
+					if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+						echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
+					}
 				}
 			?>
+			
 			<table class="table table-bordered">
 				<tr>
 					<th>S.No</th>
@@ -81,8 +85,8 @@
 							echo"<tr>";
 								echo"<td>{$i}</td>";
 								echo"<td>{$row["dname"]}</td>";
-								echo"<td><center><a href='update_dep.php?id=$row[did]' class='btn btn-success'><span class='fa fa-edit'></span> </a></center></td>";
-								echo"<td><center><a href='delete_dep.php?id=$row[did]' class='btn btn-danger'> <span class='fa fa-trash'></span></a></center></td>";
+								echo"<td><center><a href='update_dep.php?id=$row[did]' class='btn btn-success'><span class='fa fa-edit'></span> Update</a></center></td>";
+								echo"<td><center><a href='delete_dep.php?id=$row[did]' class='btn btn-danger'> <span class='fa fa-trash'></span> Delete</a></center></td>";
 								$i++;
 							echo"</tr>";
 						}

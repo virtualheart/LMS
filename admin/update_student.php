@@ -1,12 +1,15 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	if (!isset($_GET['id'])) {
+		header("location:view_students_details.php?msg=5");
+	}
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 		<style>
 			#img
@@ -35,6 +38,11 @@
 						$dname=$_POST["dname"];						
 						$year=$_POST["year"];
 						$shift=$_POST["shift"];
+						$gender=$_POST['gender'];
+						$contact=$_POST['Contact'];
+						$mail=$_POST['mail'];
+
+
 						/*						
 						if(isset($_FILES["image"]))						
 						{						
@@ -42,7 +50,7 @@
 							$path=$path.basename($_FILES["image"]["name"]);
 							if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
 							{	*/							
-								$qry="update students set regno='$regno',sname='$sname',did='$dname',year='$year',shift='$shift',img='$path' where st_id={$_GET['id']}";
+								$qry="update students set regno='$regno',sname='$sname',did='$dname',year='$year',shift='$shift',gender='{$gender}',Contact='{$contact}',stemail='{$mail}' where st_id={$_GET['id']}";
 								if($con->query($qry))
 								{
 									//header("location:view_students_details.php?msg=Update Successfully");
@@ -55,7 +63,7 @@
 				?>		
 				<?php
 					$qry="Select department.dname, students.year, students.did, students.shift,
-   students.regno, students.sname, students.st_id
+   students.regno, students.sname, students.st_id,students.stemail,students.gender,students.Contact
 From students Inner Join
   department On students.did = department.did where st_id='{$_GET["id"]}'";
   
@@ -68,10 +76,12 @@ From students Inner Join
 				<!--<div class="col-md-3">
 					<img src="<?php echo $row1["img"];?>" class="img-thumbnail" id="img">
 				</div>-->
+
 				<div class="form-group col-md-4">					
 					<label>Roll No</label>
 					<input type="text" name="regno" value="<?php echo $row1['regno']?>" class="form-control">
 				</div>
+
 				<div class="form-group col-md-4">					
 					<label>Name</label>
 					<input type="text" name="sname" value="<?php echo $row1['sname']?>" class="form-control">
@@ -111,8 +121,41 @@ From students Inner Join
 						<option value='I'>I</option>						
 						<option value='II'>II</option>																	
 					</select>					
-				</div>				
+				</div>
+
 				<div class="form-group col-md-4">					
+					<label>Mail</label>
+					<input type="email" name="mail" value="<?php echo $row1['stemail']?>" placeholder="Email" class="form-control">
+				</div>
+
+				<div class="form-group col-md-4">					
+					<label>Contact No</label>
+					<input type="number" name="Contact" value="<?php echo $row1['Contact']?>" placeholder="Contact No" class="form-control">
+				</div>
+
+
+				<div class="form-group col-md-8">
+					
+					<label > Geneder(*)</label><br>
+
+					<?php
+
+						if ($row1["gender"]== 'male') {
+							echo '<input type="radio" id="male" name="gender" value="male" required checked>'; 
+							echo '<label for="male">Male</label>';
+
+							echo '<input type="radio" id="female" name="gender" value="female" required>';
+							echo '<label for="female">Female</label>';
+
+						} elseif ($row1["gender"]== 'female'){
+							echo '<input type="radio" id="male" name="gender" value="male" required>'; 
+							echo '<label for="male"> Male</label>';
+
+							echo '<input type="radio" id="female" name="gender" value="female" required checked>';
+							echo '<label for="female"> Female</label>';
+						} 
+					?>
+
 					<!--<label>Image</label>
 					<input type="file" name="image" class="form-control" required><br>-->
 					<input type="submit" name="update" value="Update" class="btn btn-primary"style=" margin-right:5px;POSITION:RELATIVE;TOP:30PX;">	
@@ -123,7 +166,7 @@ From students Inner Join
 		</div>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>

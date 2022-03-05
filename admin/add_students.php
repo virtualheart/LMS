@@ -2,6 +2,7 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+
 ?>
 <html>
 	<head>
@@ -29,10 +30,12 @@
 						$year=$_POST["year"];
 						$shift=$_POST["shift"];
 						$gender=$_POST["gender"];
+						$email=$_POST["email"];
+
 						if ($gender=="male") {
-							$path="img/staff/student_male.png";
+							$path="img/student/boy.png";
 						} else{
-							$path="img/staff/student_female.png";
+							$path="img/student/girl.png";
 						}
 
 						/*if(isset($_FILES["image"]))						
@@ -42,8 +45,9 @@
 							if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
 							{*/	
 
-								 $qry="insert into students(regno,sname,did,year,shift)values('{$regno}','{$name}','{$dname}','{$year}','{$shift}')";
-								 echo $qry;
+								 $qry="insert into students(regno,sname,stemail,did,year,shift,img,role)values
+								 ('{$regno}','{$name}','$email','{$dname}','{$year}','{$shift}','{$path}','student')";
+
 								if($con->query($qry))
 								{
 									echo"<div class='alert alert-success'>Insert Successfully</div>";

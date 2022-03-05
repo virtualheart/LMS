@@ -2,6 +2,8 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	include"../include/msg.php";
+
 ?>
 <html>
 	<head>
@@ -18,7 +20,7 @@
 		</div>						
 		<div class="col-md-4">
 			<form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
-				<h3 class="page-header text-info">Add Designation</h3>
+				<h3 class="page-header text-info">Add Staff Designation</h3>
 				<?php
 				if(isset($_POST["save"]))
 				{
@@ -54,7 +56,9 @@
 			<?php
 				if(isset($_GET["msg"]))
 				{	
-					echo "<div class='alert alert-success'>{$_GET["msg"]}</div>";
+					if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+						echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
+					}
 				}
 			?>
 			<?php
@@ -78,8 +82,8 @@
 							<tr>
 								<td><center>{$i}</center></td>
 								<td><center>{$row["designation"]}</center></td>
-								<td><center><a href='update_design.php?id={$row["id"]}' class='btn btn-success'><span class='fa fa-edit'></span></a></center></td>
-								<td><center><a href='delete_design.php?id={$row["id"]}' class='btn btn-danger'><span class='fa fa-trash'></span></a></center></td>
+								<td><center><a href='update_design.php?id={$row["id"]}' class='btn btn-success'><span class='fa fa-edit'></span> Update</a></center></td>
+								<td><center><a href='delete_design.php?id={$row["id"]}' class='btn btn-danger'><span class='fa fa-trash'></span> Delete</a></center></td>
 							</tr>
 						";
 						$i++;

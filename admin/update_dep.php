@@ -38,7 +38,7 @@
 						if($con->query($qry))
 						{
 							//echo"<script>window.open('add_department.php','_self')</script>";
-							header("location:add_dep.php?msg=Update Successfully");
+							header("location:add_dep.php?msg=5");
 						}						
 					}
 				?>

@@ -24,10 +24,14 @@
 					if(isset($_POST["save"]))
 					{			
 						$s=$_POST["snoid"];
-						 $qry="insert into books(sno,bno,bcode,title,aname,publication,price,alamara,rack)values('{$s}','{$_POST["bno"]}','{$_POST["bcno"]}','{$_POST["title"]}','{$_POST["aname"]}','{$_POST["publication"]}','{$_POST["price"]}','{$_POST["alamara"]}','{$_POST["rack"]}')";
+						 $qry="insert into books(sno,bno,bcode,title,aname,publication,price,alamara,rack,status,sstatus)values('{$s}','{$_POST["bno"]}','{$_POST["bcno"]}','{$_POST["title"]}','{$_POST["aname"]}','{$_POST["publication"]}','{$_POST["price"]}','{$_POST["alamara"]}','{$_POST["rack"]}',0,0)";
 						if($con->query($qry))
 						{							
 							echo"<div class='alert alert-success'>Insert Successfully...!!!</div>";
+						} else{
+							echo $qry;
+							echo"<div class='alert alert-danger'>Insert Failed...!!!</div>";
+
 						}
 						
 					}
@@ -51,7 +55,7 @@
 			<h3 class='page-header text-primary'><i class='fa fa-book'> Add Books</i></h3>
 				<div class="form-group col-md-5">
 					<label>Serial No</label>
-					<input type="text" class="form-control" name="snoid">
+					<input type="text" class="form-control" value="<?php //echo $no ?>" name="snoid">
 				</div>
 				<div class="form-group col-md-5">
 					<label>Book No</label>

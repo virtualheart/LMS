@@ -6,6 +6,8 @@
 
 		if($con->query($qry))
 		{
-			header("location:add_designation.php?msg=Delete Successfully");
+			header("location:add_designation.php?msg=2");
 		}
+	}
+
 ?>

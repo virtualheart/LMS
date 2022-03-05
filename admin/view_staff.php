@@ -2,6 +2,8 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	include"../include/msg.php";
+
 
 ?>
 <html>
@@ -49,7 +51,10 @@ From staff Inner Join
 						";
 							if(isset($_GET["msg"]))
 							{
-								echo"<div class='alert alert-success'>{$_GET["msg"]}</div>";
+
+								if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+									echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
+							}							
 							}
 						echo"
 					
@@ -72,11 +77,8 @@ From staff Inner Join
 							<tr class='center'>
 								<td>{$i}</td>";
 
-							if ($row["gender"] == "male") {
-								echo "<td><center><img class='img-circle'src='../{$row["image"]}' height='100' width='100'></img></center></td>";
-								}elseif ($row["gender"] == "female") {
-								echo "<td><center><img class='img-circle'src='../{$row["image"]}' height='100' width='100'></img></center></td>";
-								}
+						echo "<td><center><img class='img-circle'src='{$row["image"]}' height='100' width='100'></img></center></td>";
+
 						echo "	
 								<td>{$row["regno"]}</td>
 								<td>{$row["sname"]}</td>

@@ -35,7 +35,7 @@
 						if($con->query($qry))
 						{
 							//echo"<script>window.open('add_department.php','_self')</script>";
-							header("location:add_staff_dep.php?msg=Update Successfully");
+							header("location:add_staff_dep.php?msg=5");
 						} else{
 							echo"<div class='alert alert-danger'>Update Falied</div>";			
 						}					

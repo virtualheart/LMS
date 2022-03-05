@@ -11,42 +11,12 @@
 		
 	</head>
 	<body>
-		<?php include"admin_home_nav.php";?>
+		<?php include"admin_home_nav.php"; ?>
 		
 		<div class="col-md-12" >
 			<?php
 
-				$strSQL ="select count(bid) as count from books";
-
-				$num=$con->query($strSQL);
-				if($num->num_rows>0)
-				{
-					$row=$num->fetch_assoc();
-					$Num_Rows = $row['count'];
-				}
-				
-				$Per_Page = 50000000;   
-				if (!isset($_GET['page'])) {
-				    $Page = 1;
-				} else {
-				    $Page = $_GET['page'];
-				}
-
-				$Prev_Page = $Page - 1;
-				$Next_Page = $Page + 1;
-
-				$Page_Start = (($Per_Page * $Page) - $Per_Page);
-				if ($Num_Rows <= $Per_Page) {
-				    $Num_Pages = 1;
-				} elseif (($Num_Rows % $Per_Page) == 0) {
-				    $Num_Pages = ($Num_Rows / $Per_Page) ;
-				} else {
-				    $Num_Pages = ($Num_Rows / $Per_Page) + 1;
-				    $Num_Pages = (int) $Num_Pages;
-				}
-				
-
-				$qry="select * from books LIMIT $Page_Start , $Per_Page";
+				$qry="select * from books";
 				$res=$con->query($qry);
 			
 				if($res->num_rows>0)
