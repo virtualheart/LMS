@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand"><i class="fa fa-book"></i> Library Management System</a>
+			<a class="navbar-brand"><i class="fa fa-book"></i>  <?php echo $row["app_name"]; ?></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">			
 			<li><a href="#"><span class="fa fa-user"> Welcome : <?php echo $_SESSION['sname']?></span></a></li>

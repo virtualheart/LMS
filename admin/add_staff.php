@@ -84,7 +84,8 @@
 								while($row=$res->fetch_assoc())
 								{	
 									echo"<option value='{$row["id"]}'>{$row["s_d_name"]}</option>";
-								}							}	
+								}						
+							}	
 									
 							?>
 							

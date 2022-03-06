@@ -185,11 +185,11 @@
 					<input type="file" name="image" class="form-control">
 
 
-				<div class="form-group pull-right" style="margin-top:15px">					
-					<input type="submit" name="update" value="Update" class="btn btn-primary">	
-					<a href='view_staff.php' class='btn btn-danger'> Back</a>
+					<div class="form-group pull-right" style="margin-top:15px">					
+						<input type="submit" name="update" value="Update" class="btn btn-primary">	
+						<a href='view_staff.php' class='btn btn-danger'> Back</a>
 						
-				</div>
+					</div>
 				</div>
 
 

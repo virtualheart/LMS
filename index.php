@@ -1,3 +1,14 @@
+<?php
+
+		include "./include/config.php";
+		$qry="select app_name from settings";
+		$res=$con->query($qry);
+
+		if($res->num_rows>0){
+			$row=$res->fetch_assoc();
+		}	
+				
+?>
 <html>
 	<head>
 		<title>GCA-7 LMS</title>
@@ -8,7 +19,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand"><i class="fa fa-university"></i> Library Management System</a>
+			<a class="navbar-brand"><i class="fa fa-university"></i> <?php echo $row["app_name"]; ?></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="index.php#"><span class="fa fa-home"> Home</span></a></li>

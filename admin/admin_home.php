@@ -48,7 +48,7 @@
 				<a href="admin_book_entry.php" class="text"><span class="fa fa-book"> Book Entry</span></a>		
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="student_book_entry.php" class="text"><span class="fa fa-repeat"> Book Return</span></a>	
+				<a href="admin_book_return.php" class="text"><span class="fa fa-repeat"> Book Return</span></a>	
 			</div>			
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="add_staff.php"  class="text1"><span class="fa fa-users"> Add Staff</span></a><br><br>								
@@ -58,8 +58,8 @@
 
 		<div class="col-md-9">			
 			<div class="col-md-3 box11" style="margin-top:50px">			
-					<a href="add_students.php" class="text1"><span class="fa fa-university"> Add Dept STD</span></a>	<br><br>							
-					<a href="view_students_details.php" class="text1"><span class="fa fa-university"> Add Dept Staff</span></a>			
+					<a href="add_dep.php" class="text1"><span class="fa fa-university"> Add Dept STD</span></a>	<br><br>							
+					<a href="add_staff_dep.php" class="text1"><span class="fa fa-university"> Add Dept Staff</span></a>			
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="add_designation.php" class="text"><span class="fa fa-user-plus"> Add Designation</span></a>	

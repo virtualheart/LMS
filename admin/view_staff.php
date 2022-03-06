@@ -33,6 +33,12 @@
 		</div>						
 		<div class="col-md-8">
 			<?php
+
+						echo"
+						<div class='form-group pull-right col-md-3'> 
+							<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
+							</div>
+						";			
 			
 				$qry="Select staff.sid, staff.regno, staff.sname, staff.did, staff.id, staff.contact,staff.gender,
   staff.image, designation.designation, staff_department.s_d_name
@@ -69,7 +75,7 @@ From staff Inner Join
 								<th><center>Contact     </center></th>
 								<th><center>Update    </center></th>
 								<th><center>Delete     </center></th>
-							</tr>
+							</tr><tbody id='mytable'>
 					";
 					while($row=$res->fetch_assoc())
 					{
@@ -105,4 +111,24 @@ From staff Inner Join
 			?>
 		</footer>
 	</body>
+
+	<script>
+		$(document).ready(function(){
+			$('#search').on("keyup",function(){								
+				$("#mytable tr").each(function(){
+					var txt=$(this).text().toUpperCase();
+					var s=$("#search").val().toUpperCase();
+					if(txt.indexOf(s)==-1)
+					{
+						$(this).css({"display":"none"});
+					}
+					else
+					{
+						$(this).css({"display":""});						
+					}
+				});
+			});
+		});
+
+	</script>
 </html>

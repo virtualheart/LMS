@@ -87,14 +87,6 @@
 
 			?>
 		</div>
-		<?php
-
-	//		echo "<div><center>";
-	//		echo "<a class='btn btn-primary ' href='./view_books.php?page=".$Prev_Page."'> Pervious</i></a>";
-	//		echo "<a class='btn btn-primary ' href='./view_books.php?page=".$Next_Page."'> Next    </i></a>";
-	//		echo "</div></center>";
-		?>
-
 		<footer>
 
 			<?php
