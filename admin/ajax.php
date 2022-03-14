@@ -9,7 +9,7 @@ if (isset($_GET['q'])) {
 
 $q=$_GET["q"];
 
-$sql="SELECT bid,bcode,title,bno,aname,publication FROM books WHERE bcode = '".$q."' limit 1";
+$sql="SELECT bid,bcode,title,bno,aname,publication,status,sstatus FROM books WHERE bcode = '".$q."' limit 1";
 
 $result = mysqli_query($con,$sql);
 
@@ -23,8 +23,10 @@ while($row = mysqli_fetch_array($result))
      $bno = $row['bno'];
      $aname = $row['aname'];
      $publication = $row['publication'];
+     $stat = $row['status'];
+     $sstat = $row['sstatus'];
 
-    $info[] = array( 'bid' => $bid, 'bcode' => $bcode, 'title' => $title, 'bno' => $bno, 'aname' => $aname, 'publication' => $publication );
+    $info[] = array( 'bid' => $bid, 'bcode' => $bcode, 'title' => $title, 'bno' => $bno, 'aname' => $aname, 'publication' => $publication, 'stat' => $stat, 'sstat' => $sstat );
 
   //  $info[] =array($bid,$bcode,$title,$bno,$aname,$publication);
 
@@ -35,7 +37,7 @@ while($row = mysqli_fetch_array($result))
 }
 if (isset($_GET['u'])) {
 
-  $u=$_GET["u"];
+$u=$_GET["u"];
 
 $sql="SELECT sid,sname FROM staff WHERE regno = '".$u."' limit 1";
 

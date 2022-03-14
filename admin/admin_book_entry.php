@@ -27,22 +27,48 @@
 	<?php
 
 		if(isset($_POST["submit"])){
-	/*					
-			$host=$_POST["host"];
-			$port=$_POST["port"];
-			$user=$_POST["email"];
-			$pass=$_POST["Password"];
-			$sectyp=$_POST["server_type"];						
+
+			$stat = $_POST['stat'];
+
+			if ($stat==0) {
 						
-		*/
-			$qry="";
+			$bcode = $_POST['barcode'];
+			$regno = $_POST['regno'];
+			$sname = $_POST['sname'];
+			$bno = $_POST['bno'];
+			$title = $_POST['title'];
+			$aname = $_POST['aname'];
+			$Publication = $_POST['publication'];
+			$reqdate = $_POST['reqdate'];
+			$retdate = $_POST['retdate'];
+			$staff_id = $_POST['staff_id'];
+			$book_id = $_POST['book_id'];
+
+			$newreqdate = date("Y-m-d", strtotime($reqdate));
+			$newretdate = date("Y-m-d", strtotime($retdate));
+			
+			//Testing echo
+			//echo "bcode : ".$bcode."<br>regno : ".$regno."<br>sname : ".$sname."<br>bno : ".$bno."<br>title : ".$title."<br>aname : ".$aname."<br>publ : " .$Publication."<br>reqdate : ".$newreqdate."<br>retdate : ".$newretdate."<br>staff_id : ".$staff_id."<br>book_id : ".$book_id;
+						
+		
+			$qry="INSERT INTO staff_barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `status`)
+					VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
 			//echo $qry;
 			if($con->query($qry)){
-				echo"<div class='alert alert-success'>Update Success</div>";			
+				echo"<div class='alert alert-success'>Update Success</div>";	
+				$qury="update books set status='1' where bid='{$book_id}'";
+				//echo $qury;	
+				if ($con->query($qury)) {
+
+				}
 			} else {	
 				echo"<div class='alert alert-danger'>Update Falied</div>";			
 			}								
+		} else {
+				echo"<div class='alert alert-danger'>Book unavaliable </div>";			
 		}
+	}
+
  
 	?>   
 
@@ -56,32 +82,35 @@
 		</div>
 		<div class="form-group col-md-5">
 			<label>Std/staff name</label>
-			<input type="text" name="sname" id='sname' value="jjj" class="form-control" disabled required>
+			<input type="text" name="sname" id='sname' value="" class="form-control" readonly="true" required>
+			<input type="hidden" name="staff_id" id="staff_id" value="">
 		</div>
 
 		<div class="form-group col-md-5">
 			<label>Book No</label>
-			<input type="text" name="bno" id="bno" value="" class="form-control" disabled>
+			<input type="text" name="bno" id="bno" value="" class="form-control" readonly="true">
+			<input type="hidden" name="book_id" id="book_id" value="">
+			<input type="hidden" name="stat" id="stat" value="">
 		</div>
 		<div class="form-group col-md-5">
 			<label>Title</label>
-			<input type="text" name="title" id="title" value="" class="form-control" disabled>
+			<input type="text" name="title" id="title" value="" class="form-control" readonly="true">
 		</div>
 		<div class="form-group col-md-5">
 			<label>Author Name</label>
-			<input type="text" name="aname" id="aname" value="" class="form-control" disabled>
+			<input type="text" name="aname" id="aname" value="" class="form-control" readonly="true">
 		</div>
 		<div class="form-group col-md-5">
 			<label>Publication</label>
-			<input type="text" name="publication" id="publication" value="" class="form-control" disabled>
+			<input type="text" name="publication" id="publication" value="" class="form-control" readonly="true">
 		</div>
 		<div class="form-group col-md-5">	
 			<label>Request Date</label>
-			<input type="text" name="reqdate" value="<?php echo date("d-m-Y");?>" class="form-control" disabled>
+			<input type="text" name="reqdate" value="<?php echo date("d-m-Y");?>" class="form-control" readonly="true">
 		</div>
 		<div class="form-group col-md-5">
 			<label>ETA Return Date</label>
-			<input type="text" name="retdate" value="<?php echo date("d-m-Y",strtotime("+30 days"))?>" class="form-control" disabled>					
+			<input type="text" name="retdate" value="<?php echo date("d-m-Y",strtotime("+30 days"))?>" class="form-control" readonly="true">					
 				</div>
 		<div class="form-group col-md-5" style="margin-top:35px">
 			<input type="submit" name="submit" class="btn btn-primary" value="Barrow">			
@@ -108,6 +137,9 @@
                 document.getElementById("sname").value = "";
                 document.getElementById("aname").value = "";
                 document.getElementById("publication").value = "";
+                document.getElementById("book_id").value = "";
+                document.getElementById("staff_id").value = "";
+                document.getElementById("stat").value = "";
                 return;
             }
             else {
@@ -123,7 +155,9 @@
                         document.getElementById("bno").value = info[0].bno;
                         document.getElementById("title").value = info[0].title;
                         document.getElementById("aname").value = info[0].aname;
-                        document.getElementById("publication").value = info[0].title;
+                        document.getElementById("publication").value = info[0].publication;
+                        document.getElementById("book_id").value = info[0].bid;
+                        document.getElementById("stat").value = info[0].stat;
                        // document.getElementById("title").value = info[0].title;
                     }
                 };
@@ -149,6 +183,7 @@ function validate(form) {
 function GetUser(usr){
 	if (usr.length == 0) {
      document.getElementById("sname").value = "";
+     document.getElementById("staff_id").value = "";
      return;
 
 	} else{
@@ -159,6 +194,7 @@ function GetUser(usr){
 			if (this.status == 200 ) {
 				var uinfo = JSON.parse(this.responseText)
 			     document.getElementById("sname").value = uinfo[0].sname;
+			     document.getElementById("staff_id").value = uinfo[0].sid;
 			}
 
 		};
