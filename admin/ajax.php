@@ -37,22 +37,41 @@ while($row = mysqli_fetch_array($result))
 }
 if (isset($_GET['u'])) {
 
-$u=$_GET["u"];
+  $u=$_GET["u"];
 
-$sql="SELECT sid,sname FROM staff WHERE regno = '".$u."' limit 1";
+  //Start Regno start with 'S'
 
-$result = mysqli_query($con,$sql);
+  if($u[0]=='S'){
 
-while($row = mysqli_fetch_array($result))
-  {
-    $uinfo = array();
-     $sid = $row['sid'];
-     $sname = $row['sname'];
+    $sql="SELECT sid,sname FROM staff WHERE regno = '".$u."' limit 1";
 
-     $uinfo[] = array('sid' => $sid, 'sname' => $sname);
+    $result = mysqli_query($con,$sql);
+
+      while($row = mysqli_fetch_array($result)){
+        $uinfo = array();
+        $sid = $row['sid'];
+        $sname = $row['sname'];
+
+        $uinfo[] = array('sid' => $sid, 'sname' => $sname);
      
-     echo json_encode($uinfo);
+        echo json_encode($uinfo);
+      }
+    }
+   else { // Student Regno Start joining year
 
+    $sql="SELECT st_id,sname FROM students WHERE regno = '".$u."' limit 1";
+
+    $result = mysqli_query($con,$sql);
+
+      while($row = mysqli_fetch_array($result)){
+        $uinfo = array();
+        $sid = $row['st_id'];
+        $sname = $row['sname'];
+
+        $uinfo[] = array('sid' => $sid, 'sname' => $sname);
+     
+        echo json_encode($uinfo);
+      }
+    }
   }
-}
 ?> 

@@ -63,10 +63,23 @@
 									echo"<div class='alert alert-danger'>Insert Failed</div>";
 								}
 					}
+
+					// auto asign staff id 
+					$qry = "SELECT regno FROM staff ORDER BY regno DESC LIMIT 1";
+					$res=$con->query($qry);
+					if ($res->num_rows>0) {
+						$row=$res->fetch_assoc();
+						$rest = substr($row['regno'], -4);	
+						$regno = $rest+1;
+						$st = str_pad($regno, 4, '0', STR_PAD_LEFT);
+					}else{ // database empty auto start here
+						$st = '0001';
+					}
+
 				?>				
 				<div class="form-group col-md-5">
 					<label>Staff ID(*)</label>
-					<input type="text" name="regno" id="staffid" style="text-transform:uppercase" class="form-control" placeholder="Staff ID" required>
+					<input type="text" name="regno" id="staffid" class="form-control" placeholder="Staff ID" value="STF<?php echo $st; ?>" readonly="true">
 				</div>
 				<div class="form-group col-md-5">
 					<label>Name(*)</label>

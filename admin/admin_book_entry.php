@@ -26,7 +26,11 @@
 
 	<?php
 
-		if(isset($_POST["submit"])){
+		if (isset($_POST["submit"])){
+
+			if (($_POST['staff_id']==null) || ($_POST['book_id']==null)){
+				echo"<div class='alert alert-danger'>Enter Detiles</div>";						
+			}else {
 
 			$stat = $_POST['stat'];
 
@@ -49,10 +53,14 @@
 			
 			//Testing echo
 			//echo "bcode : ".$bcode."<br>regno : ".$regno."<br>sname : ".$sname."<br>bno : ".$bno."<br>title : ".$title."<br>aname : ".$aname."<br>publ : " .$Publication."<br>reqdate : ".$newreqdate."<br>retdate : ".$newretdate."<br>staff_id : ".$staff_id."<br>book_id : ".$book_id;
-						
 		
-			$qry="INSERT INTO staff_barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `status`)
-					VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
+		// Check student or staff			
+		if ($regno[0]=='S') {
+		$qry="INSERT INTO staff_barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
+		} else {
+		$qry="INSERT INTO student_barrow_books (`st_id`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
+		}
+		
 			//echo $qry;
 			if($con->query($qry)){
 				echo"<div class='alert alert-success'>Update Success</div>";	
@@ -68,7 +76,8 @@
 				echo"<div class='alert alert-danger'>Book unavaliable </div>";			
 		}
 	}
-
+	
+}
  
 	?>   
 
@@ -78,7 +87,7 @@
 		</div>
 		<div class="form-group col-md-5">
 			<label>Reg Number</label>
-			<input type="text" name="regno" id='regno' value="" class="form-control" onkeyup="GetUser(this.value)" required>
+			<input type="text" name="regno" id='regno' value="" class="form-control" onkeyup="GetUser(this.value)" oninput="this.value = this.value.toUpperCase()" required>
 		</div>
 		<div class="form-group col-md-5">
 			<label>Std/staff name</label>
