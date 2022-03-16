@@ -56,9 +56,15 @@
 			</form>
 		</div>
 		<div class="col-md-5">
+
+
 			<h3 class="page-header text-primary">View Department</h3>
+			<div class='form-group pull-right col-md-3'> 
+				<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
+			</div>
 
 			<?php
+
 				if(isset($_GET['msg']))
 				{	
 					if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
@@ -73,7 +79,7 @@
 					<th>Department Name</th>
 					<th>Update</th> 	
 					<th>Delete</th>
-				</tr>
+				</tr><tbody id='mytable'>
 				<?php
 					$sql="select * from department";
 					$res=$con->query($sql);
@@ -100,4 +106,24 @@
 			?>
 		</footer>
 	</body>
+		<script>
+		$(document).ready(function(){
+			$('#search').on("keyup",function(){								
+				$("#mytable tr").each(function(){
+					var txt=$(this).text().toUpperCase();
+					var s=$("#search").val().toUpperCase();
+					if(txt.indexOf(s)==-1)
+					{
+						$(this).css({"display":"none"});
+					}
+					else
+					{
+						$(this).css({"display":""});						
+					}
+				});
+			});
+		});
+
+	</script>
+
 </html>

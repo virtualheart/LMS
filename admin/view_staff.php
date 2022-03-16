@@ -45,7 +45,7 @@
 From staff Inner Join
   staff_department On staff.did = staff_department.id
   Inner Join
-  designation On staff.id = designation.id";
+  designation On staff.id = designation.id order by staff.regno";
   
 				$res=$con->query($qry);
 				if($res->num_rows>0)
