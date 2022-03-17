@@ -3,11 +3,17 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+
 ?>
 <html>
 	<head>
 		<?php
 			include"../include/head.php";
+			//$server = file_get_contents("https://raw.githubusercontent.com/virtualheart/LMS/master/version.txt");
+			$server = 2.2;
+			$myfile = fopen("../version.txt", "r");
+			$locver = fread($myfile,filesize("../version.txt"));
+			fclose($myfile);
 		?>
 		<style>
 			.box11
@@ -37,7 +43,12 @@
 		</style>
 	</head>
 	<body>
-		<?php include"admin_home_nav.php";?>
+		<?php 
+			include"admin_home_nav.php";
+				if ($server!=$locver) {
+		           echo '<center><div class="update-split"><i class="glyphicon glyphicon-refresh"></i> Lms Update is available! <a href="https://github.com/virtualheart/LMS">Update Now</a></div></center>';
+   				}
+		?>
 		<div class="col-md-3" style="margin-top:50px">
 			<?php
 				include"admin_sidenav.php";
@@ -69,21 +80,7 @@
 					<a href="view_students_details.php" class="text1"><span class="fa fa-edit"> View Student</span></a>		
 			</div>
 		</div>			
-		<!-- <div class="col-md-9">			
-			<div class="col-md-3 box11" style="margin-top:50px">			
-					<a href="add_students.php" class="text1"><span class="fa fa-users"> Add Student</span></a>	<br><br>							
-					<a href="view_students_details.php" class="text1"><span class="fa fa-edit"> View Student</span></a>		
-			</div>
-			<div class="col-md-3 box11" style="margin-top:50px">			
-					<a href="upload_book.php" ><span class="fa fa-upload"> Upload Books</span></a>	<br><br>
-					<a href="add_books.php" ><span class="fa fa-book"> Add Books </span></a><br><br>																
-					<a href="view_books.php" ><span class="fa fa-edit"> View/Edit Books</span></a>	
-			</div>			
-			<div class="col-md-3 box11" style="margin-top:50px">			
-					<a href="admin_staff_requested_details.php" class="text1" ><span class="fa fa-user">  Staff Request</span></a><br><br>	
-					<a href="admin_student_requested_details.php" class="text1"><span class="fa fa-users"> Student Request </span></a>																							
-			</div>
-		</div>	 -->
+
 		<footer>
 			<?php
 				include"../include/footer.php";
