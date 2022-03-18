@@ -3,6 +3,7 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	require"../include/mail.php";
 
 ?>
 
@@ -47,6 +48,8 @@
 			$retdate = $_POST['retdate'];
 			$staff_id = $_POST['staff_id'];
 			$book_id = $_POST['book_id'];
+			$role = $_POST['role'];
+			$email = $_POST['mail'];
 
 			$newreqdate = date("Y-m-d", strtotime($reqdate));
 			$newretdate = date("Y-m-d", strtotime($retdate));
@@ -55,7 +58,7 @@
 			//echo "bcode : ".$bcode."<br>regno : ".$regno."<br>sname : ".$sname."<br>bno : ".$bno."<br>title : ".$title."<br>aname : ".$aname."<br>publ : " .$Publication."<br>reqdate : ".$newreqdate."<br>retdate : ".$newretdate."<br>staff_id : ".$staff_id."<br>book_id : ".$book_id;
 		
 		// Check student or staff			
-		if ($regno[0]=='S') {
+		if ($role=='staff') {
 		$qry="INSERT INTO staff_barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
 		} else {
 		$qry="INSERT INTO student_barrow_books (`st_id`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
@@ -67,7 +70,12 @@
 				$qury="update books set status='1' where bid='{$book_id}'";
 				//echo $qury;	
 				if ($con->query($qury)) {
-
+					if ($role=='staff') {
+						
+						if (cusmail($email,$sname,$book_id)) {
+							
+						} 
+					}
 				}
 			} else {	
 				echo"<div class='alert alert-danger'>Update Falied</div>";			
@@ -100,6 +108,8 @@
 			<input type="text" name="bno" id="bno" value="" class="form-control" readonly="true">
 			<input type="hidden" name="book_id" id="book_id" value="">
 			<input type="hidden" name="stat" id="stat" value="">
+			<input type="hidden" name="role" id="role" value="">
+			<input type="hidden" name="mail" id="mail" value="">
 		</div>
 		<div class="form-group col-md-5">
 			<label>Title</label>
@@ -149,6 +159,8 @@
                 document.getElementById("book_id").value = "";
                 document.getElementById("staff_id").value = "";
                 document.getElementById("stat").value = "";
+                document.getElementById("role").value = "";
+                document.getElementById("mail").value = "";
                 return;
             }
             else {
@@ -193,6 +205,8 @@ function GetUser(usr){
 	if (usr.length == 0) {
      document.getElementById("sname").value = "";
      document.getElementById("staff_id").value = "";
+     document.getElementById("role").value = "";
+     document.getElementById("mail").value = "";
      return;
 
 	} else{
@@ -204,6 +218,8 @@ function GetUser(usr){
 				var uinfo = JSON.parse(this.responseText)
 			     document.getElementById("sname").value = uinfo[0].sname;
 			     document.getElementById("staff_id").value = uinfo[0].sid;
+			     document.getElementById("role").value = uinfo[0].role;
+			     document.getElementById("mail").value = uinfo[0].email;
 			}
 
 		};

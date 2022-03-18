@@ -43,7 +43,7 @@ if (isset($_GET['u'])) {
 
   if($u[0]=='S'){
 
-    $sql="SELECT sid,sname FROM staff WHERE regno = '".$u."' limit 1";
+    $sql="SELECT sid,sname,role,semail FROM staff WHERE regno = '".$u."' limit 1";
 
     $result = mysqli_query($con,$sql);
 
@@ -51,15 +51,18 @@ if (isset($_GET['u'])) {
         $uinfo = array();
         $sid = $row['sid'];
         $sname = $row['sname'];
+        $mail = $row['semail'];
+        $role = $row['role'];
 
-        $uinfo[] = array('sid' => $sid, 'sname' => $sname);
+
+        $uinfo[] = array('sid' => $sid, 'sname' => $sname,'email' => $mail, 'role' => $role);
      
         echo json_encode($uinfo);
       }
     }
    else { // Student Regno Start joining year
 
-    $sql="SELECT st_id,sname FROM students WHERE regno = '".$u."' limit 1";
+    $sql="SELECT st_id,sname,role,stemail FROM students WHERE regno = '".$u."' limit 1";
 
     $result = mysqli_query($con,$sql);
 
@@ -67,8 +70,10 @@ if (isset($_GET['u'])) {
         $uinfo = array();
         $sid = $row['st_id'];
         $sname = $row['sname'];
+        $mail = $row['stemail'];
+        $role = $row['role'];
 
-        $uinfo[] = array('sid' => $sid, 'sname' => $sname);
+        $uinfo[] = array('sid' => $sid, 'sname' => $sname,'email' => $mail,'role' => $role);
      
         echo json_encode($uinfo);
       }

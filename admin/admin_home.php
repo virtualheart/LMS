@@ -10,7 +10,7 @@
 		<?php
 			include"../include/head.php";
 			//$server = file_get_contents("https://raw.githubusercontent.com/virtualheart/LMS/master/version.txt");
-			$server = 2.2;
+			$server = 2.1;
 			$myfile = fopen("../version.txt", "r");
 			$locver = fread($myfile,filesize("../version.txt"));
 			fclose($myfile);
