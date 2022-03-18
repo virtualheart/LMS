@@ -11,6 +11,27 @@
 		<?php
 			include"../include/head.php";
 		?>
+	<style>
+			.tooltipoo .tooltiptextoo {
+			  visibility: hidden;
+			  width: 460px;
+			  background-color: black;
+			  color: #fff;
+			  text-align: center;
+			  border-radius: 6px;
+			  padding: 5px 0;
+			
+			  /* Position the tooltip */
+			  position: absolute;
+			  z-index: 1;
+			}
+			
+			.tooltipoo:hover .tooltiptextoo {
+			  visibility: visible;
+			}
+	</style>
+
+
 	</head>
 	<body>
 		<?php include"admin_home_nav.php";?>
@@ -102,7 +123,15 @@
 						echo "<option value='tls' selected>tls</option>";
 					}
 					?>
-					</select>
+					</select><br>
+
+					<div class="tooltipoo">If you use GMAIL click<a href="https://myaccount.google.com/security"> here</a>  <span class="tooltiptextoo">* open link and turnon <b>Less secure app access</b><br>
+					*  Disable 2 step verification<br>
+					*  Host : smtp.gmail.com	<br>
+					*  Port : 465 or 587	<br>
+					*  Server Type : SSL <br>
+					</span>
+					</div>
 				</div>
 
 
