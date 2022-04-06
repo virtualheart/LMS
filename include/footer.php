@@ -2,7 +2,7 @@
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/custom.js"></script>
 <script>	
-	$(".alert").hide(3000);
+	$(".alert").hide(10000);
 </script>
 
 

@@ -1,12 +1,12 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	$student_id=$_SESSION["st_id"];
 ?>
 <html>
 	<head>
 		<?php
-			include"head.php";
+			include"../include/head.php";
 		?>
 	</head>
 	<body>
@@ -107,7 +107,7 @@ From student_barrow_books Inner Join
 		</div>
 		<footer>
 			<?php
-				include"footer.php";
+				include"../include/footer.php";
 			?>
 		</footer>
 	</body>

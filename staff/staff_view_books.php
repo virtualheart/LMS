@@ -13,14 +13,14 @@
 								
 		<div class="col-md-offset-1 col-md-10" >
 			<?php
-				$qry="select * from books where status!='2'";
+				$qry="select * from books";
 				$res=$con->query($qry);
 				if($res->num_rows>0)
 				{
 					$i=1;					
 					echo"
 												
-							<a type='text' class='btn btn-primary' href='staff_home.php' style='margin-left:95%'>Back</a>														
+					<a type='text' class='btn btn-primary' href='staff_home.php' style='margin-left:95%'>Back</a>														
 						
 					";
 					echo"<h3 class='page-header text-primary'><i class='fa fa-search'> Search Books</i></h3>";

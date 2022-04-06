@@ -69,9 +69,9 @@
 								<th style='text-align:center'>Title</th>
 								<th style='text-align:center'>Author Name</th>								
 								<th style='text-align:center'>Requested Date</th>
-								<th style='text-align:center'>Return Date</th>
+							<!--	<th style='text-align:center'>Return Date</th>
 								<th style='text-align:center'>Accept Request</th>
-								<th style='text-align:center'>Cancel Request</th>
+								<th style='text-align:center'>Cancel Request</th> -->
 							</tr>";
 					$i=1;					
 					while($row=$res->fetch_assoc())
@@ -88,7 +88,7 @@
 								<td style='text-align:center; line-height:6' >{$row['aname']}</td>
 								<td style='text-align:center; line-height:6' >{$row['request_date']}</td>						
 								";
-								if($row['status']==1)
+/*								if($row['status']==1)
 								{
 									echo"<td style='text-align:center;' ><i class='fa fa-mail-reply-all btn btn-primary disabled'></i></td>";
 									echo"<td style='text-align:center;' ><a href='update_staff_status.php?id={$row['bid']}'><i class='fa fa-check-square-o' style='line-height:6'></i></a></td>";
@@ -98,8 +98,8 @@
 								{
 									echo"<td style='text-align:center;' ><a href='staff_return_book.php?id={$row['bid']}&id1={$row['sbid']}'><i class='fa fa-mail-reply-all' style='line-height:6'></i></a></td>";
 									echo"<td style='text-align:center;' ><a href='update_staff_status.php?id={$row['bid']}'><i class='fa fa-check-square-o' style='line-height:6'></i></a></td>";
-									echo"<td style='text-align:center;' ><i class='fa fa-close btn btn-danger disabled'></i></td>";
-								}							
+									echo"<td style='text-align:center;' ><i class='fa fa-close btn btn-danger disabled'>date</i></td>";
+								}			*/				
 								echo"																																									
 							</tr>                           
 						";

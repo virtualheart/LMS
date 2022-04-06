@@ -92,7 +92,7 @@
 								echo"<td>{$i}</td>";
 								echo"<td>{$row["dname"]}</td>";
 								echo"<td><center><a href='update_dep.php?id=$row[did]' class='btn btn-success'><span class='fa fa-edit'></span> Update</a></center></td>";
-								echo"<td><center><a href='delete_dep.php?id=$row[did]' class='btn btn-danger'> <span class='fa fa-trash'></span> Delete</a></center></td>";
+								echo"<td><center><a href='delete_dep.php?id=$row[did]' onClick='return delConfirm();' class='btn btn-danger'> <span class='fa fa-trash'></span> Delete</a></center></td>";
 								$i++;
 							echo"</tr>";
 						}
@@ -123,6 +123,15 @@
 				});
 			});
 		});
+
+function delConfirm() {
+
+if (confirm("Do you want to delect the record...!")) {
+       // do stuff
+} else {
+    return false;
+    }
+}
 
 	</script>
 

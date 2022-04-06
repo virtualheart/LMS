@@ -11,18 +11,20 @@
 ?>
 <html>
 	<head>
-		<title>GCA-7 LMS</title>
-		<link rel="shortcut icon" href="./img/favicon/favicon.ico" type="image/x-icon">  
+		<title>GCA-7 LMS</title>	
 		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+		<link rel="shortcut icon" href="./img/favicon/favicon.ico" type="image/x-icon">  
+	</head>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand"><i class=""><img src="./img/logo.png" width="55px"></i> <?php echo $row["app_name"]; ?></a>
+			<a class="navbar-brand"><i><img src="./img/logo.png" width="55px"></i> <?php echo $row["app_name"]; ?></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="index.php"><span class="fa fa-home"> Home</span></a></li>
+			<li><a href="#"><span class="fa fa-home"> Home</span></a></li>
 			<li><a href="./admin/admin_login_page.php"><span class="fa fa-user"> Admin</span></a></li>
 			<li><a href="./staff/staff_login_page.php"><span class="fa fa-users"> Staff</span></a></li>
 			<li><a href="./student/student_login_page.php"><span class="fa fa-users"> Student</span></a></li>
@@ -70,8 +72,6 @@
 		<script>	
 			$(".alert").hide(3000);
 		</script>
-
-
 
 		</footer>
 	</body>

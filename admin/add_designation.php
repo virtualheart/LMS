@@ -83,7 +83,7 @@
 								<td><center>{$i}</center></td>
 								<td><center>{$row["designation"]}</center></td>
 								<td><center><a href='update_design.php?id={$row["id"]}' class='btn btn-success'><span class='fa fa-edit'></span> Update</a></center></td>
-								<td><center><a href='delete_design.php?id={$row["id"]}' class='btn btn-danger'><span class='fa fa-trash'></span> Delete</a></center></td>
+								<td><center><a href='delete_design.php?id={$row["id"]}' onClick='return delConfirm();' class='btn btn-danger'><span class='fa fa-trash'></span> Delete</a></center></td>
 							</tr>
 						";
 						$i++;
@@ -98,4 +98,15 @@
 			?>
 		</footer>
 	</body>
+	<script type="text/javascript">
+
+function delConfirm() {
+
+if (confirm("Do you want to delect the record...!")) {
+       // do stuff
+} else {
+    return false;
+    }
+}
+	</script>
 </html>

@@ -80,7 +80,7 @@
 				<div class=" form-group col-md-5"style="position:relative;top:30px;">
 					<label></label>
 					<input type="submit" class="btn btn-primary btn-md " name="update" value="Update" 
-					style="margin-left:5px >
+					style="margin-left:5px" >
 				</div>					
 			</form>
 		</div>

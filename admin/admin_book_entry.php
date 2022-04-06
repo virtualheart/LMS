@@ -60,7 +60,7 @@
 		// Check student or staff			
 		if ($role=='staff') {
 		$qry="INSERT INTO staff_barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '".date('Y-m-d',strtotime('+60 days'))."', '{$newretdate}', '1');";
-		echo $qry;
+		//echo $qry;
 		} else {
 		$qry="INSERT INTO student_barrow_books (`st_id`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
 		}
@@ -76,7 +76,14 @@
 						if (cusmail($email,$sname,$book_id)) {
 							
 						} 
+					} elseif($role=='student'){
+						
+						//for student mail send
+						/*if (cusmail($email,$sname,$book_id)) {
+							
+						} */
 					}
+					
 				}
 			} else {	
 				echo"<div class='alert alert-danger'>Update Falied</div>";			

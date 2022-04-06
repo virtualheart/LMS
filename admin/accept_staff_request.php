@@ -38,16 +38,16 @@
 		}
 		?>
 		<?php
-					if(isset($_POST["submit"]))
-					{
-						$sql="update staff_barrow_books where bid={$_GET["id"]}";
+			if(isset($_POST["submit"])){
+				
+				$sql="update staff_barrow_books where bid={$_GET["id"]}";
 
-						if($con->query($sql))						
-						{
-							header("location:admin_staff_requested_details.php?msg=Return Date Update Successfully");							
-						}						
-					}
-				?>
+				if($con->query($sql))						
+				{
+					header("location:admin_staff_requested_details.php?msg=Return Date Update Successfully");					
+				}						
+			}
+		?>
 			<form method="post" action="<?php echo $_SERVER["REQUEST_URI"]?>">
 				
 				<h3 class="page-header text-primary"><i class='fa fa-book'> View Book Details</i></h3>

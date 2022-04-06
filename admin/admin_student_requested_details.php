@@ -42,13 +42,13 @@
   student_barrow_books.st_id, books.bno, books.title, books.aname,
   books.sstatus, students.regno, students.sname, students.did, students.img,
   students.year, students.shift, books.sno, department.dname, department.did,
-  students.st_id, student_barrow_books.bid
+  students.st_id, student_barrow_books.bid,students.img
 From student_barrow_books Inner Join
   students On students.st_id = student_barrow_books.st_id Inner Join
   department On department.did = students.did Inner Join
   books On student_barrow_books.bid = books.bid
-				where books.sstatus>0 and books.sstatus<3				
 				";
+				//where books.sstatus>0 and books.sstatus<3		";		
 				
 				$res=$con->query($qry);
 				if($res->num_rows>0)
@@ -65,9 +65,9 @@ From student_barrow_books Inner Join
 								<th style='text-align:center'>Title</th>
 								<th style='text-align:center'>Author Name</th>								
 								<th style='text-align:center'>Requested Date</th>
-								<th style='text-align:center'>Return Date</th>
+							<!--	<th style='text-align:center'>Return Date</th>
 								<th style='text-align:center'>Accept Request</th>
-								<th style='text-align:center'>Cancel Request</th>
+								<th style='text-align:center'>Cancel Request</th> -->
 							</tr>";
 					$i=1;					
 					while($row=$res->fetch_assoc())
@@ -75,7 +75,7 @@ From student_barrow_books Inner Join
 						echo"							
 							<tr id='hei'>
 								<td style='text-align:center; line-height:6' >{$i}</td>
-								<td style='text-align:center; line-height:6' ><img src='{$row['img']}' class='img img-circle image'></td>
+								<td style='text-align:center; line-height:6' ><img src='../{$row['img']}' class='img img-circle image'></td>
 								<td style='text-align:center; line-height:6' >{$row['sname']}</td>
 								<td style='text-align:center; line-height:6' >{$row['dname']}</td>								
 								<td style='text-align:center; line-height:6' >{$row['bno']}</td>
@@ -83,7 +83,7 @@ From student_barrow_books Inner Join
 								<td style='text-align:center; line-height:6' >{$row['aname']}</td>
 								<td style='text-align:center; line-height:6' >{$row['request_date']}</td>							
 								";
-								if($row['sstatus']==1)
+							/*	if($row['sstatus']==1)
 								{
 									echo"<td style='text-align:center;' ><i class='fa fa-mail-reply-all btn btn-primary disabled'></i></td>";
 									echo"<td style='text-align:center;' ><a href='update_student_status.php?id={$row['bid']}'><i class='fa fa-check-square-o' style='line-height:6'></i></a></td>";
@@ -94,7 +94,7 @@ From student_barrow_books Inner Join
 									echo"<td style='text-align:center;' ><a href='student_return_book.php?id={$row['bid']}&id1={$row['stbid']}'><i class='fa fa-mail-reply-all' style='line-height:6'></i></a></td>";
 									echo"<td style='text-align:center;' ><a href='update_student_status.php?id={$row['bid']}'><i class='fa fa-check-square-o' style='line-height:6'></i></a></td>";
 									echo"<td style='text-align:center;' ><i class='fa fa-close btn btn-danger disabled'></i></td>";
-								}							
+								}							*/
 								echo"																																									
 							</tr>                           
 						";
