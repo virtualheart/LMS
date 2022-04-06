@@ -98,7 +98,7 @@ if (isset($_GET['u'])) {
 
   $u=$_GET["u"];
 
-  if($u[0]=='S'){ //Start Regno start with 'S' for staff
+  if($u[0]=='S' || $u[0]=='s'){ //Start Regno start with 'S' for staff
 
     $sql="SELECT sid,sname,role,semail FROM staff WHERE regno = '".$u."' limit 1";
   } else{  // Student Regno Start joining year

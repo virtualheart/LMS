@@ -11,7 +11,7 @@
 ?>
 <html>
 	<head>
-		<title>GCA-7 LMS</title>	
+		<title><?php echo $row["app_name"]; ?></title>	
 		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
