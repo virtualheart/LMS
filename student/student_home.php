@@ -47,15 +47,17 @@
 				<a href="student_view_books.php" class="text"><span class="fa fa-search"> Search Books</span></a>											
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="student_request_details.php" class="text"><span class="fa fa-bell"> Request Details</span></a>											
+				<a href="student_request_details.php" class="text"><span class="fa fa-book"> Inhand</span></a>											
 			</div>			
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="student_status.php" class="text"><span class="fa fa-bell"> View Status</span></a>	
+				<a href="student_status.php" class="text"><span class="fa fa-info-circle"> View Status</span></a>	
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="student_book_history.php" class="text"><span class="fa fa-bell"> View History</span></a>	
+				<a href="student_book_history.php" class="text"><span class="fa fa-history"> View History</span></a>	
 			</div>
 		</div>
+
+
 		<footer>
 			<?php
 				include"../include/footer.php";

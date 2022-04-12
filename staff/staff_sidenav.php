@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="../css/_font-awesome.min.css">	
+
 <a href="#search" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Search</span></a>
 <ul class="nav collapse" id="search">			
 		<a href="staff_view_books.php" class="list-group-item"><span class="fa fa-search"> Search Books</span></a>											

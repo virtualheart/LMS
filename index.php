@@ -12,9 +12,9 @@
 <html>
 	<head>
 		<title><?php echo $row["app_name"]; ?></title>	
+		<link rel="stylesheet" type="text/css" href="./css/_font-awesome.min.css">	
 		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
-		<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
 		<link rel="shortcut icon" href="./img/favicon/favicon.ico" type="image/x-icon">  
 	</head>
 

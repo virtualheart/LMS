@@ -11,7 +11,7 @@
 	<body>
 		<?php include"staff_home_nav.php";?>
 								
-		<div class="col-md-offset-1 col-md-10" >
+		<div class="col-md-12" >
 			<?php
 				$qry="select * from books";
 				$res=$con->query($qry);
@@ -30,22 +30,18 @@
 							<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
 							</div>
 						";						
-					if(isset($_GET["msg"]))
-					{
-						echo"<div class='alert alert-success'>{$_GET['msg']}</div>";
-					}
-					echo "<div id='dis'>";
+
 					echo"						
 						<table class='table table-bordered' >
 						<thead>
 							<tr>
-								<th style='text-align:center'>S.No</th>
+							<!--	<th style='text-align:center'>S.No</th> -->
 								<th style='text-align:center'>Serial No</th>
 								<th style='text-align:center'>Book No</th>
 								<th style='text-align:center'>Title</th>
 								<th style='text-align:center'>Author Name</th>
-								<th style='text-align:center'>Publication</th>								
-								<th style='text-align:center'>Request</th>								
+								<th style='text-align:center'>Publication</th>
+								<th style='text-align:center'>Status</th>								
 							</tr>
 						</thead><tbody id='mytable'>
 					";
@@ -55,22 +51,19 @@
 						
 							<tr>
 								<td>{$i}</td>
-								<td>{$row['sno']}</td>
+							<!--	<td>{$row['sno']}</td> -->
 								<td>{$row['bno']}</td>
 								<td>{$row['title']}</td>
 								<td>{$row['aname']}</td>
 								<td>{$row['publication']}</td>
-								";
-								$qry="select * from staff_barrow_books where bid='{$row["bid"]}' and sid='{$_SESSION["sid"]}'";
-								$res1=$con->query($qry);								
-								$row1=$res1->fetch_assoc();		
-								if($row1["bid"]==$row["bid"]&&$row1["sid"]==$_SESSION["sid"]&&$row1["status"]=='1')
+								";	
+								if($row['status'] == 1)
 								{
-									echo"<td><center><a href='staff_request_book.php?id={$row['bid']}' class='btn btn-danger disabled'><i class='fa fa-bell'> Request </i></a></center></td>";
+									echo"<td><center><a class='btn btn-danger disabled'><i class='fa fa-bell'> Unavaliable </i></a></center></td>";
 								}
 								else
 								{
-									echo"<td><center><a href='staff_request_book.php?id={$row['bid']}' class='btn btn-primary'><i class='fa fa-bell'> Request</i></a></center></td>";
+									echo"<td><center><a class='btn btn-primary'><i class='fa fa-bell' > Avaliable</i></a></center></td>";
 								}
 								echo"								
 							</tr>						

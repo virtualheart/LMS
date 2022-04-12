@@ -52,7 +52,12 @@
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="staff_status.php" class="text"><span class="fa fa-bell"> View Status</span></a>	
 			</div>
+			<div class="col-md-3 box11" style="margin-top:50px">			
+				<a href="staff_status.php" class="text"><span class="fa fa-history"> View History</span></a>	
+			</div>
 		</div>
+
+
 		<footer>
 			<?php
 				include"../include/footer.php";
