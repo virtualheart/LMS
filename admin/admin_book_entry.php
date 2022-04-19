@@ -59,23 +59,25 @@
 		
 		// Check student or staff			
 		if ($role=='staff') {
-		$qry="INSERT INTO staff_barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '".date('Y-m-d',strtotime('+60 days'))."', '{$newretdate}', '1');";
+		$qry="INSERT INTO barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `role`,`status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '".date('Y-m-d',strtotime('+60 days'))."', '{$newretdate}','staff', '1');";
 		//echo $qry;
 		} else {
-		$qry="INSERT INTO student_barrow_books (`st_id`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}', '1');";
+		$qry="INSERT INTO barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `role`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}','student', '1');";
 		}
 		
-			//echo $qry;
+		//echo $qry;
 			if($con->query($qry)){
 				echo"<div class='alert alert-success'>Update Success</div>";	
 				$qury="update books set status='1' where bid='{$book_id}'";
 				//echo $qury;	
 				if ($con->query($qury)) {
+
 					if ($role=='staff') {
 						
-						if (cusmail($email,$sname,$book_id)) {
+					// We are testing so don't *Uncommand the mail lines*
+					/*	if (cusmail($email,$sname,$book_id)) {
 							
-						} 
+						} */ 
 					} elseif($role=='student'){
 						
 						//for student mail send

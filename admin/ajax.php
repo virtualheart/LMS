@@ -43,48 +43,39 @@ if (isset($_GET['r'])) {
 
 $r=$_GET["r"];
 
-$sql="select sbb.sbid,sbb.sid,sbb.bid,sbb.request_date,sbb.return_date,sbb.today,sbb.status,sb.bid,sb.sno,sb.bno,sb.bcode,sb.title,sb.aname,sb.publication,sb.status,sb.sstatus,stf.regno,stf.sname,stf.did,stf.id,stf.role
-from  staff_barrow_books sbb 
-  join books sb 
-    on sb.bid = sbb.bid 
-  join staff stf 
-    on stf.sid = sbb.sid
-where bcode='{$r}'";
+$sql="select sbb.sid,sbb.bid,sbb.request_date,sbb.role,sb.bno,sb.bcode,sb.title,sb.aname,sb.publication from barrow_books sbb join books sb on sb.bid = sbb.bid where bcode='{$r}'";
 
-$result = mysqli_query($con,$sql);
+$result=$con->query($sql);
 
-while($row = mysqli_fetch_array($result))
-  {
-    $retinfo = array();
-    
+if($row = mysqli_fetch_array($result)) {
+  
+    $retinfo = array();  
    
-    $sbid = $row['sbid'];
     $sid = $row['sid'];  
     $bid = $row['bid'];  
     $request_date = $row['request_date'];  
-    $return_date = $row['return_date'];  
-    $today = $row['today'];  
-    $status = $row['status'];  
-    $bid = $row['bid'];  
-    $sno = $row['sno'];  
     $bno = $row['bno'];  
     $bcode = $row['bcode'];  
     $title = $row['title'];  
     $aname = $row['aname'];  
     $publication = $row['publication'];    
-    $status = $row['status'];  
-    $sstatus = $row['sstatus'];  
-    $regno = $row['regno'];  
-    $sname = $row['sname'];  
-    $did = $row['did'];  
-    $id = $row['id'];    
     $role = $row['role'];
 
-//test
-//echo $sbid.$sid.$bid.$request_date.$return_date.$today.$status.$bid.$sno.$bno.$bcode.$title.$aname.$publication.$status.$sstatus.$sid.$regno.$sname.$did.$id.$role;
+      if ($role=="staff") {
+        $sql1="select regno,sname from staff where sid='{$sid}'";
+      } else {
+        $sql1="select regno,sname from students where st_id='{$sid}'";
+      }
 
+      $res1=$con->query($sql1);
+      if($row1=$res1->fetch_assoc()){        
+        $regno = $row1['regno'];  
+        $sname = $row1['sname'];  
+
+      }
+    
    
-    $retinfo[] = array( 'sbid' => $sbid ,'sid' => $sid ,'bid' => $bid ,'request_date' => $request_date ,'return_date' => $return_date ,'today' => $today ,'status' => $status ,'bid' => $bid ,'sno' => $sno ,'bno' => $bno ,'bcode' => $bcode ,'title' => $title ,'aname' => $aname ,'publication' => $publication ,'status' => $status ,'sstatus' => $sstatus ,'sid' => $sid ,'regno' => $regno ,'sname' => $sname ,'did' =>  $did ,'id' => $id ,'role' => $role );
+    $retinfo[] = array( 'sid' => $sid ,'bid' => $bid ,'request_date' => $request_date ,'bno' => $bno ,'bcode' => $bcode ,'title' => $title ,'aname' => $aname ,'publication' => $publication ,'regno' => $regno ,'sname' => $sname ,'role' => $role );
 
   //header('Content-Type: application/json; charset=utf-8');
   echo json_encode($retinfo);

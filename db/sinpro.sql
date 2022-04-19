@@ -20,8 +20,43 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `admin` (`id`, `aname`, `apass`, `a_mail`, `role`) VALUES
-(2,	'admin',	'admin',	'admin@admin.in',	'admin')
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `aname` = VALUES(`aname`), `apass` = VALUES(`apass`), `a_mail` = VALUES(`a_mail`), `role` = VALUES(`role`);
+(2,	'admin',	'admin',	'admin@admin.in',	'admin');
+
+DROP TABLE IF EXISTS `barrow_books`;
+CREATE TABLE `barrow_books` (
+  `sbid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) NOT NULL,
+  `bid` int(11) NOT NULL,
+  `request_date` date NOT NULL,
+  `return_date` date NOT NULL,
+  `today` date NOT NULL,
+  `role` varchar(10) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`sbid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `barrow_books` (`sbid`, `sid`, `bid`, `request_date`, `return_date`, `today`, `role`, `status`) VALUES
+(15,	38,	4,	'2022-04-19',	'2022-06-18',	'2022-05-19',	'staff',	1),
+(17,	38,	2,	'2022-04-19',	'2022-06-18',	'2022-05-19',	'staff',	1);
+
+DROP TABLE IF EXISTS `barrow_books_history`;
+CREATE TABLE `barrow_books_history` (
+  `sbid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int(11) NOT NULL,
+  `bid` int(11) NOT NULL,
+  `request_date` date NOT NULL,
+  `returned_date` date NOT NULL,
+  `today` date NOT NULL,
+  `role` varchar(10) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`sbid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `barrow_books_history` (`sbid`, `sid`, `bid`, `request_date`, `returned_date`, `today`, `role`, `status`) VALUES
+(6,	10,	2,	'2022-04-19',	'2022-04-19',	'2022-04-19',	'student',	1),
+(7,	10,	1,	'2022-04-19',	'2022-04-19',	'2022-04-19',	'student',	1),
+(8,	38,	3,	'2022-04-19',	'2022-04-19',	'2022-05-19',	'staff',	1),
+(9,	10,	2,	'2022-04-19',	'2022-04-19',	'2022-04-19',	'student',	1);
 
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
@@ -41,21 +76,21 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publication`, `price`, `alamara`, `rack`, `status`, `sstatus`) VALUES
-(1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	1,	0),
-(2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	0,	0),
-(3,	'3',	'UGC/8693',	'GACCS20200003',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
+(1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	0,	0),
+(2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	1,	0),
+(3,	'3',	'UGC/8693',	'GACCS20200003',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	0,	0),
 (4,	'4',	'UGC/8701',	'GACCS20200004',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
-(5,	'5',	'UGC/8697',	'GACCS20200005',	'PROGRAMMING WITH FORTRAN ',	'SEYMOUR LIPSCHUTZ ARTHUR POE',	'TMGH',	'6',	'A1',	'R1',	0,	1),
+(5,	'5',	'UGC/8697',	'GACCS20200005',	'PROGRAMMING WITH FORTRAN ',	'SEYMOUR LIPSCHUTZ ARTHUR POE',	'TMGH',	'6',	'A1',	'R1',	0,	0),
 (6,	'6',	'UGC/8698',	'GACCS20200006',	'PROGRAMMING WITH FORTRAN 77',	'WILLIAM E.MAYO, MARTIN CWIAKALA',	'TMGH',	'6',	'A1',	'R1',	0,	0),
 (7,	'7',	'UGC/8712',	'GACCS20200007',	'NUMERICAL ANALYSIS',	'B D GUPTA',	'KONARK',	'70',	'A1',	'R1',	0,	0),
 (8,	'8',	'UGC/8716',	'GACCS20200008',	'NUMERICAL ANALYSIS',	'B D GUPTA',	'KONARK',	'70',	'A1',	'R1',	0,	0),
 (9,	'9',	'UGC/8852',	'GACCS20200009',	'COMPUTER PROGRAMMING IN COBOL',	'V. RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'79',	'A1',	'R1',	0,	0),
-(10,	'10',	'UGC/8854',	'GACCS20200010',	'COMPUTER PROGRAMMING IN COBOL',	'V.RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'295',	'A1',	'R1',	0,	1),
+(10,	'10',	'UGC/8854',	'GACCS20200010',	'COMPUTER PROGRAMMING IN COBOL',	'V.RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'295',	'A1',	'R1',	0,	0),
 (11,	'11',	'UGC/8858',	'GACCS20200011',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'295',	'A3',	'R1',	0,	0),
 (12,	'12',	'UGC/8859',	'GACCS20200012',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'295',	'A1',	'R1',	0,	0),
 (13,	'13',	'UGC/8857',	'GACCS20200013',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'35',	'A1',	'R1',	0,	0),
 (14,	'14',	'UGC/8860',	'GACCS20200014',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'395',	'A1',	'R1',	0,	0),
-(15,	'15',	'UGC/8864',	'GACCS20200015',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'325',	'A1',	'R1',	1,	0),
+(15,	'15',	'UGC/8864',	'GACCS20200015',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'325',	'A1',	'R1',	0,	0),
 (16,	'16',	'UGC/8865',	'GACCS20200016',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'375',	'A1',	'R1',	0,	0),
 (17,	'17',	'UGC/8862',	'GACCS20200017',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'310',	'A1',	'R1',	0,	0),
 (18,	'18',	'UGC/8874',	'GACCS20200018',	'STRUCTURED COBOL',	'A.S. PHILIPPAKIS, LEONARD J.KAZMIER',	'TMGH',	'275',	'A1',	'R1',	0,	0),
@@ -1820,8 +1855,7 @@ INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publicatio
 (3912,	'1809',	'53002',	'GACCS20201809',	'LINUX LEARNING THE ESSENTIALS',	'K.L.JAMES',	'PHI',	'350',	'A6',	'R6',	0,	0),
 (3913,	'1810',	'53003',	'GACCS20201810',	'ANDROID AND WINDOWS MOBILE PHONE REPAIRING',	'SANJIB PANDIT',	'BPB PUBLICATIONS',	'225',	'A6',	'R6',	0,	0),
 (3914,	'1811',	'53004',	'GACCS20201811',	'ANDROID AND WINDOWS MOBILE PHONE REPAIRING',	'SANJIB PANDIT',	'BPB PUBLICATIONS',	'225',	'A6',	'R6',	0,	0),
-(3917,	'1793',	'52986',	'GACCS20201793',	'PROGRAMMING ANDROID',	'ZIGURD MEDNIEKS',	'',	'1275',	'A6',	'R6',	0,	0)
-ON DUPLICATE KEY UPDATE `bid` = VALUES(`bid`), `sno` = VALUES(`sno`), `bno` = VALUES(`bno`), `bcode` = VALUES(`bcode`), `title` = VALUES(`title`), `aname` = VALUES(`aname`), `publication` = VALUES(`publication`), `price` = VALUES(`price`), `alamara` = VALUES(`alamara`), `rack` = VALUES(`rack`), `status` = VALUES(`status`), `sstatus` = VALUES(`sstatus`);
+(3917,	'1793',	'52986',	'GACCS20201793',	'PROGRAMMING ANDROID',	'ZIGURD MEDNIEKS',	'',	'1275',	'A6',	'R6',	0,	0);
 
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
@@ -1833,8 +1867,7 @@ CREATE TABLE `department` (
 INSERT INTO `department` (`did`, `dname`) VALUES
 (6,	'Msc.Computer Science'),
 (8,	'Computer Science'),
-(10,	'Bsc.Computer Science')
-ON DUPLICATE KEY UPDATE `did` = VALUES(`did`), `dname` = VALUES(`dname`);
+(10,	'Bsc.Computer Science');
 
 DROP TABLE IF EXISTS `designation`;
 CREATE TABLE `designation` (
@@ -1849,8 +1882,7 @@ INSERT INTO `designation` (`id`, `designation`) VALUES
 (9,	'Assistant Professor'),
 (10,	'a'),
 (11,	'b'),
-(12,	'c')
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `designation` = VALUES(`designation`);
+(12,	'c');
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
@@ -1867,8 +1899,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `settings` (`id`, `app_name`, `app_decp`, `app_logo`, `smtp_host`, `smtp_port`, `smtp_user`, `smtp_pass`, `smtp_sec_type`) VALUES
-(1,	'GAS-7 LMS',	'',	'logo.png',	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl')
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `app_name` = VALUES(`app_name`), `app_decp` = VALUES(`app_decp`), `app_logo` = VALUES(`app_logo`), `smtp_host` = VALUES(`smtp_host`), `smtp_port` = VALUES(`smtp_port`), `smtp_user` = VALUES(`smtp_user`), `smtp_pass` = VALUES(`smtp_pass`), `smtp_sec_type` = VALUES(`smtp_sec_type`);
+(1,	'GAS-7 LMS',	'',	'logo.png',	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl');
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
@@ -1886,39 +1917,9 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `staff` (`sid`, `regno`, `sname`, `semail`, `did`, `id`, `contact`, `gender`, `image`, `role`) VALUES
-(38,	's0001',	'kUMAR',	'computersearch4@gmail.in',	6,	9,	'98998',	'male',	'../img/staff/16464776539Screenshot from 2022-01-19 20-52-27.png',	'staff'),
+(38,	'STF0002',	'kUMAR',	'computersearch4@gmail.in',	6,	9,	'98998',	'male',	'../img/staff/16464776539Screenshot from 2022-01-19 20-52-27.png',	'staff'),
 (39,	's0002',	'selvichinnu',	'computersearch4@gmail.cin',	1,	1,	'1',	'female',	'../img/staff/16464772287index.png',	'staff'),
-(40,	'jn',	'bhb',	'sk@ssds.in',	1,	12,	'8888888',	'male',	'../img/staff/male.png',	'staff')
-ON DUPLICATE KEY UPDATE `sid` = VALUES(`sid`), `regno` = VALUES(`regno`), `sname` = VALUES(`sname`), `semail` = VALUES(`semail`), `did` = VALUES(`did`), `id` = VALUES(`id`), `contact` = VALUES(`contact`), `gender` = VALUES(`gender`), `image` = VALUES(`image`), `role` = VALUES(`role`);
-
-DROP TABLE IF EXISTS `staff_barrow_books`;
-CREATE TABLE `staff_barrow_books` (
-  `sbid` int(11) NOT NULL AUTO_INCREMENT,
-  `sid` int(11) NOT NULL,
-  `bid` int(11) NOT NULL,
-  `request_date` date NOT NULL,
-  `return_date` date NOT NULL,
-  `today` date NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`sbid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `staff_barrow_books` (`sbid`, `sid`, `bid`, `request_date`, `return_date`, `today`, `status`) VALUES
-(2,	2,	2,	'2019-09-19',	'2019-09-28',	'0000-00-00',	1),
-(3,	8,	1,	'2019-12-12',	'2022-03-03',	'0000-00-00',	1)
-ON DUPLICATE KEY UPDATE `sbid` = VALUES(`sbid`), `sid` = VALUES(`sid`), `bid` = VALUES(`bid`), `request_date` = VALUES(`request_date`), `return_date` = VALUES(`return_date`), `today` = VALUES(`today`), `status` = VALUES(`status`);
-
-DROP TABLE IF EXISTS `staff_barrow_books_history`;
-CREATE TABLE `staff_barrow_books_history` (
-  `sbid` int(11) NOT NULL AUTO_INCREMENT,
-  `sid` int(11) NOT NULL,
-  `bid` int(11) NOT NULL,
-  `request_date` date NOT NULL,
-  `returned_date` date NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`sbid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
+(40,	'jn',	'bhb',	'sk@ssds.in',	1,	12,	'8888888',	'male',	'../img/staff/male.png',	'staff');
 
 DROP TABLE IF EXISTS `staff_department`;
 CREATE TABLE `staff_department` (
@@ -1931,8 +1932,7 @@ INSERT INTO `staff_department` (`id`, `s_d_name`) VALUES
 (1,	'Computer'),
 (5,	'Math'),
 (6,	'sds'),
-(7,	'sdsasa')
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `s_d_name` = VALUES(`s_d_name`);
+(7,	'sdsasa');
 
 DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
@@ -2097,26 +2097,6 @@ INSERT INTO `students` (`st_id`, `regno`, `sname`, `gender`, `stemail`, `Contact
 (150,	'sd4554',	'admin',	'male',	NULL,	NULL,	6,	'I',	'II',	'',	''),
 (151,	'19UCS221501',	'ARUN V S',	'male',	NULL,	NULL,	8,	'I',	'I',	'',	''),
 (154,	'bhjb',	'hbj',	'male',	'computersearch4@gmail.cin',	NULL,	10,	'II',	'II',	'img/student/boy.png',	'student'),
-(155,	'bhjb',	'hbj',	'male',	'computersearch4@gmail.cin',	NULL,	10,	'II',	'II',	'img/student/boy.png',	'student')
-ON DUPLICATE KEY UPDATE `st_id` = VALUES(`st_id`), `regno` = VALUES(`regno`), `sname` = VALUES(`sname`), `gender` = VALUES(`gender`), `stemail` = VALUES(`stemail`), `Contact` = VALUES(`Contact`), `did` = VALUES(`did`), `year` = VALUES(`year`), `shift` = VALUES(`shift`), `img` = VALUES(`img`), `role` = VALUES(`role`);
+(155,	'bhjb',	'hbj',	'male',	'computersearch4@gmail.cin',	NULL,	10,	'II',	'II',	'img/student/boy.png',	'student');
 
-DROP TABLE IF EXISTS `student_barrow_books`;
-CREATE TABLE `student_barrow_books` (
-  `stbid` int(11) NOT NULL AUTO_INCREMENT,
-  `st_id` int(11) NOT NULL,
-  `bid` int(11) NOT NULL,
-  `request_date` date NOT NULL,
-  `Return_date` date NOT NULL,
-  `today` date NOT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`stbid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `student_barrow_books` (`stbid`, `st_id`, `bid`, `request_date`, `Return_date`, `today`, `status`) VALUES
-(2,	1,	1,	'2019-09-19',	'0000-00-00',	'0000-00-00',	1),
-(3,	1,	3,	'2019-09-19',	'0000-00-00',	'0000-00-00',	1),
-(4,	3,	5,	'2019-12-12',	'0000-00-00',	'0000-00-00',	1),
-(5,	1,	10,	'2020-01-21',	'0000-00-00',	'0000-00-00',	1)
-ON DUPLICATE KEY UPDATE `stbid` = VALUES(`stbid`), `st_id` = VALUES(`st_id`), `bid` = VALUES(`bid`), `request_date` = VALUES(`request_date`), `Return_date` = VALUES(`Return_date`), `today` = VALUES(`today`), `status` = VALUES(`status`);
-
--- 2022-03-05 13:00:47
+-- 2022-04-19 16:24:51

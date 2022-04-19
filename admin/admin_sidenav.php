@@ -6,7 +6,7 @@
 
 <div class="list-group">
 
-<a href="#entry" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Books</span></a>
+<a href="#entry" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Lib activity</span></a>
 <ul class="nav collapse" id="entry">			
 		<a href="admin_book_entry.php" class="list-group-item"><span class="fa fa-book"> Book Entry</span></a>											
 		<a href="admin_book_return.php" class="list-group-item"><span class="fa fa-repeat"> Book Return</span></a>											
