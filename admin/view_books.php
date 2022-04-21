@@ -2,6 +2,8 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	include"../include/msg.php";
+
 ?>
 <html>
 	<head>
@@ -33,11 +35,15 @@
 						<div class='form-group pull-right col-md-3'> 
 							<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
 							</div>
-						";						
-					if(isset($_GET["msg"]))
-					{
-						echo"<div class='alert alert-success'>{$_GET['msg']}</div>";
-					}
+						";				
+
+				if(isset($_GET["msg"]))	{
+
+					if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+							echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
+					}							
+				}
+
 					echo "<div id='dis'>";
 					echo"						
 						<table class='table table-bordered' >
@@ -48,7 +54,7 @@
 								<th style='text-align:center'>Barcode No</th>
 								<th style='text-align:center'>Title</th>
 								<th style='text-align:center'>Author Name</th>
-								<th style='text-align:center'>Publication</th>
+								<th style='text-align:center' width='10'>Publication</th>
 								<th style='text-align:center'>Price</th>
 								<th style='text-align:center'>Alamara</th>
 								<th style='text-align:center'>Rack</th>
@@ -82,6 +88,7 @@
 						";
 					
 					}
+
 					echo "</tbody></table></div>";
 				}
 

@@ -1,7 +1,3 @@
-
-<?php
-//include"./admin_security.php";
-?>
 <link rel="stylesheet" type="text/css" href="../css/_font-awesome.min.css">
 
 <div class="list-group">
@@ -39,17 +35,17 @@
 		 <a href="add_books.php" class="list-group-item"><span class="fa fa-book"> Add Books </span></a>																
 		<a href="view_books.php" class="list-group-item"><span class="fa fa-edit"> View/Edit Books</span></a>								
 </ul>	
-<a href="#request" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Request Details</span></a>
+
+<!-- <a href="#request" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Request Details</span></a>
 <ul class="nav collapse" id="request">			
 		<a href="admin_staff_requested_details.php" class="list-group-item"><span class="fa fa-user"> Staff Request</span></a>	
 		 <a href="admin_student_requested_details.php" class="list-group-item"><span class="fa fa-users"> Student Request </span></a>																							
-</ul>	
+</ul> -->	
 	
 <a href="#Settings" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Settings</span></a>
 <ul class="nav collapse" id="Settings">			
 		<a href="admin_settings.php" class="list-group-item"><span class="fa fa-gear">  General Settings</span></a>	
 		 <a href="admin_smtp_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings</span></a>																							
 </ul>	
-
-	</div>
+</div>
 

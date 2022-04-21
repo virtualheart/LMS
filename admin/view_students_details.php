@@ -26,7 +26,7 @@
 						}							
 				}		
 
-							?>
+		?>
 			<h3 class="page-header text-primary"><span class="fa fa-users"> Select Details</span></h3>
 		<form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
 			<div class="form-group col-md-5">					
@@ -74,54 +74,93 @@
 						<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
 				</div>
 								
-			</div>
-		</div>
+ 			</div>
+
 			<div class="col-md-offset-3 col-md-9">			
 			<?php
 			if(isset($_POST["view"]))
 			{
-				
 			$qry="Select department.dname, students.regno, students.st_id, students.sname,
   					students.did, students.year, students.shift, students.img
 						From students Inner Join
   					department On students.did = department.did where students.did='{$_POST['dname']}' and students.year='{$_POST['year']}' and students.shift='{$_POST['shift']}'";
+
 				$res=$con->query($qry);
-				if($res->num_rows>0)
-				{
+				if($res->num_rows>0){
+					$i=1;
+
 					echo "<h3 class='page-header text-primary'><span class='fa fa-users'> View Students Details</span></h3>";
-					while($row1=$res->fetch_assoc())
-					{
-						?>		
-							<div class="col-md-4" id="mydata">
+					echo"
+					
+						<table class='table table-bordered'>
+							<tr>
+								<th><center>S.No 		</center></th>
+								<th><center>Photo		</center></th>
+								<th><center>Regno       </center></th>
+								<th><center>Name	    </center></th>
+								<th><center>Department  </center></th>
+								<th><center>Year </center></th>
+								<th><center>shift	    </center></th>
+								<th><center>Update   	</center></th>
+								<th><center>Delete      </center></th>
+							</tr><tbody id='stmytable'>
+					";
+					while($row=$res->fetch_assoc()) {
+
+						echo"
+							<tr class='center'>
+								<td>{$i}</td>";
+
+						echo "<td><center><img class='img-circle'src='../{$row["img"]}' height='100' width='100'></img></center></td>";
+
+						echo "	
+								<td>{$row["regno"]}</td>
+								<td>{$row["sname"]}</td>
+								<td>{$row["dname"]}</td>
+								<td>{$row["year"]}</td>
+								<td>{$row["shift"]}</td>
+								<td><a id='cen' href='update_student.php?id={$row["st_id"]}' class='btn btn-success'><i class='fa fa-edit'> Update</i></a></td>
+								<td><a id='cen' href='staff_student.php?id={$row["st_id"]}' class='btn btn-danger'><i class='fa fa-trash'> Delete</i></a></td>
+							</tr>
+						";
+						$i++;
+						}
+					echo"
+						</table>
+						</div>
+					";
+				} else{
+					echo"<div class='alert alert-danger'>Record Not Found....!!!</div>";
+				}	
+
+			}
+	
+			
+?>
+		</div>						
+
+
+<!-- 							<div class="col-md-4" id="mydata">
 								<div class="panel panel-primary">									
 									<div class="panel-heading" >
-										Name : <?php echo $row1["sname"];?><br>
+										Name : <?php //echo $row1["sname"];?><br>
 									</div>
 									<div class="panel-body">
 														
-										Register No : <?php echo $row1["regno"];?><br>
-										Department : <?php echo $row1["dname"];?><br>
-										Year : <?php echo $row1["year"];?><br>
-										Shift : <?php echo $row1["shift"];?><br>
+										Register No : <?php // echo $row1["regno"];?><br>
+										Department : <?php // echo $row1["dname"];?><br>
+										Year : <?php //echo $row1["year"];?><br>
+										Shift : <?php// echo $row1["shift"];?><br>
 									</div>
 									<div class="panel-footer" >
-										<a type="submit" href='update_student.php?id=<?php echo $row1["st_id"]?>' name="update" class='btn btn-primary btn-block'>Update</a>
-										<a type="submit" href='student_delete.php?id=<?php echo $row1["st_id"]?>' name="delete" class='btn btn-danger btn-block'>Delete</a>
+										<a type="submit" href='update_student.php?id=<?php //echo $row1["st_id"]?>' name="update" class='btn btn-primary btn-block'>Update</a>
+										<a type="submit" href='student_delete.php?id=<?php //echo $row1["st_id"]?>' name="delete" class='btn btn-danger btn-block'>Delete</a>
 									</div>
 								</div>
-							</div>
-						<?php
-					}
-				}
-				else
-				{
-					echo"<div class='alert alert-danger'>Record Not Found....!!!</div>";
-				}	
-			}
-			
-			?>
-										</tr>
-						</table>
+							</div> -->
+						
+			</tr>
+		</table>
 		</div>
 		<footer>
 			<?php
@@ -132,7 +171,7 @@
 		<script>
 		$(document).ready(function(){
 			$('#search').on("keyup",function(){								
-				$("#mydata div").each(function(){
+				$("#stmytable tr").each(function(){
 					var txt=$(this).text().toUpperCase();
 					var s=$("#search").val().toUpperCase();
 					if(txt.indexOf(s)==-1)

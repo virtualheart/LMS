@@ -2,17 +2,17 @@
 
 $mgsarr = array();
 
-$mgsarr[0]  = "Return Date Update Successfully";
+$mgsarr[0]  = "Return Date Update Successfully...!";
 $mgsarr[1]  = "Book Deleted Successfully...!!!";
 $mgsarr[2]  = "Deleted Successfully...!!!";
 $mgsarr[3]  = "Return Details Updated Successfuly...!!!";
 $mgsarr[4]  = "Book Updated Successfully...!!!";
 $mgsarr[5]  = "Update Successfully...!!!";
 $mgsarr[6]  = "Update Falied...!!!";
-$mgsarr[7]  = "Request Send Successfully..!!!";
+$mgsarr[7]  = "Request Send Successfully...!!!";
 $mgsarr[8]  = "Request Cancelled...!!!";
-$mgsarr[9]  = "Request Send Successfully..!!!";
-$mgsarr[10] = "";
+$mgsarr[9]  = "Request Send Successfully...!!!";
+$mgsarr[10] = "Deleted Falied...!!!";
 $mgsarr[11] = "";
 $mgsarr[12] = "";
 $mgsarr[13] = "";
@@ -22,7 +22,7 @@ $mgsarr[16] = "";
 $mgsarr[17] = "";
 $mgsarr[18] = "";
 $mgsarr[19] = "";
-$mgsarr[10] = "";
+$mgsarr[20] = "";
 $mgsarr[21] = "";
 $mgsarr[21] = "";
 $mgsarr[23] = "";
@@ -64,5 +64,6 @@ $mgsarr[45] = "";
 *
 */
 
+	//	echo $mgsarr[$_GET['mgs']];
 
 ?>

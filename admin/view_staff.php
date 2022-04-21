@@ -4,7 +4,6 @@
 	include"./admin_security.php";
 	include"../include/msg.php";
 
-
 ?>
 <html>
 	<head>
@@ -58,10 +57,11 @@ From staff Inner Join
 							if(isset($_GET["msg"]))
 							{
 
-								if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+								if ($_GET['msg'] ==10 || $_GET['msg'] ==2) {
 									echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
-							}							
+								}							
 							}
+							
 						echo"
 					
 						<table class='table table-bordered'>
@@ -101,6 +101,9 @@ From staff Inner Join
 						</table>
 						</div>
 					";
+				} else{
+						echo"<div class='alert alert-danger'>Record Not Found....!!!</div>";
+
 				}
 	
 			?>			

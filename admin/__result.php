@@ -1,5 +1,5 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	
 	$qry="select * from books where title like '%{$_POST['item']}%'";

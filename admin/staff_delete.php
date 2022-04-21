@@ -10,6 +10,9 @@
 	
 		header("location:view_staff.php?msg=2");		
 
+		} else {
+			
+			header("location:view_staff.php?msg=10");
 		}
 	}
 

@@ -56,7 +56,7 @@
 			<?php
 				if(isset($_GET["msg"]))
 				{	
-					if ($_GET['msg'] ==5 || $_GET['msg'] ==2) {
+					if ($_GET['msg'] ==5 || $_GET['msg'] ==2 || $_GET['msg'] ==10) {
 						echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]}</div>";
 					}
 				}

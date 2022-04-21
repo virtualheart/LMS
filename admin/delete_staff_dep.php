@@ -8,6 +8,9 @@
 		if($con->query($sql))
 		{
 			header("location:add_staff_dep.php?msg=2");
-		} 
+		} else {
+			
+			header("location:add_staff_dep.php?msg=10");
+		}
 	}
 ?>

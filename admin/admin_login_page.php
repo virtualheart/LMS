@@ -35,7 +35,11 @@ if($res->num_rows>0)
 						<?php
 							if(isset($_POST["login"]))
 							{
-								$aname=$_POST["aname"];
+								
+								$apass=$_POST["apass"];
+
+								$aname=trim($_POST['aname']);
+								$aname=filter_var($aname,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
 								$apass=$_POST["apass"];
 								
 								$sql="select * from admin where aname='{$aname}' and apass='{$apass}'";

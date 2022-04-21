@@ -35,9 +35,6 @@ CREATE TABLE `barrow_books` (
   PRIMARY KEY (`sbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `barrow_books` (`sbid`, `sid`, `bid`, `request_date`, `return_date`, `today`, `role`, `status`) VALUES
-(15,	38,	4,	'2022-04-19',	'2022-06-18',	'2022-05-19',	'staff',	1),
-(17,	38,	2,	'2022-04-19',	'2022-06-18',	'2022-05-19',	'staff',	1);
 
 DROP TABLE IF EXISTS `barrow_books_history`;
 CREATE TABLE `barrow_books_history` (
@@ -52,11 +49,6 @@ CREATE TABLE `barrow_books_history` (
   PRIMARY KEY (`sbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `barrow_books_history` (`sbid`, `sid`, `bid`, `request_date`, `returned_date`, `today`, `role`, `status`) VALUES
-(6,	10,	2,	'2022-04-19',	'2022-04-19',	'2022-04-19',	'student',	1),
-(7,	10,	1,	'2022-04-19',	'2022-04-19',	'2022-04-19',	'student',	1),
-(8,	38,	3,	'2022-04-19',	'2022-04-19',	'2022-05-19',	'staff',	1),
-(9,	10,	2,	'2022-04-19',	'2022-04-19',	'2022-04-19',	'student',	1);
 
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
@@ -76,21 +68,21 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publication`, `price`, `alamara`, `rack`, `status`, `sstatus`) VALUES
-(1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	0,	0),
-(2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	1,	0),
-(3,	'3',	'UGC/8693',	'GACCS20200003',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	0,	0),
+(1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	1,	0),
+(2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	0,	0),
+(3,	'3',	'UGC/8693',	'GACCS20200003',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
 (4,	'4',	'UGC/8701',	'GACCS20200004',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
-(5,	'5',	'UGC/8697',	'GACCS20200005',	'PROGRAMMING WITH FORTRAN ',	'SEYMOUR LIPSCHUTZ ARTHUR POE',	'TMGH',	'6',	'A1',	'R1',	0,	0),
+(5,	'5',	'UGC/8697',	'GACCS20200005',	'PROGRAMMING WITH FORTRAN ',	'SEYMOUR LIPSCHUTZ ARTHUR POE',	'TMGH',	'6',	'A1',	'R1',	0,	1),
 (6,	'6',	'UGC/8698',	'GACCS20200006',	'PROGRAMMING WITH FORTRAN 77',	'WILLIAM E.MAYO, MARTIN CWIAKALA',	'TMGH',	'6',	'A1',	'R1',	0,	0),
 (7,	'7',	'UGC/8712',	'GACCS20200007',	'NUMERICAL ANALYSIS',	'B D GUPTA',	'KONARK',	'70',	'A1',	'R1',	0,	0),
 (8,	'8',	'UGC/8716',	'GACCS20200008',	'NUMERICAL ANALYSIS',	'B D GUPTA',	'KONARK',	'70',	'A1',	'R1',	0,	0),
 (9,	'9',	'UGC/8852',	'GACCS20200009',	'COMPUTER PROGRAMMING IN COBOL',	'V. RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'79',	'A1',	'R1',	0,	0),
-(10,	'10',	'UGC/8854',	'GACCS20200010',	'COMPUTER PROGRAMMING IN COBOL',	'V.RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'295',	'A1',	'R1',	0,	0),
+(10,	'10',	'UGC/8854',	'GACCS20200010',	'COMPUTER PROGRAMMING IN COBOL',	'V.RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'295',	'A1',	'R1',	0,	1),
 (11,	'11',	'UGC/8858',	'GACCS20200011',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'295',	'A3',	'R1',	0,	0),
 (12,	'12',	'UGC/8859',	'GACCS20200012',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'295',	'A1',	'R1',	0,	0),
 (13,	'13',	'UGC/8857',	'GACCS20200013',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'35',	'A1',	'R1',	0,	0),
 (14,	'14',	'UGC/8860',	'GACCS20200014',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'395',	'A1',	'R1',	0,	0),
-(15,	'15',	'UGC/8864',	'GACCS20200015',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'325',	'A1',	'R1',	0,	0),
+(15,	'15',	'UGC/8864',	'GACCS20200015',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'325',	'A1',	'R1',	1,	0),
 (16,	'16',	'UGC/8865',	'GACCS20200016',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'375',	'A1',	'R1',	0,	0),
 (17,	'17',	'UGC/8862',	'GACCS20200017',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'310',	'A1',	'R1',	0,	0),
 (18,	'18',	'UGC/8874',	'GACCS20200018',	'STRUCTURED COBOL',	'A.S. PHILIPPAKIS, LEONARD J.KAZMIER',	'TMGH',	'275',	'A1',	'R1',	0,	0),
@@ -1865,9 +1857,23 @@ CREATE TABLE `department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `department` (`did`, `dname`) VALUES
-(6,	'Msc.Computer Science'),
-(8,	'Computer Science'),
-(10,	'Bsc.Computer Science');
+(1,	'B.Sc.Computer Science'),
+(2,	'M.Sc.Computer Science'),
+(3,	'BCA.Computer application'),
+(4,	'B.Sc.Physics'),
+(5,	'B.Sc.Zoology'),
+(6,	'B.A.Tamil'),
+(7,	'B.A.English'),
+(8,	'B.Sc.Statistics'),
+(9,	'B.Sc.Mathematics'),
+(10,	'B.Sc.Agriculture'),
+(11,	'B.Sc.Economics'),
+(12,	'B.Sc.Botany'),
+(13,	'B.Sc.Chemistry'),
+(14,	'B.Sc.Microbiology'),
+(15,	'B.A.History'),
+(16,	'B.A.Business Administration'),
+(17,	'B.A.Commerce');
 
 DROP TABLE IF EXISTS `designation`;
 CREATE TABLE `designation` (
@@ -1877,12 +1883,9 @@ CREATE TABLE `designation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `designation` (`id`, `designation`) VALUES
-(1,	'Associative Professor'),
-(7,	'Assistant Professor'),
-(9,	'Assistant Professor'),
-(10,	'a'),
-(11,	'b'),
-(12,	'c');
+(1,	'Professor'),
+(2,	'Assistant Professor'),
+(3,	'Lecturer');
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
@@ -1913,13 +1916,21 @@ CREATE TABLE `staff` (
   `gender` enum('male','female') NOT NULL,
   `image` varchar(300) NOT NULL,
   `role` char(20) NOT NULL,
-  PRIMARY KEY (`sid`)
+  PRIMARY KEY (`sid`),
+  KEY `id` (`id`),
+  KEY `did` (`did`),
+  CONSTRAINT `staff_ibfk_2` FOREIGN KEY (`id`) REFERENCES `designation` (`id`),
+  CONSTRAINT `staff_ibfk_4` FOREIGN KEY (`did`) REFERENCES `department` (`did`) ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `staff` (`sid`, `regno`, `sname`, `semail`, `did`, `id`, `contact`, `gender`, `image`, `role`) VALUES
-(38,	'STF0002',	'kUMAR',	'computersearch4@gmail.in',	6,	9,	'98998',	'male',	'../img/staff/16464776539Screenshot from 2022-01-19 20-52-27.png',	'staff'),
-(39,	's0002',	'selvichinnu',	'computersearch4@gmail.cin',	1,	1,	'1',	'female',	'../img/staff/16464772287index.png',	'staff'),
-(40,	'jn',	'bhb',	'sk@ssds.in',	1,	12,	'8888888',	'male',	'../img/staff/male.png',	'staff');
+(1,	'STF0001',	'Dr.M.MALATHI',	'demo@gmail.com',	1,	1,	'9443213646',	'female',	'../img/staff/female.png',	'staff'),
+(2,	'STF0002',	'THANGAVEL M',	'demo@gmail.com',	1,	1,	'9443213646',	'male',	'../img/staff/male.png',	'staff'),
+(3,	'STF0003',	'Dr.K.AKILANDESWARI',	'demo@gmail.com',	1,	1,	'9442560658',	'female',	'../img/staff/female.png',	'staff'),
+(4,	'STF0004',	'Mr.R.VENKATACHALAM',	'demo@gmail.com',	1,	1,	'9443926775',	'male',	'../img/staff/male.png',	'staff'),
+(5,	'STF0005',	'Mrs.D.CHITRA',	'demo@gmail.com',	1,	1,	'9443001076',	'female',	'../img/staff/female.png',	'staff'),
+(6,	'STF0006',	'Mr.E.JAYABALAN',	'demo@gmail.com',	1,	1,	'9443546772',	'male',	'../img/staff/male.png',	'staff'),
+(7,	'STF0007',	'Dr.R.PUGAZENDI',	'demo@gmail.com',	1,	1,	'9443548035',	'male',	'../img/staff/male.png',	'staff');
 
 DROP TABLE IF EXISTS `staff_department`;
 CREATE TABLE `staff_department` (
@@ -1929,10 +1940,21 @@ CREATE TABLE `staff_department` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `staff_department` (`id`, `s_d_name`) VALUES
-(1,	'Computer'),
-(5,	'Math'),
-(6,	'sds'),
-(7,	'sdsasa');
+(1,	'Computer Science'),
+(2,	'Physics'),
+(3,	'Zoology'),
+(4,	'Tamil'),
+(5,	'English'),
+(6,	'Statistics'),
+(7,	'Mathematics'),
+(8,	'Agriculture'),
+(9,	'Economics'),
+(10,	'Botany'),
+(11,	'Chemistry'),
+(12,	'Microbiology'),
+(13,	'History'),
+(14,	'Business Administration'),
+(15,	'Commerce');
 
 DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
@@ -1950,153 +1972,5 @@ CREATE TABLE `students` (
   PRIMARY KEY (`st_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `students` (`st_id`, `regno`, `sname`, `gender`, `stemail`, `Contact`, `did`, `year`, `shift`, `img`, `role`) VALUES
-(1,	'ST1001',	'Raghul.V',	'male',	NULL,	NULL,	5,	'III',	'I',	'img/student/1.jpg',	''),
-(2,	'ST1002',	'Sathya.A',	'male',	NULL,	NULL,	5,	'III',	'I',	'img/student/33.jpg',	''),
-(3,	'ST1003',	'Elagno',	'male',	NULL,	NULL,	5,	'III',	'I',	'img/student/21.jpg',	''),
-(10,	'19UCS221501',	'ARUN V S',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(11,	'19UCS221502',	'BALU S',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(12,	'19UCS221503',	'DHINESH E',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(13,	'19UCS221504',	'DINESH M V',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(14,	'19UCS221505',	'FAIZOORRAHAMAN A',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(15,	'19UCS221506',	'GOKULAKANNAN G M',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(16,	'19UCS221507',	'GOPALAKRISHNAN R',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(17,	'19UCS221508',	'INIYAVAN B',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(18,	'19UCS221509',	'KALAISELVAN M',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(19,	'19UCS221510',	'KAVIPRIYAN V',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(20,	'19UCS221511',	'NAGAJAYAKRISHNA V',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(21,	'19UCS221512',	'NAVEENKUMAR E',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(22,	'19UCS221513',	'RAJENTHIRAN K',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(23,	'19UCS221514',	'RAMKUMAR M',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(24,	'19UCS221515',	'SANJAI A',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(25,	'19UCS221516',	'SARAVANAN S',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(26,	'19UCS221517',	'SELVA M',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(27,	'19UCS221518',	'SELVAKUMAR G',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(28,	'19UCS221519',	'SELVAM V',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(29,	'19UCS221520',	'SURYA R',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(30,	'19UCS221521',	'VIGNESHWARAN S',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(31,	'19UCS221522',	'JEEVADHARSHINI A',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(32,	'19UCS221523',	'KALAIYARASI A',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(33,	'19UCS221524',	'LATHA E',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(34,	'19UCS221525',	'NARMATHA S',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(35,	'19UCS221526',	'NEMALI M',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(36,	'19UCS221527',	'SARANYA T',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(37,	'19UCS221528',	'SOUNDARYA T',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(38,	'19UCS221529',	'SUDHARSANA B',	'male',	NULL,	NULL,	7,	'I',	'I',	'',	''),
-(39,	'19PCS224501',	'CHANDRU P',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(40,	'19PCS224502',	'DHANISHWARAN D',	'male',	'',	'',	6,	'II',	'II',	'',	''),
-(41,	'19PCS224504',	'ELANGOVAN R',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(42,	'19PCS224505',	'HARI K',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(43,	'19PCS224506',	'MEIYAZHAGAN N',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(44,	'19PCS224507',	'NANDHAKUMAR M',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(45,	'19PCS224508',	'PRABU K',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(46,	'19PCS224510',	'SRIDHAR A',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(47,	'19PCS224511',	'SURESH A',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(48,	'19PCS224512',	'TAMILSELVAN P K',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(49,	'19PCS224513',	'DEEPA M',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(50,	'19PCS224514',	'DIVYASRI P',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(51,	'19PCS224515',	'GOWTHAMI R',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(52,	'19PSC224516',	'KALAIYARASI S',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(53,	'19PCS224517',	'MOHANAPRIYA J',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(54,	'19PCS224518',	'PAVITHRA P',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(55,	'19PCS224519',	'PREETHI R',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(56,	'19PCS224520',	'RISHIBHA M',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(57,	'19PCS224521',	'SANDHIYA P',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(58,	'19PCS224522',	'SENTAMILSELVI A',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(59,	'19PCS224523',	'SRIDEVI K',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(60,	'19PCS224524',	'SWATHI U',	'male',	NULL,	NULL,	6,	'I',	'I',	'',	''),
-(61,	'19UCS221601',	'BALAJI M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(62,	'19UCS221602',	'DEVAN V S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(63,	'19UCS221603',	'DHAMOTHARAN S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(64,	'19UCS221604',	'ELUMALAI P',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(65,	'19UCS221605',	'GOWTHAM M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(66,	'19UCS221606',	'HARIHARAN S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(67,	'19UCS221607',	'IDHIGASH M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(68,	'19UCS221608',	'JESWANTH M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(69,	'19UCS221609',	'KANISHKAR P',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(70,	'19UCS221610',	'KUMAR P',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(71,	'19UCS221611',	'MAHESHBOOPATHI S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(72,	'19UCS221612',	'MAYAKRISHNAN S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(73,	'19UCS221613',	'MOULEESHWARAN G',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(74,	'19UCS221614',	'NANDHAKUMAR R',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(75,	'19UCS221615',	'NATHEESHWARAN M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(76,	'19UCS221615',	'NATHEESHWARAN M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(77,	'19UCS221616',	'PRASATH S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(78,	'19UCS221617',	'RAVI R',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(79,	'19UCS221618',	'SANJAI S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(80,	'19UCS221619',	'SATHISHKUMAR C',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(81,	'19UCS221620',	'SATHISHKUMAR S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(82,	'19UCS221621',	'TAMILSELVAN P',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(83,	'19UCS221622',	'VIGNESHWARAN S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(84,	'19UCS221623',	'GOMATHI P',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(85,	'19UCS221624',	'KANAGA M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(86,	'19UCS221625',	'KAYALVIZHI T',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(87,	'19UCS221626',	'KEERTHIKA M',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(88,	'19UCS221627',	'SOWMIYA S',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(89,	'19UCS221628',	'THILAGAVATHI R',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(90,	'19UCS221629',	'VEDHAVALLI R',	'male',	NULL,	NULL,	7,	'I',	'II',	'',	''),
-(91,	'18UCS214801',	'AFROZ KHAN N',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(92,	'18UCS214802',	'AJITHKUMAR V',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(93,	'18UCS214803',	'ELAVARASAN R',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(94,	'18UCS214804',	'JEEVA V',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(95,	'18UCS214805',	'KEERTHIVASA V',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(96,	'18UCS214806',	'LOGANATHAN T',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(97,	'18UCS214807',	'MANIVANNAN S',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(98,	'18UCS214808',	'MOHAMED YASEEN PARVEZ Y',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(99,	'18UCS214809',	'NIRMAL RAJ C',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(100,	'18UCS214810',	'PASUPATHI G',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(101,	'18UCS214811',	'RAJKUMAR P',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(102,	'18UCS214812',	'SASI C',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(103,	'18UCS214813',	'SENTHOORA PANDIYAN K',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(104,	'18UCS214814',	'SHANMUGAM M',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(105,	'18UCS214815',	'THILAGARASAN A',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(106,	'18UCS214816',	'VAITHISHWARAN T',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(107,	'18UCS214817',	'VASANTH M S',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(108,	'18UCS214818',	'VELMANI V',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(109,	'18UCS214819',	'VENKATESH S',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(110,	'18UCS214820',	'VIGNESH D',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(111,	'18UCS214821',	'YUGA BHARATHI M',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(112,	'18UCS214822',	'CHITRA R',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(113,	'18UCS214823',	'DEVI P',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(114,	'18UCS214824',	'DEVIPRIYA N',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(115,	'18UCS214825',	'ISHWARYA R',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(116,	'18UCS214826',	'KIRUTHIKA D',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(117,	'18UCS214827',	'NANDHINI S',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(118,	'18UCS214828',	'NIVETHA S',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(119,	'18UCS214829',	'PARAMESHWARI A',	'male',	NULL,	NULL,	7,	'II',	'I',	'',	''),
-(120,	'18UCS214901',	'AJITHA A',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(121,	'18UCS214902',	'AKASH V',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(122,	'18UCS214903',	'DHARMAN C',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(123,	'18UCS214904',	'GOWTHAMAN S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(124,	'18UCS214905',	'KARTHIKEYAN P',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(125,	'18UCS214906',	'KARTHIKEYAAN S K L',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(126,	'18UCS214907',	'MADHANPRASANTH P',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(127,	'18UCS214908',	'MAHENDRAN K',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(128,	'18UCS214909',	'MOHANRAJ V',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(129,	'18UCS214910',	'NITHISH KUMAR S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(130,	'18UCS214911',	'PAVITHRAN D',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(131,	'18UCS214912',	'PRAKASH RAJ S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(132,	'18UCS214913',	'PRAVEENRAJ G',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(133,	'18UCS214914',	'PUGALENTHI S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(134,	'18UCS214915',	'PUSHPARAJ V',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(135,	'18UCS214916',	'RAGHAVAN M',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(136,	'18UCS214917',	'REVAN P',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(137,	'18UCS214918',	'SAGUL AMEED S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(138,	'18UCS214919',	'SANKAR M',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(139,	'18UCS214920',	'SATHISHKUMAR M',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(140,	'18UCS214921',	'TAMILSELVAN R',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(141,	'18UCS214922',	'THANGABALU S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(142,	'18UCS214923',	'VELMURUGAN R',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(143,	'18UCS214924',	'VIJAY S',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(144,	'18UCS214925',	'DENISHABLESSY B',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(145,	'18UCS214926',	'NANDHINI K',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(146,	'18UCS214927',	'SIVARANJANI P',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(147,	'18UCS214928',	'SRIDEVI P',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(148,	'18UCS214929',	'SURUTHI D',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(149,	'18UCS214930',	'TAMILSELVI K',	'male',	NULL,	NULL,	7,	'II',	'II',	'',	''),
-(150,	'sd4554',	'admin',	'male',	NULL,	NULL,	6,	'I',	'II',	'',	''),
-(151,	'19UCS221501',	'ARUN V S',	'male',	NULL,	NULL,	8,	'I',	'I',	'',	''),
-(154,	'bhjb',	'hbj',	'male',	'computersearch4@gmail.cin',	NULL,	10,	'II',	'II',	'img/student/boy.png',	'student'),
-(155,	'bhjb',	'hbj',	'male',	'computersearch4@gmail.cin',	NULL,	10,	'II',	'II',	'img/student/boy.png',	'student');
 
--- 2022-04-19 16:24:51
+-- 2022-04-21 04:05:19

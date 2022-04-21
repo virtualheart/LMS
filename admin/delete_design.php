@@ -7,7 +7,10 @@
 		if($con->query($qry))
 		{
 			header("location:add_designation.php?msg=2");
-		}
+		} else {
+			
+			header("location:add_designation.php?msg=10");
+		}	
 	}
 
 ?>

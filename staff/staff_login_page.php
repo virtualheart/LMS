@@ -26,7 +26,8 @@
 				<?php
 					if(isset($_POST["login"]))
 					{
-						$sname=$_POST["sname"];
+						$sname=trim($_POST['sname']);
+						$sname=filter_var($sname,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
 						$spass=$_POST["spass"];
 						$qry="select * from staff where sname='{$sname}' and regno='{$spass}'";
 						$res=$con->query($qry);										

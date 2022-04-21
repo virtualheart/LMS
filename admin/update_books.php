@@ -24,7 +24,7 @@
 						$qry1="update books set sno='{$_POST["sno"]}',bno='{$_POST["bno"]}',bcode='{$_POST["bcno"]}',title='{$_POST["title"]}',aname='{$_POST["aname"]}',publication='{$_POST["publication"]}',price='{$_POST["price"]}',alamara='{$_POST["alamara"]}',rack='{$_POST["rack"]}' where bid='{$_GET["id"]}'";
 						if($con->query($qry1))
 						{
-							header("location:view_books.php?msg=Book Updated Successfully...!!!");
+							header("location:view_books.php?msg=5");
 						}
 					}
 				?>				

@@ -1,5 +1,5 @@
 <?php
-	include"./include/config.php";
+	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
 ?>

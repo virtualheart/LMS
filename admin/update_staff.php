@@ -2,8 +2,6 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
-
-	 ob_start(); 
 ?>
 <html>
 	<head>
@@ -70,19 +68,26 @@
 						$email=$_POST["email"];		
 						$gender=$_POST["gender"];	
 						
-						if(isset($_FILES["image"]))						
-						{
-							$path="../img/staff/";
-							$path=$path.time().rand(5,9).basename($_FILES["image"]["name"]);
+						if(isset($_FILES["image"])!=null){
+
+						$path="../img/staff/";
+						$path=$path.time().rand(5,9).basename($_FILES["image"]["name"]);
+
 							if(move_uploaded_file($_FILES["image"]["tmp_name"],$path))
 							{								
+								
+							}elseif ($gender == "male") {
 
-							} else {
+								$path = "../img/staff/male.png";
 
-								$path = $row["image"];
+							} elseif ($gender == "female") {
+
+								$path = "../img/staff/female.png";
 						
 							} 
-
+						} else {
+							$path = $row["image"];
+						} 
 							$qry="update staff set regno='$regno',sname='$name',did='$dep',id='$design',contact='$contact',semail='$email',gender='$gender', image='$path' where sid={$_GET['id']}";
 								if($con->query($qry))
 								{
@@ -91,7 +96,7 @@
 									echo"<div class='alert alert-danger'>Update Falied...!</div>";
 								}								
 						}						
-					}					
+										
 				?>					
 				<div class="col-md-4">
 				<div class="form-group ">
