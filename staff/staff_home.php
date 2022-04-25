@@ -53,9 +53,66 @@
 				<a href="staff_status.php" class="text"><span class="fa fa-bell"> View Status</span></a>	
 			</div>
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="staff_status.php" class="text"><span class="fa fa-history"> View History</span></a>	
+				<a href="staff_view_history.php" class="text"><span class="fa fa-history"> View History</span></a>	
 			</div>
 		</div>
+
+<!----------------------------------------------------------------------------->
+<?php
+$qry="select sbb.sid,sbb.bid,sbb.request_date,sbb.role,sb.bno,sb.bcode,sb.title,sb.aname,sb.publication from barrow_books sbb join books sb on sb.bid = sbb.bid where sid='{$_SESSION["sid"]}' and role='staff'";
+				//echo $qry;
+				$res=$con->query($qry);
+
+			if($res->num_rows>0)
+				{
+
+?>
+	
+		<div class="col-md-2" style="margin-top:50px">
+
+		</div>	
+		<div class="col-md-9">
+			
+			<div class='asset-inner'>
+			<h3 class='page-header text-primary'><span class='fa fa-users'> Current books</span></h3>
+						
+			<?php
+			
+				
+					$i=1;					
+										
+
+					echo"						
+						<table class='table table-bordered' >
+						<thead>
+							<tr>
+								<th style='text-align:center'>Serial No</th>
+								<th style='text-align:center'>Book No</th>
+								<th style='text-align:center'>Title</th>
+								<th style='text-align:center'>Author Name</th>
+								<th style='text-align:center'>Publication</th>
+							</tr>
+						</thead><tbody id='mytable'>
+					";
+					while($row=$res->fetch_assoc())
+					{
+						echo"
+						
+							<tr>
+								<td>{$i}</td>
+								<td>{$row['bno']}</td>
+								<td>{$row['title']}</td>
+								<td>{$row['aname']}</td>
+								<td>{$row['publication']}</td>							
+							</tr>						
+						";
+						$i++;
+					}
+					echo "</tbody></table></div>";
+				}
+			?>
+		</div>
+<!----------------------------------------------------------------------------->
 
 
 		<footer>

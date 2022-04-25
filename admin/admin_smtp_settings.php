@@ -125,11 +125,11 @@
 					?>
 					</select><br>
 
-					<div class="tooltipoo">If you use GMAIL click<a href="https://myaccount.google.com/security"> here</a>  <span class="tooltiptextoo">* open link and turnon <b>Less secure app access</b><br>
+					<div class="tooltipoo">If you use GMAIL click<a href="https://myaccount.google.com/security" target="_blank"> here</a>  <span class="tooltiptextoo">* open link and turnon <b>Less secure app access</b><br>
 					*  Disable 2 step verification<br>
 					*  Host : smtp.gmail.com	<br>
 					*  Port : 465 or 587	<br>
-					*  Server Type : SSL <br>
+					*  Server Type : SSL or TLS<br>
 					</span>
 					</div>
 				</div>
