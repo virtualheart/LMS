@@ -22,7 +22,7 @@
 		<!-- BODY -->
 			<div class="col-md-9">											
 			<form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
-			<h3 class='page-header text-primary'><i class='fa fa-gear'> Settings</i></h3>
+			<h3 class='page-header text-primary'><i class='fa fa-edit'> App Settings</i></h3>
 
 				<?php
 					if(isset($_POST["update"]))

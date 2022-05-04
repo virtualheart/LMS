@@ -43,7 +43,7 @@ if (isset($_GET['r'])) {
 
 $r=$_GET["r"];
 
-$sql="select sbb.sid,sbb.bid,sbb.request_date,sbb.role,sb.bno,sb.bcode,sb.title,sb.aname,sb.publication from barrow_books sbb join books sb on sb.bid = sbb.bid where bcode='{$r}'";
+$sql="select  sbb.sid,sbb.bid,sbb.request_date,sbb.role,sb.bno,sb.bcode,sb.title,sb.aname,sb.publication, GREATEST(DATEDIFF(CURDATE(),sbb.return_date) , 0) as fineday, se.fine from barrow_books sbb join books sb on sb.bid = sbb.bid join settings se where bcode='{$r}'";
 
 $result=$con->query($sql);
 
@@ -60,6 +60,8 @@ if($row = mysqli_fetch_array($result)) {
     $aname = $row['aname'];  
     $publication = $row['publication'];    
     $role = $row['role'];
+    $fineday = $row['fineday'];
+    $fine = $fineday * $row['fine'];
 
       if ($role=="staff") {
         $sql1="select regno,sname from staff where sid='{$sid}'";
@@ -75,7 +77,7 @@ if($row = mysqli_fetch_array($result)) {
       }
     
    
-    $retinfo[] = array( 'sid' => $sid ,'bid' => $bid ,'request_date' => $request_date ,'bno' => $bno ,'bcode' => $bcode ,'title' => $title ,'aname' => $aname ,'publication' => $publication ,'regno' => $regno ,'sname' => $sname ,'role' => $role );
+    $retinfo[] = array( 'sid' => $sid ,'bid' => $bid ,'request_date' => $request_date ,'bno' => $bno ,'bcode' => $bcode ,'title' => $title ,'aname' => $aname ,'publication' => $publication ,'regno' => $regno ,'sname' => $sname ,'role' => $role,'fineday' => $fineday, 'fine' => $fine );
 
   //header('Content-Type: application/json; charset=utf-8');
   echo json_encode($retinfo);

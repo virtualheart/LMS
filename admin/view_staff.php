@@ -12,7 +12,6 @@
 		?>
 		<style> 
 			.center td{
-				line-height:5!important;
 				text-align:center;
 			}
 			#cen{

@@ -57,7 +57,7 @@
 						$sectyp=$_POST["server_type"];						
 						
 		
-						$qry="update settings set smtp_host='$host',smtp_port='$port',smtp_user='$user',smtp_pass='$pass',smtp_sec_type='$sectyp' where id=1";
+						$qry="update settings set smtp_host='$host',smtp_port='$port',smtp_user='$user',smtp_pass='$pass',smtp_sec_type='$sectyp'";
 						//echo $qry;
 						if($con->query($qry))
 						{

@@ -5,7 +5,8 @@
 <a href="#entry" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Lib activity</span></a>
 <ul class="nav collapse" id="entry">			
 		<a href="admin_book_entry.php" class="list-group-item"><span class="fa fa-book"> Book Entry</span></a>											
-		<a href="admin_book_return.php" class="list-group-item"><span class="fa fa-repeat"> Book Return</span></a>											
+		<a href="admin_book_return.php" class="list-group-item"><span class="fa fa-repeat"> Book Return</span></a>
+		<a href="admin_viewall_brbk.php" class="list-group-item"><span class="fa fa-list"> All Books</span></a>											
 </ul>
 
 
@@ -43,9 +44,12 @@
 </ul> -->	
 	
 <a href="#Settings" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Settings</span></a>
-<ul class="nav collapse" id="Settings">			
-		<a href="admin_settings.php" class="list-group-item"><span class="fa fa-gear">  General Settings</span></a>	
-		 <a href="admin_smtp_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings</span></a>																							
-</ul>	
+	<ul class="nav collapse" id="Settings">
+		<a href="admin_app_settings.php" class="list-group-item"><span class="fa fa-edit">  App Settings</span></a>				
+	
+		<a href="admin_gen_settings.php" class="list-group-item"><span class="fa fa-gear">  App Settings</span></a>	
+
+		<a href="admin_smtp_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings</span></a>																							
+	</ul>	
 </div>
 

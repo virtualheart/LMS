@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 5.7.37-0ubuntu0.18.04.1 dump
+-- Adminer 4.8.1 MySQL 8.0.29-0ubuntu0.20.04.2 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -6,12 +6,12 @@ SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP DATABASE IF EXISTS `sinpro`;
-CREATE DATABASE `sinpro` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE `sinpro` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `sinpro`;
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `aname` varchar(100) NOT NULL,
   `apass` varchar(100) NOT NULL,
   `a_mail` varchar(200) NOT NULL,
@@ -24,35 +24,35 @@ INSERT INTO `admin` (`id`, `aname`, `apass`, `a_mail`, `role`) VALUES
 
 DROP TABLE IF EXISTS `barrow_books`;
 CREATE TABLE `barrow_books` (
-  `sbid` int(11) NOT NULL AUTO_INCREMENT,
-  `sid` int(11) NOT NULL,
-  `bid` int(11) NOT NULL,
+  `sbid` int NOT NULL AUTO_INCREMENT,
+  `sid` int NOT NULL,
+  `bid` int NOT NULL,
   `request_date` date NOT NULL,
   `return_date` date NOT NULL,
   `today` date NOT NULL,
   `role` varchar(10) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   PRIMARY KEY (`sbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `barrow_books_history`;
 CREATE TABLE `barrow_books_history` (
-  `sbid` int(11) NOT NULL AUTO_INCREMENT,
-  `sid` int(11) NOT NULL,
-  `bid` int(11) NOT NULL,
+  `sbid` int NOT NULL AUTO_INCREMENT,
+  `sid` int NOT NULL,
+  `bid` int NOT NULL,
   `request_date` date NOT NULL,
   `returned_date` date NOT NULL,
   `today` date NOT NULL,
   `role` varchar(10) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int NOT NULL,
   PRIMARY KEY (`sbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
-  `bid` int(11) NOT NULL AUTO_INCREMENT,
+  `bid` int NOT NULL AUTO_INCREMENT,
   `sno` varchar(150) NOT NULL,
   `bno` varchar(20) NOT NULL,
   `bcode` varchar(50) DEFAULT NULL,
@@ -62,27 +62,27 @@ CREATE TABLE `books` (
   `price` varchar(150) NOT NULL,
   `alamara` varchar(150) NOT NULL,
   `rack` varchar(150) NOT NULL,
-  `status` int(11) NOT NULL,
-  `sstatus` int(11) NOT NULL,
+  `status` int NOT NULL,
+  `sstatus` int NOT NULL,
   PRIMARY KEY (`bid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publication`, `price`, `alamara`, `rack`, `status`, `sstatus`) VALUES
 (1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	1,	0),
-(2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	0,	0),
+(2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	1,	0),
 (3,	'3',	'UGC/8693',	'GACCS20200003',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
 (4,	'4',	'UGC/8701',	'GACCS20200004',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
-(5,	'5',	'UGC/8697',	'GACCS20200005',	'PROGRAMMING WITH FORTRAN ',	'SEYMOUR LIPSCHUTZ ARTHUR POE',	'TMGH',	'6',	'A1',	'R1',	0,	1),
+(5,	'5',	'UGC/8697',	'GACCS20200005',	'PROGRAMMING WITH FORTRAN ',	'SEYMOUR LIPSCHUTZ ARTHUR POE',	'TMGH',	'6',	'A1',	'R1',	0,	0),
 (6,	'6',	'UGC/8698',	'GACCS20200006',	'PROGRAMMING WITH FORTRAN 77',	'WILLIAM E.MAYO, MARTIN CWIAKALA',	'TMGH',	'6',	'A1',	'R1',	0,	0),
 (7,	'7',	'UGC/8712',	'GACCS20200007',	'NUMERICAL ANALYSIS',	'B D GUPTA',	'KONARK',	'70',	'A1',	'R1',	0,	0),
 (8,	'8',	'UGC/8716',	'GACCS20200008',	'NUMERICAL ANALYSIS',	'B D GUPTA',	'KONARK',	'70',	'A1',	'R1',	0,	0),
 (9,	'9',	'UGC/8852',	'GACCS20200009',	'COMPUTER PROGRAMMING IN COBOL',	'V. RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'79',	'A1',	'R1',	0,	0),
-(10,	'10',	'UGC/8854',	'GACCS20200010',	'COMPUTER PROGRAMMING IN COBOL',	'V.RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'295',	'A1',	'R1',	0,	1),
+(10,	'10',	'UGC/8854',	'GACCS20200010',	'COMPUTER PROGRAMMING IN COBOL',	'V.RAJARAMAN, H.V.SAHASRABUDDHE',	'PRENTICE-HALL OF INDIA',	'295',	'A1',	'R1',	1,	0),
 (11,	'11',	'UGC/8858',	'GACCS20200011',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'295',	'A3',	'R1',	0,	0),
 (12,	'12',	'UGC/8859',	'GACCS20200012',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'295',	'A1',	'R1',	0,	0),
 (13,	'13',	'UGC/8857',	'GACCS20200013',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'35',	'A1',	'R1',	0,	0),
 (14,	'14',	'UGC/8860',	'GACCS20200014',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'395',	'A1',	'R1',	0,	0),
-(15,	'15',	'UGC/8864',	'GACCS20200015',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'325',	'A1',	'R1',	1,	0),
+(15,	'15',	'UGC/8864',	'GACCS20200015',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'325',	'A1',	'R1',	0,	0),
 (16,	'16',	'UGC/8865',	'GACCS20200016',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'375',	'A1',	'R1',	0,	0),
 (17,	'17',	'UGC/8862',	'GACCS20200017',	'COBOL PROGRAMMING INCLUDING MS-COBOL AND COBOL-35',	'M K ROY, D GHOSH DASTIDAR',	'TMGH',	'310',	'A1',	'R1',	0,	0),
 (18,	'18',	'UGC/8874',	'GACCS20200018',	'STRUCTURED COBOL',	'A.S. PHILIPPAKIS, LEONARD J.KAZMIER',	'TMGH',	'275',	'A1',	'R1',	0,	0),
@@ -1851,7 +1851,7 @@ INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publicatio
 
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
-  `did` int(11) NOT NULL AUTO_INCREMENT,
+  `did` int NOT NULL AUTO_INCREMENT,
   `dname` varchar(150) NOT NULL,
   PRIMARY KEY (`did`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1877,7 +1877,7 @@ INSERT INTO `department` (`did`, `dname`) VALUES
 
 DROP TABLE IF EXISTS `designation`;
 CREATE TABLE `designation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(150) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1889,10 +1889,13 @@ INSERT INTO `designation` (`id`, `designation`) VALUES
 
 DROP TABLE IF EXISTS `settings`;
 CREATE TABLE `settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `app_name` varchar(30) NOT NULL,
   `app_decp` varchar(300) DEFAULT NULL,
   `app_logo` varchar(80) NOT NULL,
+  `fine` int NOT NULL,
+  `fine_stf_days` int NOT NULL,
+  `fine_std_days` int NOT NULL,
   `smtp_host` varchar(33) NOT NULL,
   `smtp_port` varchar(10) NOT NULL,
   `smtp_user` varchar(30) NOT NULL,
@@ -1901,17 +1904,17 @@ CREATE TABLE `settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `settings` (`id`, `app_name`, `app_decp`, `app_logo`, `smtp_host`, `smtp_port`, `smtp_user`, `smtp_pass`, `smtp_sec_type`) VALUES
-(1,	'GAS-7 LMS',	'',	'logo.png',	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl');
+INSERT INTO `settings` (`id`, `app_name`, `app_decp`, `app_logo`, `fine`, `fine_stf_days`, `fine_std_days`, `smtp_host`, `smtp_port`, `smtp_user`, `smtp_pass`, `smtp_sec_type`) VALUES
+(1,	'GAS-7 LMS',	'',	'logo.png',	2,	60,	30,	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl');
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
-  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` int NOT NULL AUTO_INCREMENT,
   `regno` varchar(150) NOT NULL,
   `sname` varchar(150) NOT NULL,
   `semail` varchar(200) NOT NULL,
-  `did` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
+  `did` int NOT NULL,
+  `id` int NOT NULL,
   `contact` varchar(150) NOT NULL,
   `gender` enum('male','female') NOT NULL,
   `image` varchar(300) NOT NULL,
@@ -1919,8 +1922,8 @@ CREATE TABLE `staff` (
   PRIMARY KEY (`sid`),
   KEY `id` (`id`),
   KEY `did` (`did`),
-  CONSTRAINT `staff_ibfk_2` FOREIGN KEY (`id`) REFERENCES `designation` (`id`),
-  CONSTRAINT `staff_ibfk_4` FOREIGN KEY (`did`) REFERENCES `department` (`did`) ON UPDATE NO ACTION
+  CONSTRAINT `staff_ibfk_2` FOREIGN KEY (`id`) REFERENCES `designation` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `staff_ibfk_4` FOREIGN KEY (`did`) REFERENCES `department` (`did`) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `staff` (`sid`, `regno`, `sname`, `semail`, `did`, `id`, `contact`, `gender`, `image`, `role`) VALUES
@@ -1934,7 +1937,7 @@ INSERT INTO `staff` (`sid`, `regno`, `sname`, `semail`, `did`, `id`, `contact`, 
 
 DROP TABLE IF EXISTS `staff_department`;
 CREATE TABLE `staff_department` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `s_d_name` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1958,13 +1961,13 @@ INSERT INTO `staff_department` (`id`, `s_d_name`) VALUES
 
 DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
-  `st_id` int(11) NOT NULL AUTO_INCREMENT,
+  `st_id` int NOT NULL AUTO_INCREMENT,
   `regno` varchar(150) NOT NULL,
   `sname` varchar(150) NOT NULL,
   `gender` enum('male','female') NOT NULL,
   `stemail` varchar(200) DEFAULT NULL,
   `Contact` varchar(12) DEFAULT NULL,
-  `did` int(11) NOT NULL,
+  `did` int NOT NULL,
   `year` varchar(150) NOT NULL,
   `shift` varchar(150) NOT NULL,
   `img` varchar(150) NOT NULL,
@@ -1972,5 +1975,9 @@ CREATE TABLE `students` (
   PRIMARY KEY (`st_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `students` (`st_id`, `regno`, `sname`, `gender`, `stemail`, `Contact`, `did`, `year`, `shift`, `img`, `role`) VALUES
+(1,	'19UCS221501',	'ARUN V S',	'male',	'',	NULL,	1,	'I',	'I',	'img/student/boy.png',	'student'),
+(2,	'19UCS221502',	'BALU S',	'male',	'',	NULL,	1,	'I',	'I',	'img/student/boy.png',	'student'),
+(3,	'19UCS221503',	'DHINESH E',	'male',	'',	NULL,	1,	'I',	'I',	'img/student/boy.png',	'student');
 
--- 2022-04-21 04:05:19
+-- 2022-05-04 16:55:37

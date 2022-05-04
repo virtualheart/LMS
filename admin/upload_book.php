@@ -68,6 +68,8 @@
 					<label> Upload</label>
 					<input type="file" class="form-control" name="fileToUpload" required><br>
 					<button class="btn btn-primary pull-right" type="submit" name="upload"><span class="fa fa-upload"> Upload</span></button>
+
+					<button class="btn btn-success " onclick="down()"><span class="fa fa-download"> sample download</span></button>
 				</div>												
 			</form>
 		</div>
@@ -77,4 +79,9 @@
 			?>
 		</footer>
 	</body>
+	<script type="text/javascript">
+		function down(){
+			window.open('../books/sample/sample.xls');
+		}
+	</script>
 </html>

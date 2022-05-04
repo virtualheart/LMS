@@ -81,8 +81,9 @@
 			<input type="text" name="bno" id="bno" value="" class="form-control" readonly="true">
 			<input type="hidden" name="role" id="role" value="">
 			<input type="hidden" name="book_id" id="book_id" value="">
-<!-- 			<input type="hidden" name="staff_id" id="staff_id" value="">-->
- <!-- 			<input type="hidden" name="stat" id="stat" value=""> -->
+			<input type="hidden" name="fineday" id="fineday" value="">
+<!-- 		<input type="hidden" name="staff_id" id="staff_id" value=""> -->
+<!-- 		<input type="hidden" name="stat" id="stat" value=""> 		 -->
 		</div>
 		<div class="form-group col-md-5">
 			<label>Title</label>
@@ -96,6 +97,12 @@
 			<label>Publication</label>
 			<input type="text" name="publication" id="publication" value="" class="form-control" readonly="true">
 		</div>
+		
+		<div class="form-group col-md-5">
+			<label>Fine</label>
+			<input type="text" name="fine" id="fine" value="" class="form-control" readonly="true">
+		</div>
+
 		<div class="form-group col-md-5">	
 			<label>Request Date</label>
 			<input type="text" name="request_date" id="request_date" value  class="form-control" readonly="true">
@@ -103,8 +110,8 @@
 		<div class="form-group col-md-5">
 			<label>Returned Date</label>
 			<input type="text" name="retdate" value="<?php echo date("d-m-Y"); ?>" class="form-control" readonly="true">					
-				</div>
-		<div class="form-group col-md-5" style="margin-top:35px">
+	<!--	</div>
+		<div class="form-group col-md-5" style="margin-top:35px"> --><br>
 			<input type="submit" name="submit" class="btn btn-primary" value="Return">			
 			<a href='./admin_home.php' class='btn btn-danger'> Back</a>	
 		</div>
@@ -132,6 +139,9 @@
                 document.getElementById("request_date").value = "";
                 document.getElementById("regno").value = "";
                 document.getElementById("role").value = "";
+                document.getElementById("fineday").value = "";
+                document.getElementById("fine").value = "";
+
                 return;
             }
             else {
@@ -153,6 +163,8 @@
                         document.getElementById("sname").value = info[0].sname;
                         document.getElementById("book_id").value = info[0].bid;
                         document.getElementById("role").value = info[0].role;
+                        document.getElementById("fineday").value = info[0].fineday;
+                        document.getElementById("fine").value = info[0].fine;
                     }
                 };
   
