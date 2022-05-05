@@ -27,6 +27,15 @@
 
 	<?php
 
+		$fin="select fine_stf_days,fine_std_days from settings";
+		$fres1=$con->query($fin);
+
+		if($fres1->num_rows>0){
+			$frow1=$fres1->fetch_assoc();
+			$stf_day=$frow1['fine_stf_days'];
+			$std_day=$frow1['fine_std_days'];
+		}	
+
 		if (isset($_POST["submit"])){
 
 			if (($_POST['staff_id']==null) || ($_POST['book_id']==null)){
@@ -59,7 +68,7 @@
 		
 		// Check student or staff			
 		if ($role=='staff') {
-		$qry="INSERT INTO barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `role`,`status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '".date('Y-m-d',strtotime('+60 days'))."', '{$newretdate}','staff', '1');";
+		$qry="INSERT INTO barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `role`,`status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '".date('Y-m-d',strtotime($stf_day.' days'))."', '{$newretdate}','staff', '1');";
 		//echo $qry;
 		} else {
 		$qry="INSERT INTO barrow_books (`sid`, `bid`, `request_date`, `return_date`, `today`, `role`, `status`) VALUES ('{$staff_id}', '{$book_id}', '{$newreqdate}', '{$newretdate}', '{$newreqdate}','student', '1');";
@@ -139,7 +148,7 @@
 		</div>
 		<div class="form-group col-md-5">
 			<label>ETA Return Date</label>
-			<input type="text" name="retdate" value="<?php echo date("d-m-Y",strtotime("+30 days"))?>" class="form-control" readonly="true">					
+			<input type="text" name="retdate" value="<?php echo date("d-m-Y",strtotime($std_day." days"))?>" class="form-control" readonly="true">					
 				</div>
 		<div class="form-group col-md-5" style="margin-top:35px">
 			<input type="submit" name="submit" class="btn btn-primary" value="Barrow">			
