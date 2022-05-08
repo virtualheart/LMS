@@ -22,7 +22,7 @@
 				<h3 class="page-header text-primary"><span class="fa fa-users">Add Students</span></h3>
 				<?php
 					if(isset($_POST["save"]))
-					{						
+					{	
 						$regno=$_POST["reg"];						
 						
 						$name=$_POST["sname"];
@@ -91,13 +91,16 @@
 					</select>					
 				</div>
 				<div class="form-group col-md-5">										
-					<label>Year(*)</label>					
-					<select class="form-control" name="year">				 						
-						<option>Select Year</option>						
-						<option value='I'>I</option>						
-						<option value='II'>II</option>						
-						<option value='III'>III</option>						
-					</select>					
+					<label>Year of Joining(*)</label>					
+						<select class="form-control" name="year">
+							<option value='-'>Select Year</option>
+
+						<?php
+						    for($i = 2017 ; $i <= date('Y'); $i++){
+      						echo "<option value='{$i}'>$i</option>";
+				   		}
+						?>
+						</select>
 				</div>
 				<div class="form-group col-md-5">										
 					<label>Shift(*)</label>					

@@ -28,7 +28,8 @@
 <ul class="nav collapse" id="std">			
 
 		<a href="add_students.php" class="list-group-item"><span class="fa fa-users"> Add Student</span></a>								
-		<a href="view_students_details.php" class="list-group-item"><span class="fa fa-edit"> View Student</span></a>								
+		<a href="upload_students.php" class="list-group-item"><span class="fa fa-upload"> Upload Student</span></a>								
+		<a href="view_students_details.php" class="list-group-item"><span class="fa fa-edit"> View Student</span></a>
 </ul>	
 <a href="#lib" class="list-group-item" data-toggle="collapse"><span class="fa fa-angle-double-right"> Books</span></a>
 <ul class="nav collapse" id="lib">			
@@ -47,7 +48,7 @@
 	<ul class="nav collapse" id="Settings">
 		<a href="admin_app_settings.php" class="list-group-item"><span class="fa fa-edit">  App Settings</span></a>				
 	
-		<a href="admin_gen_settings.php" class="list-group-item"><span class="fa fa-gear">  App Settings</span></a>	
+		<a href="admin_gen_settings.php" class="list-group-item"><span class="fa fa-gear">  General Settings</span></a>	
 
 		<a href="admin_smtp_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings</span></a>																							
 	</ul>	

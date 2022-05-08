@@ -81,7 +81,7 @@
 	</body>
 	<script type="text/javascript">
 		function down(){
-			window.open('../books/sample/sample.xls');
+			window.open('../books/sample/sample books.xls');
 		}
 	</script>
 </html>

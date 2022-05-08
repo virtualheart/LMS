@@ -28,6 +28,7 @@
 
 		?>
 			<h3 class="page-header text-primary"><span class="fa fa-users"> Select Details</span></h3>
+
 		<form method="post" action="<?php echo $_SERVER["PHP_SELF"]?>">
 			<div class="form-group col-md-5">					
 					<label>Department</label>
@@ -50,13 +51,16 @@
 					</select>					
 				</div>
 				<div class="form-group col-md-5">										
-					<label>Year</label>					
-					<select class="form-control" name="year">				 						
-						<option>Select Year</option>						
-						<option value='I'>I</option>						
-						<option value='II'>II</option>						
-						<option value='III'>III</option>						
-					</select>					
+					<label>Year of Joining(*)</label>					
+						<select class="form-control" name="year">
+							<option value='-'>Select Year</option>
+
+						<?php
+						    for($i = 2017 ; $i <= date('Y'); $i++){
+      						echo "<option value='{$i}'>$i</option>";
+				   		}
+						?>
+						</select>					
 				</div>
 				<div class="form-group col-md-5">										
 					<label>Shift</label>					
@@ -67,19 +71,23 @@
 					</select>					
 				</div>	
 				<div class="form-group col-md-5" style="margin-top:35px">
-					<input type="submit" class="btn btn-success" value="View" name="view">
+					<input type="submit" class="btn btn-success" value="View" name="view">			
+					<button type='text' class='btn btn-danger' onClick='down()' style='margin-left:1%'>Delect all</button>
+
 				</div>
-				
+
 				<div class='form-group pull-right col-md-3'> 
 						<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
 				</div>
 								
+
  			</div>
 
 			<div class="col-md-offset-3 col-md-9">			
 			<?php
 			if(isset($_POST["view"]))
-			{
+			{ 
+
 			$qry="Select department.dname, students.regno, students.st_id, students.sname,
   					students.did, students.year, students.shift, students.img
 						From students Inner Join
