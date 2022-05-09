@@ -10,7 +10,7 @@
 		<?php
 			include"../include/head.php";
 			//$server = file_get_contents("https://raw.githubusercontent.com/virtualheart/LMS/master/version.txt");
-			$server = 2.1;
+			$server = 2.2;
 			$myfile = fopen("../version.txt", "r");
 			$locver = fread($myfile,filesize("../version.txt"));
 			fclose($myfile);
@@ -54,16 +54,20 @@
 				include"admin_sidenav.php";
 			?>
 		</div>		
-				<div class="col-md-9">			
+		<div class="col-md-9">			
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="admin_book_entry.php" class="text"><span class="fa fa-book"> Book Entry</span></a>		
+				<a href="admin_book_entry.php" class="text1"><span class="fa fa-book"> Book Entry</span></a><br><br>		
+				<a href="admin_book_return.php" class="text1"><span class="fa fa-repeat"> Book Return</span></a>	
 			</div>
-			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="admin_book_return.php" class="text"><span class="fa fa-repeat"> Book Return</span></a>	
-			</div>			
+
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="add_staff.php"  class="text1"><span class="fa fa-users"> Add Staff</span></a><br><br>								
 				<a href="view_staff.php" class="text1" ><span class="fa fa-edit"> View Staff</span></a>	
+			</div>
+
+			<div class="col-md-3 box11" style="margin-top:50px">			
+					<a href="add_students.php" class="text1"><span class="fa fa-users"> Add Student</span></a>	<br><br>							
+					<a href="view_students_details.php" class="text1"><span class="fa fa-edit"> View Student</span></a>		
 			</div>
 		</div>		
 
@@ -72,13 +76,18 @@
 					<a href="add_dep.php" class="text1"><span class="fa fa-university"> Add Dept STD</span></a>	<br><br>							
 					<a href="add_staff_dep.php" class="text1"><span class="fa fa-university"> Add Dept Staff</span></a>			
 			</div>
+
 			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="add_designation.php" class="text"><span class="fa fa-user-plus"> Add Designation</span></a>	
-			</div>			
-			<div class="col-md-3 box11" style="margin-top:50px">			
-					<a href="add_students.php" class="text1"><span class="fa fa-users"> Add Student</span></a>	<br><br>							
-					<a href="view_students_details.php" class="text1"><span class="fa fa-edit"> View Student</span></a>		
+					<a href="add_books.php" class="text1"><span class="fa fa-edit"> Add Books</span></a>	<br><br>							
+					<a href="upload_book.php" class="text1"><span class="fa fa-upload"> Upload Books</span></a>			
 			</div>
+
+			<div class="col-md-3 box11" style="margin-top:50px">			
+					<a href="admin_gen_settings.php" class="text1"><span class="fa fa-gear"> General Setting</span></a>	<br><br>							
+					<a href="admin_app_settings.php" class="text1"><span class="fa fa-edit"> App Setting</span></a>			
+			</div>
+
+			</div>	
 		</div>			
 
 		<footer>

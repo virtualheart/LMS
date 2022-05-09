@@ -72,7 +72,7 @@
 				</div>	
 				<div class="form-group col-md-5" style="margin-top:35px">
 					<input type="submit" class="btn btn-success" value="View" name="view">			
-					<button type='text' class='btn btn-danger' onClick='down()' style='margin-left:1%'>Delect all</button>
+					<!-- <button type='text' class='btn btn-danger' onClick='down()' style='margin-left:1%'>Delect all</button> -->
 
 				</div>
 

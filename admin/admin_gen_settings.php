@@ -63,7 +63,7 @@
 				?>					
 			
 				<div class="form-group col-md-5">
-					<label>Fine(*)</label>
+					<label>Fine Per day ₹(*)</label>
 					<input type="number" name="fine" value="<?php echo $row['fine']?>" class="form-control" placeholder="Rs" >
 				</div>	
 

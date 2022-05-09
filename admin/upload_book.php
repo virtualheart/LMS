@@ -26,7 +26,7 @@
 					{						
 							$target_dir ="../books/";
 							$target_file = $target_dir . rand(1000,9999).basename($_FILES["fileToUpload"]["name"]);
-							if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
+							if (@move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) 
 							{
 								$objPHPExcel=PHPExcel_IOFactory::load($target_file);
 								 $sql="INSERT INTO books(sno,bno,barcode,title,aname,publication,price,alamara,rack,status,sstatus) VALUES ";

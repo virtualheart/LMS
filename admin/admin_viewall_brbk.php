@@ -57,7 +57,7 @@
 								<th>
 									<center>ROLE
 										<select class='form-control' name='role' id='role' onchange='myFun()' width='5'>
-											<option value=''>Sll</option>
+											<option value=''>All</option>
 											<option value='Staff'>staff</option>
 											<option value='Student'>student</option>
 										</select>

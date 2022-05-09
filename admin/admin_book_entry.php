@@ -84,9 +84,9 @@
 					if ($role=='staff') {
 						
 					// We are testing so don't *Uncommand the mail lines*
-					/*	if (cusmail($email,$sname,$book_id)) {
+						if (cusmail($email,$sname,$book_id)) {
 							
-						} */ 
+						}  
 					} elseif($role=='student'){
 						
 						//for student mail send
