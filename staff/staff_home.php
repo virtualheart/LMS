@@ -1,6 +1,8 @@
 <?php
 	include"../include/config.php";
 	session_start();
+	include"staff_security.php";
+
 ?>
 <html>
 	<head>
@@ -46,15 +48,18 @@
 			<div class="col-md-3 box11" style="margin-top:50px">							
 				<a href="staff_view_books.php" class="text"><span class="fa fa-search"> Search Books</span></a>											
 			</div>
-			<div class="col-md-3 box11" style="margin-top:50px">			
-				<a href="staff_request_details.php" class="text"><span class="fa fa-bell"> Request Details</span></a>											
-			</div>			
-			<div class="col-md-3 box11" style="margin-top:50px">			
+
+		<!-- 	<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="staff_status.php" class="text"><span class="fa fa-bell"> View Status</span></a>	
-			</div>
+			</div> -->
+			
 			<div class="col-md-3 box11" style="margin-top:50px">			
 				<a href="staff_view_history.php" class="text"><span class="fa fa-history"> View History</span></a>	
 			</div>
+
+			<div class="col-md-3 box11" style="margin-top:50px">			
+				<a href="staff_pass_setting.php" class="text"><span class="fa fa-gear"> Settings</span></a>											
+			</div>	
 		</div>
 
 <!----------------------------------------------------------------------------->
@@ -66,12 +71,14 @@ $qry="select sbb.sid,sbb.bid,sbb.request_date,sbb.role,sb.bno,sb.bcode,sb.title,
 			if($res->num_rows>0)
 				{
 
-?>
+?><!-- 
 	
 		<div class="col-md-2" style="margin-top:50px">
 
-		</div>	
-		<div class="col-md-9">
+		</div>	 -->
+
+
+		<div class="col-md-9 " style="padding-left:80px; width: 1300px;">
 			
 			<div class='asset-inner'>
 			<h3 class='page-header text-primary'><span class='fa fa-users'> Current books</span></h3>

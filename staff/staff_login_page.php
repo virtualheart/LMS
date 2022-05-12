@@ -35,7 +35,8 @@
 						{
 							$row=$res->fetch_assoc();
 							$_SESSION["sid"]=$row["sid"];
-							$_SESSION["sname"]=$row["sname"];											
+							$_SESSION["sname"]=$row["sname"];		
+							$_SESSION["role"]=$row["role"];											
 							header("location:staff_home.php");
 						}
 						else
@@ -45,12 +46,14 @@
 					}
 				?>
 				<div class="form-group">
-					<label>Staff Name</label>
+					<label>Register No</label>
 					<input type="text" name="sname" class="form-control" placeholder="Regno"> 
 				</div>
 				<div class="form-group">
 					<label>Password</label>
-					<input type="password" name="spass" class="form-control" placeholder="Staff ID">
+					<input type="password" name="spass" class="form-control" placeholder="Password" id="apass">
+					<input type="checkbox" onclick="myFunction()">Show Password
+
 				</div>
 				<div class="form-group pull-right">
 					<button type="submit" class="btn btn-success" name="login">Login</button>

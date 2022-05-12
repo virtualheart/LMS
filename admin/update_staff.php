@@ -2,6 +2,8 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	include"../include/msg.php";
+
 ?>
 <html>
 	<head>
@@ -49,6 +51,15 @@
 			}
 
 		?>
+			<?php
+				if(isset($_GET['msg']) && $_GET['msg']=='11')	{
+					echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]} New Password is <b>PASS</b></div>";
+					
+				} else if (isset($_GET['msg']) && $_GET['msg']=='12') {
+					
+					echo"<div class='alert alert-danger'>{$mgsarr[$_GET['msg']]}</div>";
+				}
+			?>	
 
 			<form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER["REQUEST_URI"]?>">
 				<h3 class="page-header text-info"><span class="fa fa-users"> Update Staff Details</span></h3>				
@@ -192,6 +203,7 @@
 
 					<div class="form-group pull-right" style="margin-top:15px">					
 						<input type="submit" name="update" value="Update" class="btn btn-primary">	
+						<a href="admin_staff_pass_reset.php?id=<?php echo $_GET['id'] ?>" class='btn btn-warning'>password Reset</a>
 						<a href='view_staff.php' class='btn btn-danger'> Back</a>
 						
 					</div>

@@ -1,6 +1,8 @@
 <?php
 	include"../include/config.php";
 	session_start();
+	include"staff_security.php";
+	
 ?>
 <html>
 	<head>
@@ -24,7 +26,7 @@
 					$row=$res->fetch_assoc();
 					
 				} else {
-						header("location:./staff_home.php");
+						//header("location:./staff_home.php");
 				}		
 			?>
 			<form method="post" action="<?php $_SERVER["REQUEST_URI"]?>">

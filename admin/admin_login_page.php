@@ -47,7 +47,7 @@ if($res->num_rows>0)
 								if($res->num_rows>0)	
 								{												
 									$row=$res->fetch_assoc();
-									$_SESSION["aid"]=$row["aid"];
+									$_SESSION["id"]=$row["id"];
 									$_SESSION["aname"]=$row["aname"];
 									$_SESSION["role"]=$row["role"];
 									
@@ -65,7 +65,9 @@ if($res->num_rows>0)
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type="password" class="form-control" name="apass" placeholder="Password">
+							<input type="password" class="form-control" name="apass" id="apass"placeholder="Password">
+							<input type="checkbox" class="form-check-label" onclick="myFunction()">Show Password
+
 						</div>
 						<div class="form-group pull-right">
 							<input type="submit" class="btn btn-success" value="Login" id="log" name="login">

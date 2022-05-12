@@ -31,7 +31,7 @@
 					$sname=filter_var($sname,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
 					$spass=$_POST["spass"];
 								
-					$qry="select * from students where sname='{$sname}' and regno='{$spass}'";
+					$qry="select * from students where regno='{$sname}' and spass='{$spass}'";
 					$res=$con->query($qry);										
 						if($res->num_rows>0){
 
@@ -42,6 +42,7 @@
 							$_SESSION["did"]=$row["did"];										
 							$_SESSION["year"]=$row["year"];											
 							$_SESSION["shift"]=$row["shift"];									
+							$_SESSION["role"]=$row["role"];									
 							header("location:student_home.php");
 						} else{
 							echo"<div class='alert alert-danger'>Login Failed</div>";
@@ -50,12 +51,14 @@
 		?>
 						
 							<div class="form-group">
-								<label>Student Name</label>
-								<input type="text" class="form-control" name="sname" placeholder="Student Name">
+								<label>Register No</label>
+								<input type="text" class="form-control" name="sname" placeholder="Register No">
 							</div>
 							<div class="form-group">
 								<label>Password</label>
-								<input type="password" class="form-control" name="spass" placeholder="Register No">
+								<input type="password" class="form-control" name="spass" placeholder="Password" id="apass" >
+								<input type="checkbox" onclick="myFunction()">Show Password
+
 							</div>
 							<div class="form-group pull-right">
 								<input type="submit" class="btn btn-success" name="login" value="Login">

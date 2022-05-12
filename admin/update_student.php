@@ -2,6 +2,8 @@
 	include"../include/config.php";
 	session_start();
 	include"./admin_security.php";
+	include"../include/msg.php";
+
 	if (!isset($_GET['id'])) {
 		header("location:view_students_details.php?msg=5");
 	}
@@ -61,6 +63,16 @@
 					}					
 				
 				?>		
+			<?php
+				if(isset($_GET['msg']) && $_GET['msg']=='11')	{
+					echo"<div class='alert alert-success'>{$mgsarr[$_GET['msg']]} New Password is <b>PASS</b></div>";
+					
+				} else if (isset($_GET['msg']) && $_GET['msg']=='12') {
+					
+					echo"<div class='alert alert-danger'>{$mgsarr[$_GET['msg']]}</div>";
+				}
+			?>	
+
 				<?php
 					$qry="Select department.dname, students.year, students.did, students.shift,
    students.regno, students.sname, students.st_id,students.stemail,students.gender,students.Contact
@@ -109,9 +121,11 @@ From students Inner Join
 					<label>Year</label>					
 					<select class="form-control" name="year">				 						
 						<option value="<?php echo $row1['year']?>"><?php echo $row1['year']?></option>						
-						<option value='I'>I</option>						
-						<option value='II'>II</option>						
-						<option value='III'>III</option>						
+						<?php
+						    for($i = 2017 ; $i <= date('Y'); $i++){
+      						echo "<option value='{$i}'>$i</option>";
+				   		}
+						?>					
 					</select>					
 				</div>
 				<div class="form-group col-md-4">										
@@ -159,6 +173,9 @@ From students Inner Join
 					<!--<label>Image</label>
 					<input type="file" name="image" class="form-control" required><br>-->
 					<input type="submit" name="update" value="Update" class="btn btn-primary"style=" margin-right:5px;POSITION:RELATIVE;TOP:30PX;">	
+					
+					<a href="admin_std_pass_reset.php?id=<?php echo $_GET['id'] ?>" class='btn btn-warning' style=" margin-right:5px;POSITION:RELATIVE;TOP:30PX;">password Reset</a>
+
 					<a type="text" class="btn btn-DANGER " href="view_students_details.php" style="margin-left:5PX;POSITION:RELATIVE;TOP:30PX;">Back</a>					
 										
 				</div>	

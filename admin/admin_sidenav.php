@@ -50,7 +50,9 @@
 	
 		<a href="admin_gen_settings.php" class="list-group-item"><span class="fa fa-gear">  General Settings</span></a>	
 
-		<a href="admin_smtp_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings</span></a>																							
+		<a href="admin_smtp_settings.php" class="list-group-item"><span class="fa fa-envelope"> Smtp Settings</span></a>	
+
+		<a href="admin_pass_setting.php" class="list-group-item"><span class="fa fa-user"> User Settings</span></a>																							
 	</ul>	
 </div>
 

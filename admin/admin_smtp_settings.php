@@ -109,7 +109,9 @@
 				
 				<div class="form-group col-md-5">
 					<label>Password(*)</label>
-					<input type="Password" name="Password" value="<?php echo $row['smtp_pass']?>" class="form-control" placeholder="Password" required>
+					<input type="Password" name="Password" value="<?php echo $row['smtp_pass']?>" class="form-control" placeholder="Password" required id='apass'>
+					<input type="checkbox" class="form-check-label" onclick="myFunction()">Show Password
+
 				</div>
 				
 				<div class="form-group col-md-5">

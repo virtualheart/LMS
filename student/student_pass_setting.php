@@ -2,6 +2,7 @@
 
 	include"../include/config.php";
 	session_start();
+	include"student_security.php";
 
 ?>
 
@@ -12,10 +13,10 @@
 		?>
 	</head>
 	<body>
-		<?php include"staff_home_nav.php";?>
+		<?php include"student_home_nav.php";?>
 		<div class="col-md-3" style="margin-top:50px">
 			<?php
-				include"staff_sidenav.php";
+				include"student_sidenav.php";
 			?>
 		</div>
 		<!-- BODY -->
@@ -29,7 +30,7 @@
 						$apass=$_POST["apass"];
 						$amail=$_POST["amail"];
 
-						$qry="update staff set spass='{$apass}',semail='{$amail}' where sid='{$_SESSION["st_id"]}'";
+						$qry="update staff set spass='{$apass}',stemail='{$amail}' where sid='{$_SESSION["st_id"]}'";
 
 						if($con->query($qry)){
 							echo"<div class='alert alert-success'>Update Successfully...!</div>";
@@ -42,7 +43,7 @@
 
 				<?php
 
-				$qry="select * from students";
+				$qry="select * from students where st_id='{$_SESSION["st_id"]}'";
 				$res=$con->query($qry);
 
 				if($res->num_rows>0){
@@ -57,11 +58,13 @@
 					<br>
 					
 					<label>Password</label>
-					<input type="password" placeholder="*****" class="form-control"  name="apass" value="<?php echo $row1["spass"]; ?>">
+					<input type="password" placeholder="*****" class="form-control"  name="apass" id="apass" value="<?php echo $row1["spass"]; ?>">
+					<input type="checkbox" class="form-check-input" onclick="myFunction()"> Show Password
+
 					<br>
 
 					<label>mail</label>
-					<input type="text" placeholder="admin@gmail.com" class="form-control"  name="amail" value="<?php echo $row1["semail"]; ?>">
+					<input type="text" placeholder="user@gmail.com" class="form-control"  name="amail" value="<?php echo $row1["stemail"]; ?>">
 					<br>
 
 					<input type="submit" class="btn btn-primary btn-md " name="update" value="Update" style="margin-left:5px">					

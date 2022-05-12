@@ -44,7 +44,7 @@
 
 				<?php
 
-				$qry="select * from admin";
+				$qry="select * from admin where id='{$_SESSION["id"]}'";
 				$res=$con->query($qry);
 
 				if($res->num_rows>0){
@@ -59,7 +59,9 @@
 					<br>
 					
 					<label>Password</label>
-					<input type="password" placeholder="*****" class="form-control"  name="apass" value="<?php echo $row1["apass"]; ?>">
+					<input type="password" placeholder="*****" class="form-control"  name="apass" id="apass" value="<?php echo $row1["apass"]; ?>">
+					<input type="checkbox" onclick="myFunction()">Show Password
+
 					<br>
 
 					<label>mail</label>

@@ -1,6 +1,8 @@
 <?php
 	include"../include/config.php";	
 	session_start();
+	include"staff_security.php";
+	
 ?>
 <html>
 	<head>
@@ -16,7 +18,7 @@
 				include"staff_sidenav.php";
 			?>
 		</div>
-		<div class="col-md-9" >
+		<div class="col-md-9" style="padding-left:80px; width: 1300px;">
 
 			<a type='text' class='btn btn-primary' href='staff_home.php' style='margin-left:95%'>Back</a>
 			

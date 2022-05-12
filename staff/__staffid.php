@@ -14,9 +14,9 @@
 				$num++;
 				$cp=$cp1.$num;
 				echo $cp.' ';
-	echo $cp1.' ';
-echo $cp2.' ';
-echo $num.' ';
+				echo $cp1.' ';
+				echo $cp2.' ';
+				echo $num.' ';
 			}
 			else
 			{

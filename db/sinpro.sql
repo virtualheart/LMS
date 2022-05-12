@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 8.0.29-0ubuntu0.20.04.2 dump
+-- Adminer 4.8.1 MySQL 8.0.29-0ubuntu0.20.04.3 dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -20,7 +20,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `admin` (`id`, `aname`, `apass`, `a_mail`, `role`) VALUES
-(2,	'admin',	'admin',	'admin@admin.in',	'admin');
+(2,	'admin',	'admin',	'admin@admin.com',	'admin');
 
 DROP TABLE IF EXISTS `barrow_books`;
 CREATE TABLE `barrow_books` (
@@ -68,7 +68,7 @@ CREATE TABLE `books` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publication`, `price`, `alamara`, `rack`, `status`, `sstatus`) VALUES
-(1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	1,	0),
+(1,	'1',	'UGC/7290',	'GACCS20200001',	'COMPUTER PROGRAMMING FORTRAN& OTHERS LANGUAGES',	'P.V.S RAO',	'TMGH',	'24',	'A1',	'R1',	0,	0),
 (2,	'2',	'UGC/8690',	'GACCS20200002',	'DIGITAL PRINCIPLES AND APPLICATIONS',	'ALBERT PAUL MALVINO, DONALD P LEACH',	'TMGH',	'135',	'A1',	'R1',	1,	0),
 (3,	'3',	'UGC/8693',	'GACCS20200003',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
 (4,	'4',	'UGC/8701',	'GACCS20200004',	'DIGITAL COMPUTER ELECTRONICS AN INTRODUCTION TO MICROCOMPUTERS',	'ALBERT PAUL MALVINO',	'TMGH',	'96',	'A1',	'R1',	1,	0),
@@ -132,7 +132,7 @@ INSERT INTO `books` (`bid`, `sno`, `bno`, `bcode`, `title`, `aname`, `publicatio
 (931,	'62',	'38347',	'GACCS20200062',	'ASSEMBLY LANGUAGE LAB NOTES(WITH DISK)',	'ROBERT L.HUMMEL',	'',	'240',	'A1',	'R1',	0,	0),
 (932,	'63',	'38367',	'GACCS20200063',	'BASIC LAB NOTES',	'ETHAN WINNER AND PHIL CRAMER',	'ZIFF-DIVIS PRESS',	'240',	'A1',	'R1',	0,	0),
 (933,	'64',	'27862',	'GACCS20200064',	'COMPUTER PROGRAMMING',	'S.RAMANI, N.V.KOTESWARA RAO,R.NAGARAJAN',	'CBS',	'35',	'A1',	'R1',	0,	0),
-(934,	'65',	'29205',	'GACCS20200065',	'COMPUTER PROGRAMMING',	'S.RAMANI, N.V.KOTESWARA RAO,R.NAGARAJAN',	'CBS',	'35',	'A1',	'R1',	0,	0),
+(934,	'65',	'29205',	'GACCS20200065',	'COMPUTER PROGRAMMING',	'S.RAMANI, N.V.KOTESWARA RAO,R.NAGARAJAN',	'CBS',	'35',	'A1',	'R1',	1,	0),
 (935,	'66',	'29206',	'GACCS20200066',	'COMPUTER PROGRAMMING',	'S.RAMANI, N.V.KOTESWARA RAO,R.NAGARAJAN',	'C',	'35',	'A1',	'R1',	0,	0),
 (936,	'67',	'29207',	'GACCS20200067',	'COMPUTER PROGRAMMING',	'S.RAMANI, N.V.KOTESWARA RAO,R.NAGARAJAN',	'CBS',	'35',	'A1',	'R1',	0,	0),
 (937,	'68',	'29208',	'GACCS20200068',	'COMPUTER PROGRAMMING',	'S.RAMANI, N.V.KOTESWARA RAO,R.NAGARAJAN',	'CBS',	'35',	'A1',	'R1',	0,	0),
@@ -1905,12 +1905,13 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `settings` (`id`, `app_name`, `app_decp`, `app_logo`, `fine`, `fine_stf_days`, `fine_std_days`, `smtp_host`, `smtp_port`, `smtp_user`, `smtp_pass`, `smtp_sec_type`) VALUES
-(1,	'GAS-7 LMS',	'',	'logo.png',	2,	60,	30,	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl');
+(1,	'GAS-7 LMS',	'',	'logo.png',	1,	60,	30,	'smtp.gmail.com',	'587',	'computersearch4@gmail.com',	'happycomputer',	'ssl');
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE `staff` (
   `sid` int NOT NULL AUTO_INCREMENT,
   `regno` varchar(150) NOT NULL,
+  `spass` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `sname` varchar(150) NOT NULL,
   `semail` varchar(200) NOT NULL,
   `did` int NOT NULL,
@@ -1926,14 +1927,14 @@ CREATE TABLE `staff` (
   CONSTRAINT `staff_ibfk_4` FOREIGN KEY (`did`) REFERENCES `department` (`did`) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `staff` (`sid`, `regno`, `sname`, `semail`, `did`, `id`, `contact`, `gender`, `image`, `role`) VALUES
-(1,	'STF0001',	'Dr.M.MALATHI',	'demo@gmail.com',	1,	1,	'9443213646',	'female',	'../img/staff/female.png',	'staff'),
-(2,	'STF0002',	'THANGAVEL M',	'demo@gmail.com',	1,	1,	'9443213646',	'male',	'../img/staff/male.png',	'staff'),
-(3,	'STF0003',	'Dr.K.AKILANDESWARI',	'demo@gmail.com',	1,	1,	'9442560658',	'female',	'../img/staff/female.png',	'staff'),
-(4,	'STF0004',	'Mr.R.VENKATACHALAM',	'demo@gmail.com',	1,	1,	'9443926775',	'male',	'../img/staff/male.png',	'staff'),
-(5,	'STF0005',	'Mrs.D.CHITRA',	'demo@gmail.com',	1,	1,	'9443001076',	'female',	'../img/staff/female.png',	'staff'),
-(6,	'STF0006',	'Mr.E.JAYABALAN',	'demo@gmail.com',	1,	1,	'9443546772',	'male',	'../img/staff/male.png',	'staff'),
-(7,	'STF0007',	'Dr.R.PUGAZENDI',	'demo@gmail.com',	1,	1,	'9443548035',	'male',	'../img/staff/male.png',	'staff');
+INSERT INTO `staff` (`sid`, `regno`, `spass`, `sname`, `semail`, `did`, `id`, `contact`, `gender`, `image`, `role`) VALUES
+(1,	'STF0001',	'aaa',	'Dr.M.MALATHI',	'demo@gmail.com',	1,	1,	'9443213646',	'female',	'../img/staff/female.png',	'staff'),
+(2,	'STF0002',	'pass',	'THANGAVEL M',	'demo@gmail.com',	1,	1,	'9443213646',	'male',	'../img/staff/male.png',	'staff'),
+(3,	'STF0003',	'pass',	'Dr.K.AKILANDESWARI',	'demo@gmail.com',	1,	1,	'9442560658',	'female',	'../img/staff/female.png',	'staff'),
+(4,	'STF0004',	'pass',	'Mr.R.VENKATACHALAM',	'demo@gmail.com',	1,	1,	'9443926775',	'male',	'../img/staff/male.png',	'staff'),
+(5,	'STF0005',	'pass',	'Mrs.D.CHITRA',	'demo@gmail.com',	1,	1,	'9443001076',	'female',	'../img/staff/female.png',	'staff'),
+(6,	'STF0006',	'pass',	'Mr.E.JAYABALAN',	'demo@gmail.com',	1,	1,	'9443546772',	'male',	'../img/staff/male.png',	'staff'),
+(7,	'STF0007',	'pass',	'Dr.R.PUGAZENDI',	'demo@gmail.com',	1,	1,	'9443548035',	'male',	'../img/staff/male.png',	'staff');
 
 DROP TABLE IF EXISTS `staff_department`;
 CREATE TABLE `staff_department` (
@@ -1964,6 +1965,7 @@ CREATE TABLE `students` (
   `st_id` int NOT NULL AUTO_INCREMENT,
   `regno` varchar(150) NOT NULL,
   `sname` varchar(150) NOT NULL,
+  `spass` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `gender` enum('male','female') NOT NULL,
   `stemail` varchar(200) DEFAULT NULL,
   `Contact` varchar(12) DEFAULT NULL,
@@ -1975,9 +1977,9 @@ CREATE TABLE `students` (
   PRIMARY KEY (`st_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `students` (`st_id`, `regno`, `sname`, `gender`, `stemail`, `Contact`, `did`, `year`, `shift`, `img`, `role`) VALUES
-(1,	'19UCS221501',	'ARUN V S',	'male',	'',	NULL,	1,	'I',	'I',	'img/student/boy.png',	'student'),
-(2,	'19UCS221502',	'BALU S',	'male',	'',	NULL,	1,	'I',	'I',	'img/student/boy.png',	'student'),
-(3,	'19UCS221503',	'DHINESH E',	'male',	'',	NULL,	1,	'I',	'I',	'img/student/boy.png',	'student');
+INSERT INTO `students` (`st_id`, `regno`, `sname`, `spass`, `gender`, `stemail`, `Contact`, `did`, `year`, `shift`, `img`, `role`) VALUES
+(1,	'19UCS221501',	'ARUN V S',	'pass',	'male',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student'),
+(2,	'19UCS221502',	'BALU S',	'pass',	'male',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student'),
+(3,	'19UCS221503',	'DHINESH E',	'pass',	'male',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student');
 
--- 2022-05-04 16:55:37
+-- 2022-05-12 15:07:11

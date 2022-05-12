@@ -1,6 +1,8 @@
 <?php
 	include"../include/config.php";	
 	session_start();
+	include"student_security.php";
+	
 ?>
 <html>
 	<head>

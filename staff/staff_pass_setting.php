@@ -2,6 +2,7 @@
 
 	include"../include/config.php";
 	session_start();
+	include"staff_security.php";
 
 ?>
 
@@ -42,7 +43,7 @@
 
 				<?php
 
-				$qry="select * from staff";
+				$qry="select * from staff where sid='{$_SESSION["sid"]}'";
 				$res=$con->query($qry);
 
 				if($res->num_rows>0){
@@ -57,8 +58,10 @@
 					<br>
 					
 					<label>Password</label>
-					<input type="password" placeholder="*****" class="form-control"  name="apass" value="<?php echo $row1["spass"]; ?>">
+					<input type="password" placeholder="*****" class="form-control" name="apass" id="apass"value="<?php echo $row1["spass"]; ?>">
+					<input type="checkbox" onclick="myFunction()">Show Password
 					<br>
+
 
 					<label>mail</label>
 					<input type="text" placeholder="admin@gmail.com" class="form-control"  name="amail" value="<?php echo $row1["semail"]; ?>">

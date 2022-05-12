@@ -1,6 +1,8 @@
 <?php
 	include"../include/config.php";	
 	session_start();
+	include"staff_security.php";
+	
 ?>
 <html>
 	<head>
@@ -10,8 +12,13 @@
 	</head>
 	<body>
 		<?php include"staff_home_nav.php";?>
+		<div class="col-md-3" style="margin-top:50px">
+			<?php
+				include"staff_sidenav.php";
+			?>
+		</div>		
 								
-		<div class="col-md-12" >
+		<div class="col-md-12">
 			<?php
 				$qry="select * from books";
 				$res=$con->query($qry);
@@ -20,19 +27,19 @@
 					$i=1;					
 					echo"
 												
-					<a type='text' class='btn btn-primary' href='staff_home.php' style='margin-left:95%'>Back</a>														
+					<a type='text' class='btn btn-primary' href='staff_home.php' style='margin-left:95%'>Back</a>								
 						
 					";
 					echo"<h3 class='page-header text-primary'><i class='fa fa-search'> Search Books</i></h3>";
 					
 					echo"
 						<div class='form-group pull-right col-md-3'> 
-							<input type='text' class='form-control' id='search' placeholder='Search Here' style='margin-top:5px'>
+							<input type='text' class='form-control' id='searchbar' placeholder='Search Here' style='margin-top:5px'>
 							</div>
 						";						
 
 					echo"						
-						<table class='table table-bordered' >
+						<table class='table table-bordered'>
 						<thead>
 							<tr>
 							<!--	<th style='text-align:center'>S.No</th> -->
@@ -82,10 +89,10 @@
 	</body>
 	<script>
 		$(document).ready(function(){
-			$('#search').on("keyup",function(){								
+			$('#searchbar').on("keyup",function(){								
 				$("#mytable tr").each(function(){
 					var txt=$(this).text().toUpperCase();
-					var s=$("#search").val().toUpperCase();
+					var s=$("#searchbar").val().toUpperCase();
 					if(txt.indexOf(s)==-1)
 					{
 						$(this).css({"display":"none"});
@@ -97,5 +104,7 @@
 				});
 			});
 		});
+
 	</script>
+
 </html>
