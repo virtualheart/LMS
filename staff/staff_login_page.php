@@ -29,7 +29,7 @@
 						$sname=trim($_POST['sname']);
 						$sname=filter_var($sname,FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_LOW);
 						$spass=$_POST["spass"];
-						$qry="select * from staff where sname='{$sname}' and regno='{$spass}'";
+						$qry="select * from staff where regno='{$sname}' and spass='{$spass}'";
 						$res=$con->query($qry);										
 						if($res->num_rows>0)											
 						{
@@ -46,7 +46,7 @@
 				?>
 				<div class="form-group">
 					<label>Staff Name</label>
-					<input type="text" name="sname" class="form-control" placeholder="Name"> 
+					<input type="text" name="sname" class="form-control" placeholder="Regno"> 
 				</div>
 				<div class="form-group">
 					<label>Password</label>
