@@ -35,6 +35,12 @@ CREATE TABLE `barrow_books` (
   PRIMARY KEY (`sbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `barrow_books` (`sbid`, `sid`, `bid`, `request_date`, `return_date`, `today`, `role`, `status`) VALUES
+(2,	1,	2,	'2022-04-25',	'2022-06-24',	'2022-05-25',	'staff',	1),
+(3,	2,	3,	'2022-04-25',	'2022-06-24',	'2022-05-25',	'staff',	1),
+(4,	2,	4,	'2022-04-25',	'2022-06-24',	'2022-05-25',	'staff',	1),
+(5,	1,	10,	'2022-04-25',	'2022-05-25',	'2022-04-25',	'student',	1),
+(7,	2,	934,	'2022-05-04',	'2022-05-06',	'2022-05-05',	'staff',	1);
 
 DROP TABLE IF EXISTS `barrow_books_history`;
 CREATE TABLE `barrow_books_history` (
@@ -49,6 +55,9 @@ CREATE TABLE `barrow_books_history` (
   PRIMARY KEY (`sbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `barrow_books_history` (`sbid`, `sid`, `bid`, `request_date`, `returned_date`, `today`, `role`, `status`) VALUES
+(1,	2,	33,	'2022-05-04',	'2022-05-04',	'2022-06-03',	'staff',	1),
+(2,	2,	1,	'2022-04-25',	'2022-05-04',	'2022-05-25',	'staff',	1);
 
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
@@ -1928,7 +1937,7 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `staff` (`sid`, `regno`, `spass`, `sname`, `semail`, `did`, `id`, `contact`, `gender`, `image`, `role`) VALUES
-(1,	'STF0001',	'aaa',	'Dr.M.MALATHI',	'demo@gmail.com',	1,	1,	'9443213646',	'female',	'../img/staff/female.png',	'staff'),
+(1,	'STF0001',	'pass',	'Dr.M.MALATHI',	'demo@gmail.com',	1,	1,	'9443213646',	'female',	'../img/staff/female.png',	'staff'),
 (2,	'STF0002',	'pass',	'THANGAVEL M',	'demo@gmail.com',	1,	1,	'9443213646',	'male',	'../img/staff/male.png',	'staff'),
 (3,	'STF0003',	'pass',	'Dr.K.AKILANDESWARI',	'demo@gmail.com',	1,	1,	'9442560658',	'female',	'../img/staff/female.png',	'staff'),
 (4,	'STF0004',	'pass',	'Mr.R.VENKATACHALAM',	'demo@gmail.com',	1,	1,	'9443926775',	'male',	'../img/staff/male.png',	'staff'),
@@ -1979,7 +1988,7 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`st_id`, `regno`, `sname`, `spass`, `gender`, `stemail`, `Contact`, `did`, `year`, `shift`, `img`, `role`) VALUES
 (1,	'19UCS221501',	'ARUN V S',	'pass',	'male',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student'),
-(2,	'19UCS221502',	'BALU S',	'pass',	'male',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student'),
+(2,	'19UCS221502',	'BALU S',	'pass',	'female',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student'),
 (3,	'19UCS221503',	'DHINESH E',	'pass',	'male',	'',	'',	1,	'2020',	'I',	'img/student/boy.png',	'student');
 
--- 2022-05-12 15:07:11
+-- 2022-05-16 04:02:54
