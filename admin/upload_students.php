@@ -1,7 +1,8 @@
 <?php
 	include"../include/config.php";
 	session_start();
-	include"./admin_security.php";
+	include"./admin_security.php";	
+	include "../Classes/PHPExcel/IOFactory.php";
 	include"../include/msg.php";
 
 ?>
